@@ -6,9 +6,9 @@ const kyImg = '/images/liyah.png';
 const melImg = '/images/melody.png';
 const xanImg = '/images/xandy.png';
 
-const edImg = '/image/EdFace.png';
-const elmerImg = '/image/ElmerFace.png';
-const alvinImg = '/image/AlvinFace.png';
+const edImg = '/images/EdFace.png';
+const elmerImg = '/images/ElmerFace.png';
+const alvinImg = '/images/AlvinFace.png';
 
 const FOOTER_STYLES = `
   @keyframes ftFadeIn { from { opacity:0; } to { opacity:1; } }
