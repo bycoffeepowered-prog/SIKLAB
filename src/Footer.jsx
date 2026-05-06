@@ -1,10 +1,14 @@
 import { useState } from 'react';
+
 const ishImg = '/images/isa.png';
 const junImg = '/images/junjun.png';
 const kyImg = '/images/liyah.png';
 const melImg = '/images/melody.png';
 const xanImg = '/images/xandy.png';
 
+const edImg = '/EdFace.png';
+const elmerImg = '/ElmerFace.png';
+const alvinImg = '/AlvinFace.png';
 
 const FOOTER_STYLES = `
   @keyframes ftFadeIn { from { opacity:0; } to { opacity:1; } }
@@ -12,13 +16,13 @@ const FOOTER_STYLES = `
   @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
   
   .team-avatar{
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
-  object-fit: cover;
-  background: rgba(0,0,0,0.4);
-  flex-shrink: 0;
-}
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
 
   .footer { 
     background: var(--footer-bg); 
@@ -60,13 +64,7 @@ const FOOTER_STYLES = `
     align-items: center;
     gap: 1rem;
   }
-    .footer-game-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+  .footer-game-label,
   .footer-legal-label {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -75,7 +73,6 @@ const FOOTER_STYLES = `
     letter-spacing: 0.05em;
   }
 
-  /* Terminal Window Overlay */
   .terminal-overlay { 
     position: fixed; 
     inset: 0; 
@@ -94,8 +91,6 @@ const FOOTER_STYLES = `
     max-height: 90vh; 
     animation: ftSlideUp 0.4s ease-out;
   }
-  
-  /* Terminal Window Structure */
   .terminal-window { 
     width: 100%; 
     max-height: 90vh;
@@ -108,8 +103,6 @@ const FOOTER_STYLES = `
     font-family: 'Courier New',monospace;
     border: 2px solid var(--accent-cyan);
   }
-
-  /* Terminal Tabs with Close Button */
   .terminal-tabs {
     display: flex;
     align-items: center;
@@ -170,7 +163,6 @@ const FOOTER_STYLES = `
     animation: blink 1s infinite;
   }
 
-  /* Terminal Body - Terminal Aesthetic for Content */
   .terminal-body { 
     flex: 1; 
     padding: 2rem; 
@@ -185,7 +177,6 @@ const FOOTER_STYLES = `
   .terminal-body::-webkit-scrollbar { width: 8px; }
   .terminal-body::-webkit-scrollbar-thumb { background-color: var(--accent-cyan); border-radius: 10px; }
 
-  /* Terminal Command Prompt Style */
   .terminal-prompt-line {
     color: #888;
     margin-bottom: 0.5rem;
@@ -197,7 +188,6 @@ const FOOTER_STYLES = `
     font-weight: bold;
   }
 
-  /* About Section - Terminal Style */
   .about-section {
     max-width: 900px;
     margin: 0 auto;
@@ -266,8 +256,8 @@ const FOOTER_STYLES = `
     font-size: 0.9rem;
   }
 
-  /* Team Section - Terminal Style */
-  .team-section {
+  .team-section,
+  .contributors-section {
     text-align: center;
   }
   .team-header {
@@ -318,9 +308,6 @@ const FOOTER_STYLES = `
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(0,255,0,0.2);
   }
-  .team-icon {
-    font-size: 2.5rem;
-  }
   .team-info {
     flex: 1;
   }
@@ -366,10 +353,6 @@ const FOOTER_STYLES = `
     color: var(--accent-cyan);
   }
 
-  /* Contributors Section - Terminal Style */
-  .contributors-section {
-    text-align: center;
-  }
   .contributors-header {
     margin-bottom: 2rem;
     padding: 1.5rem;
@@ -438,6 +421,21 @@ const FOOTER_STYLES = `
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
     border-left-color: var(--accent-cyan);
   }
+  .contributor-card-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+  .contributor-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: rgba(0,0,0,0.4);
+    flex-shrink: 0;
+    border: 1px solid rgba(0,255,0,0.2);
+  }
   .contributor-name {
     font-size: 1rem;
     color: var(--accent-cyan);
@@ -451,13 +449,23 @@ const FOOTER_STYLES = `
   .contributor-title {
     color: #00ff00;
     font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-style: italic;
   }
-  .contributor-affiliation {
+  .contributor-affiliation,
+  .contributor-email,
+  .contributor-expertise {
     color: #888;
     font-size: 0.75rem;
     line-height: 1.4;
+    margin-top: 0.35rem;
+  }
+  .contributor-email {
+    color: #00ff00;
+  }
+  .contributor-expertise::before {
+    content: '// ';
+    color: #666;
   }
   
   .contributors-footer {
@@ -490,7 +498,7 @@ const FOOTER_STYLES = `
 `;
 
 const TEAM_DATA = [
-  { id: 1, image: ishImg , name: 'ISA', role: 'Project Manager', specialty: 'Leadership & Vision', responsibilities: ['Project coordination', 'Environment art', 'Creative direction', 'Character design'] },
+  { id: 1, image: ishImg, name: 'ISA', role: 'Project Manager', specialty: 'Leadership & Vision', responsibilities: ['Project coordination', 'Environment art', 'Creative direction', 'Character design'] },
   { id: 2, image: junImg, name: 'JUN', role: 'Lead Programmer', specialty: 'Code Architecture', responsibilities: ['Game mechanics programming', 'System architecture', 'Bug fixing'] },
   { id: 3, image: kyImg, name: 'ALIYAH', role: 'Lead Designer', specialty: 'Visual Design & UX', responsibilities: ['UI/UX design', 'Visual aesthetics', 'Design documentation'] },
   { id: 4, image: melImg, name: 'MELODY', role: 'AR Developer', specialty: 'Backend Systems', responsibilities: ['Backend development', 'AR Development', 'Performance optimization'] },
@@ -499,9 +507,40 @@ const TEAM_DATA = [
 
 const CONTRIBUTORS_DATA = {
   academic: [
-    { name: 'Assistant Professor 1', title: 'Academic Advisor', affiliation: 'Computer Science Department, University' },
-    { name: 'Assistant Professor 2', title: 'Technical Consultant', affiliation: 'Game Development Department, University' },
-    { name: 'Capstone Adviser', title: 'Project Supervisor', affiliation: 'Information Technology Department' }
+    {
+      image: edImg,
+      name: 'Sir Lord Edgardian J. Tavu',
+      title: 'Project Advisor',
+      affiliation: 'Computer Science Head'
+    },
+    {
+      image: elmerImg,
+      name: 'Sir Elmer M. Aliño',
+      title: 'Capstone Professor',
+      affiliation: 'Professor of IT'
+    },
+    {
+      image: alvinImg,
+      name: 'Sir Alvin E. Camacho',
+      title: 'IT Head',
+      affiliation: 'Information Technology Head'
+    }
+  ],
+  historians: [
+    {
+      name: 'April Hope Castro',
+      title: 'Assistant Professor',
+      email: 'atcastro1@up.edu.ph',
+      affiliation: 'UP Los Baños',
+      expertise: 'Local History, Biography, Archival Research, Vocabularies, Deportados, Institutional History, and Feminist Studies'
+    },
+    {
+      name: 'Eugene Raymond Crudo',
+      title: 'Assistant Professor',
+      email: 'epcrudo@up.edu.ph',
+      affiliation: 'UP Los Baños',
+      expertise: 'Art History, Classical Sculpture, Local History, Cultural Heritage, Rizal Studies, and historical game consultation'
+    }
   ],
   community: [
     { name: 'Beta Tester 1', title: 'Quality Assurance', affiliation: 'Gaming Community' },
@@ -533,6 +572,7 @@ export default function Footer() {
               <span className="footer-link" onClick={() => { setShowTerminal(true); setActiveTab('faq'); }}>FAQ</span>
             </nav>
           </div>
+
           <div className="footer-bottom">
             <p className="footer-text">© 2025 SIKLAB. All rights reserved.</p>
             <div className="footer-legal">
@@ -573,7 +613,7 @@ export default function Footer() {
                     <div className="about-hero">
                       <h2>SIKLAB</h2>
                       <p>
-                        SIKLAB is an innovative mobile game that combines engaging gameplay with Philippine history and culture. 
+                        SIKLAB is an innovative mobile game that combines engaging gameplay with Philippine history and culture.
                         Through immersive storytelling and interactive experiences, we aim to educate and inspire players about the rich heritage of the Philippines.
                       </p>
                     </div>
@@ -582,7 +622,7 @@ export default function Footer() {
                       <div className="vm-card">
                         <h3>👁️ Vision</h3>
                         <p>
-                          To create an engaging platform that preserves and promotes Philippine culture and history through 
+                          To create an engaging platform that preserves and promotes Philippine culture and history through
                           innovative gaming experiences, inspiring the next generation to appreciate and celebrate our heritage.
                         </p>
                       </div>
@@ -590,8 +630,8 @@ export default function Footer() {
                       <div className="vm-card">
                         <h3>🎯 Mission</h3>
                         <p>
-                          To develop high-quality educational games that blend entertainment with cultural learning, making 
-                          Philippine history accessible and exciting for players of all ages through cutting-edge technology 
+                          To develop high-quality educational games that blend entertainment with cultural learning, making
+                          Philippine history accessible and exciting for players of all ages through cutting-edge technology
                           and compelling narratives.
                         </p>
                       </div>
@@ -635,8 +675,8 @@ export default function Footer() {
                     <div className="contributors-header">
                       <h2>SYSTEM <span className="highlight">CONTRIBUTORS</span></h2>
                       <p>
-                        SIKLAB is built upon the collaborative efforts of academic advisors, community members, 
-                        and countless others who have contributed through code, feedback, educational advice, and cultural authenticity.
+                        SIKLAB is supported by academic validators, historians, data contributors, and community members
+                        who helped strengthen the project's accuracy, cultural authenticity, and overall development.
                       </p>
                     </div>
 
@@ -645,9 +685,31 @@ export default function Footer() {
                       <div className="contributors-grid">
                         {CONTRIBUTORS_DATA.academic.map((contributor, idx) => (
                           <div key={idx} className="contributor-card">
+                            <div className="contributor-card-header">
+                              {contributor.image && (
+                                <img className="contributor-avatar" src={contributor.image} alt={contributor.name} />
+                              )}
+                              <div>
+                                <h4 className="contributor-name">{contributor.name}</h4>
+                                <div className="contributor-title">{contributor.title}</div>
+                                <div className="contributor-affiliation">{contributor.affiliation}</div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="contributors-category">
+                      <h3 className="category-title">Historians & Data Contributors</h3>
+                      <div className="contributors-grid">
+                        {CONTRIBUTORS_DATA.historians.map((contributor, idx) => (
+                          <div key={idx} className="contributor-card">
                             <h4 className="contributor-name">{contributor.name}</h4>
                             <div className="contributor-title">{contributor.title}</div>
+                            <div className="contributor-email">{contributor.email}</div>
                             <div className="contributor-affiliation">{contributor.affiliation}</div>
+                            <div className="contributor-expertise">{contributor.expertise}</div>
                           </div>
                         ))}
                       </div>
@@ -668,10 +730,11 @@ export default function Footer() {
 
                     <div className="contributors-footer">
                       <p>
-                        <strong>The Powered By Coffee team appreciates all contributors for validating real-world usages, recommending accuracy, 
-                        and continually approachable expressions. Test responses encourage cultural authenticity, 
-                        certified constructors, and contextual meaning to ensure authenticity in both design and 
-                        development, fostering accuracy in game language integrations and strengthened Filipino narrative.</strong>
+                        <strong>
+                          The Powered By Coffee team extends its gratitude to every contributor who helped validate,
+                          review, and improve SIKLAB. Their guidance helped support historical accuracy, cultural
+                          authenticity, and meaningful Filipino storytelling throughout the project.
+                        </strong>
                       </p>
                     </div>
                   </div>
@@ -688,7 +751,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>What is SIKLAB?</h3>
                       <p>
-                        SIKLAB is an educational mobile game that brings Philippine history and culture to life through 
+                        SIKLAB is an educational mobile game that brings Philippine history and culture to life through
                         engaging gameplay and interactive storytelling.
                       </p>
                     </div>
@@ -710,7 +773,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>How can I provide feedback?</h3>
                       <p>
-                        We welcome feedback! You can reach out to our team through the game's support section or 
+                        We welcome feedback! You can reach out to our team through the game's support section or
                         contact us directly through our official channels.
                       </p>
                     </div>
@@ -718,7 +781,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Is the historical content accurate?</h3>
                       <p>
-                        Absolutely! Our content is validated by academic advisors and historians to ensure historical 
+                        Absolutely! Our content is validated by academic advisors and historians to ensure historical
                         accuracy and cultural authenticity.
                       </p>
                     </div>
@@ -730,7 +793,6 @@ export default function Footer() {
         </div>
       )}
 
-      {/* Legal Popup (Privacy & Terms) */}
       {showLegal && (
         <div className="terminal-overlay" onClick={(e) => e.target === e.currentTarget && setShowLegal(false)}>
           <div className="terminal-popup">
@@ -759,7 +821,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Information We Collect</h3>
                       <p>
-                        SIKLAB collects minimal user data necessary for gameplay functionality, including game progress, 
+                        SIKLAB collects minimal user data necessary for gameplay functionality, including game progress,
                         preferences, and device information to optimize your gaming experience.
                       </p>
                     </div>
@@ -767,7 +829,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>How We Use Your Information</h3>
                       <p>
-                        Your data is used solely to enhance your gaming experience, save your progress, and improve 
+                        Your data is used solely to enhance your gaming experience, save your progress, and improve
                         our game based on usage patterns. We never sell your personal information to third parties.
                       </p>
                     </div>
@@ -775,7 +837,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Data Security</h3>
                       <p>
-                        We implement industry-standard security measures to protect your data. All information is 
+                        We implement industry-standard security measures to protect your data. All information is
                         encrypted and stored securely on our servers.
                       </p>
                     </div>
@@ -783,7 +845,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Your Rights</h3>
                       <p>
-                        You have the right to access, modify, or delete your data at any time. Contact our support 
+                        You have the right to access, modify, or delete your data at any time. Contact our support
                         team to exercise these rights.
                       </p>
                     </div>
@@ -791,7 +853,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Children's Privacy</h3>
                       <p>
-                        SIKLAB is designed to be educational and family-friendly. We do not knowingly collect personal 
+                        SIKLAB is designed to be educational and family-friendly. We do not knowingly collect personal
                         information from children under 13 without parental consent.
                       </p>
                     </div>
@@ -799,7 +861,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Contact Us</h3>
                       <p>
-                        If you have any questions about our privacy practices, please contact our team through 
+                        If you have any questions about our privacy practices, please contact our team through
                         the game's support section.
                       </p>
                     </div>
@@ -817,7 +879,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Acceptance of Terms</h3>
                       <p>
-                        By downloading and playing SIKLAB, you agree to these Terms of Service. If you do not agree 
+                        By downloading and playing SIKLAB, you agree to these Terms of Service. If you do not agree
                         with these terms, please do not use the game.
                       </p>
                     </div>
@@ -825,7 +887,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>License to Use</h3>
                       <p>
-                        SIKLAB grants you a limited, non-exclusive, non-transferable license to download and play 
+                        SIKLAB grants you a limited, non-exclusive, non-transferable license to download and play
                         the game for personal, non-commercial use.
                       </p>
                     </div>
@@ -833,7 +895,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>User Conduct</h3>
                       <p>
-                        Users must not attempt to hack, modify, or exploit the game. Any cheating, harassment, or 
+                        Users must not attempt to hack, modify, or exploit the game. Any cheating, harassment, or
                         inappropriate behavior may result in account suspension or termination.
                       </p>
                     </div>
@@ -841,7 +903,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Intellectual Property</h3>
                       <p>
-                        All content in SIKLAB, including graphics, code, storylines, and characters, are the property 
+                        All content in SIKLAB, including graphics, code, storylines, and characters, are the property
                         of the Powered By Coffee development team and protected by copyright laws.
                       </p>
                     </div>
@@ -849,7 +911,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Disclaimers</h3>
                       <p>
-                        SIKLAB is provided "as is" without warranties of any kind. We strive for accuracy in our 
+                        SIKLAB is provided "as is" without warranties of any kind. We strive for accuracy in our
                         historical content but cannot guarantee complete accuracy in all cases.
                       </p>
                     </div>
@@ -857,7 +919,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Limitation of Liability</h3>
                       <p>
-                        The Powered By Coffee team shall not be liable for any damages arising from the use or inability to 
+                        The Powered By Coffee team shall not be liable for any damages arising from the use or inability to
                         use the game, including data loss or device issues.
                       </p>
                     </div>
@@ -865,7 +927,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Changes to Terms</h3>
                       <p>
-                        We reserve the right to modify these terms at any time. Continued use of SIKLAB after 
+                        We reserve the right to modify these terms at any time. Continued use of SIKLAB after
                         changes constitutes acceptance of the new terms.
                       </p>
                     </div>
@@ -873,7 +935,7 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>Contact Information</h3>
                       <p>
-                        For questions about these Terms of Service, please contact our support team through 
+                        For questions about these Terms of Service, please contact our support team through
                         the game's official channels.
                       </p>
                     </div>
