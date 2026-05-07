@@ -4,7 +4,7 @@ const siklabGif = '/images/siklab.gif';
 
 const HEADER_STYLES = `
   :root {
-    --site-header-height: 104px;
+    --site-header-height: 124px;
   }
 
   .retro-site {
@@ -29,10 +29,11 @@ const HEADER_STYLES = `
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.65rem 0;
+    padding: 1rem 0;
     flex-wrap: wrap;
     position: relative;
-    min-height: 84px;
+    min-height: 92px;
+    overflow: visible;
   }
 
   .logo {
@@ -42,7 +43,7 @@ const HEADER_STYLES = `
   }
 
   .logo-gif {
-    height: 80px;
+    height: 50px;
     width: auto;
     object-fit: contain;
     display: block;

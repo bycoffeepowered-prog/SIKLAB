@@ -1,87 +1,132 @@
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* POPUP OVERLAYS: site stays visible behind */
+.map-popup-overlay,
+.character-popup-overlay,
+.generic-popup-overlay,
+.terminal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999999 !important;
+  background: rgba(0, 0, 0, 0.72) !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Center popup box instead of full-screen */
+.map-popup-container,
+.character-popup-container,
+.generic-popup-container,
+.terminal-popup {
+  width: min(92vw, 1100px) !important;
+  height: min(86vh, 760px) !important;
+  max-width: 92vw !important;
+  max-height: 86vh !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+
+/* Inner popup content */
+.map-popup-content,
+.character-popup-body,
+.generic-popup-content,
+.terminal-window {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 86vh !important;
+  overflow-y: auto !important;
+  border-radius: 18px !important;
+}
+
+.floating-close,
+.terminal-close {
+  z-index: 10000000 !important;
+}
+
+/* MOBILE ONLY */
 @media (max-width: 768px) {
-
-  html,
-  body,
-  #root {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
   .container {
     width: 100%;
     max-width: 100%;
     padding: 0 10px !important;
   }
 
-  /* POPUPS UNDER FIXED HEADER */
-  .map-popup-overlay,
-  .generic-popup-overlay,
-  .terminal-overlay {
-    top: 54px !important;
-    height: calc(100vh - 54px) !important;
-    inset: 54px 0 0 0 !important;
-    padding: 10px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
+  /* Footer cleanup */
+  .footer {
+    margin-top: 0 !important;
+    padding: 10px 0 !important;
+    min-height: auto !important;
   }
 
+  .footer-game-label,
+  .footer-nav {
+    display: none !important;
+  }
+
+  .footer-logo {
+    font-size: 12px !important;
+    padding: 7px 10px !important;
+  }
+
+  .footer-text,
+  .footer-legal-label,
+  .footer-link {
+    font-size: 10px !important;
+  }
+
+  /* Mobile popup size */
   .map-popup-container,
+  .character-popup-container,
   .generic-popup-container,
-  .terminal-popup,
+  .terminal-popup {
+    width: 94vw !important;
+    height: 88vh !important;
+    max-width: 94vw !important;
+    max-height: 88vh !important;
+    border-radius: 16px !important;
+  }
+
+  .map-popup-content,
+  .character-popup-body,
+  .generic-popup-content,
   .terminal-window {
-    max-height: calc(100vh - 74px) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-y: auto !important;
+    max-height: 88vh !important;
+    border-radius: 16px !important;
   }
 
-  .floating-close {
-    top: 10px !important;
-    right: 10px !important;
-    z-index: 999999 !important;
-  }
-
-  /* MAP MOBILE FIX */
-  .map-popup-content {
-    padding: 10px !important;
-  }
-
-  .map-footer {
-    padding: 10px !important;
-  }
-
-  .map-footer-image-container {
-    height: auto !important;
-    max-height: 62vh !important;
-    width: 100% !important;
-  }
-
-  .map-footer-image {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-  }
-
-  /* CHARACTER SELECT SIDE SCROLL */
-  .character-popup-container {
-    width: calc(100vw - 20px) !important;
-    height: calc(100vh - 74px) !important;
-    max-height: calc(100vh - 74px) !important;
-    overflow: hidden !important;
-  }
-
+  /* Character popup mobile */
   .character-popup-body {
     display: flex !important;
     flex-direction: column !important;
-    overflow-y: auto !important;
+  }
+
+  .character-display-panel {
+    order: 1 !important;
+    min-height: 290px !important;
+    height: 290px !important;
+    flex-shrink: 0 !important;
   }
 
   .character-grid-panel {
+    order: 2 !important;
     height: auto !important;
     max-height: none !important;
     overflow: visible !important;
+  }
+
+  .character-details-panel {
+    order: 3 !important;
   }
 
   .character-grid,
@@ -115,7 +160,91 @@
     padding: 6px !important;
   }
 
-  /* MECHANICS MOBILE FIX */
+  .character-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+
+  .character-tab {
+    flex: 1 !important;
+    font-size: 12px !important;
+    padding: 10px 4px !important;
+  }
+
+  /* Map mobile */
+  .map-popup-content {
+    padding: 12px !important;
+  }
+
+  .map-footer {
+    padding: 10px !important;
+  }
+
+  .map-footer-image-container {
+    width: 100% !important;
+    max-height: 62vh !important;
+    height: auto !important;
+  }
+
+  .map-footer-image {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Feedback mobile */
+  .paint-menubar {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 4px !important;
+    padding: 5px !important;
+  }
+
+  .paint-menu-item {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+    padding: 8px 10px !important;
+  }
+
+  .paint-content {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+
+  .paint-toolbox {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 8px !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .paint-toolbox > div {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+
+  .paint-tools-label {
+    display: none !important;
+  }
+
+  .dev-profile-btn {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    flex-shrink: 0 !important;
+    font-size: 26px !important;
+  }
+
+  /* Mechanics mobile */
   .mechanics-section {
     padding: 38px 12px !important;
     min-height: auto !important;
@@ -178,121 +307,52 @@
     object-fit: cover !important;
   }
 
-  .detail-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-  }
-
-  .detail-image {
-    height: 220px !important;
-    min-height: 220px !important;
-  }
-
-  .detail-image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-  }
-
-  /* FEEDBACK ICON BUTTONS SIDE BY SIDE */
-  .paint-menubar {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    gap: 4px !important;
-    padding: 5px !important;
-  }
-
-  .paint-menu-item {
-    flex: 0 0 auto !important;
-    white-space: nowrap !important;
-    font-size: 13px !important;
-    padding: 8px 10px !important;
-  }
-
-  .paint-content {
+  /* Terminal / footer popup mobile */
+  .terminal-window {
+    border: 2px solid var(--accent-cyan) !important;
     display: flex !important;
     flex-direction: column !important;
-    min-height: auto !important;
   }
 
-  .paint-toolbox {
-    display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    padding: 8px !important;
-    gap: 8px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .paint-toolbox > div {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 8px !important;
-  }
-
-  .paint-tools-label {
-    display: none !important;
-  }
-
-  .dev-profile-btn {
-    width: 62px !important;
-    height: 62px !important;
-    min-width: 62px !important;
-    flex-shrink: 0 !important;
-    font-size: 26px !important;
-  }
-
-  .paint-canvas-container {
-    width: 100% !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .paint-inner,
-  .paint-inner-draw {
-    width: 100% !important;
-    height: auto !important;
-    min-height: auto !important;
-    padding: 18px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* FOOTER SMALL */
-  .footer {
-    margin-top: 0 !important;
-    padding: 10px 0 !important;
-    min-height: auto !important;
-  }
-
-  .footer-game-label,
-  .footer-nav {
-    display: none !important;
-  }
-
-  .footer-logo {
+  .terminal-body {
+    flex: 1 !important;
+    padding: 14px !important;
     font-size: 12px !important;
-    padding: 7px 10px !important;
+    line-height: 1.55 !important;
+    overflow-y: auto !important;
   }
 
-  .footer-text,
-  .footer-legal-label,
-  .footer-link {
-    font-size: 10px !important;
+  .terminal-tabs-wrapper {
+    overflow-x: auto !important;
+  }
+
+  .terminal-tab {
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    padding: 9px 12px !important;
+  }
+
+  .team-grid,
+  .contributors-grid,
+  .vision-mission {
+    grid-template-columns: 1fr !important;
   }
 }
 
 @media (max-width: 400px) {
-  .map-popup-overlay,
-  .generic-popup-overlay,
-  .terminal-overlay {
-    top: 50px !important;
-    height: calc(100vh - 50px) !important;
-    inset: 50px 0 0 0 !important;
+  .map-popup-container,
+  .character-popup-container,
+  .generic-popup-container,
+  .terminal-popup {
+    width: 95vw !important;
+    height: 89vh !important;
+    max-width: 95vw !important;
+    max-height: 89vh !important;
+  }
+
+  .character-display-panel {
+    height: 260px !important;
+    min-height: 260px !important;
   }
 
   .character-portrait,
@@ -308,10 +368,5 @@
     flex-basis: 130px !important;
     width: 130px !important;
     min-width: 130px !important;
-  }
-
-  .detail-image {
-    height: 190px !important;
-    min-height: 190px !important;
   }
 }

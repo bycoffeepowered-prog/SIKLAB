@@ -31,7 +31,16 @@ const FOOTER_STYLES = `
     margin-top: 4rem; 
     transition: background 0.3s ease, border-color 0.3s ease;
   }
-  .footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+
+  .footer-top { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+  }
+
   .footer-logo { 
     background: linear-gradient(135deg,#f97316 0%,#dc2626 100%); 
     padding: 0.5rem 1rem; 
@@ -42,8 +51,18 @@ const FOOTER_STYLES = `
     cursor: pointer; 
     transition: transform 0.2s,box-shadow 0.2s; 
   }
-  .footer-logo:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(239,68,68,0.5); }
-  .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+  .footer-logo:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 15px rgba(239,68,68,0.5); 
+  }
+
+  .footer-nav { 
+    display: flex; 
+    gap: 1.5rem; 
+    flex-wrap: wrap; 
+  }
+
   .footer-link { 
     color: var(--accent-cyan); 
     text-decoration: none; 
@@ -52,18 +71,32 @@ const FOOTER_STYLES = `
     transition: color 0.2s; 
     cursor: pointer;
   }
-  .footer-link:hover { color: var(--text-primary); text-shadow: 0 0 8px rgba(34,211,238,0.6); }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+  .footer-link:hover { 
+    color: var(--text-primary); 
+    text-shadow: 0 0 8px rgba(34,211,238,0.6); 
+  }
+
+  .footer-bottom { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+  }
+
   .footer-text { 
     font-size: 0.75rem; 
     color: var(--text-muted); 
     transition: color 0.3s ease;
   }
+
   .footer-legal {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
+
   .footer-game-label,
   .footer-legal-label {
     font-size: 0.75rem;
@@ -85,12 +118,14 @@ const FOOTER_STYLES = `
     padding: 20px; 
     animation: ftFadeIn 0.3s ease-out; 
   }
+
   .terminal-popup { 
     width: 100%; 
     max-width: 1400px; 
     max-height: 90vh; 
     animation: ftSlideUp 0.4s ease-out;
   }
+
   .terminal-window { 
     width: 100%; 
     max-height: 90vh;
@@ -103,6 +138,7 @@ const FOOTER_STYLES = `
     font-family: 'Courier New',monospace;
     border: 2px solid var(--accent-cyan);
   }
+
   .terminal-tabs {
     display: flex;
     align-items: center;
@@ -110,10 +146,12 @@ const FOOTER_STYLES = `
     padding: 0;
     border-bottom: 1px solid #1a1a1a;
   }
+
   .terminal-tabs-wrapper {
     display: flex;
     flex: 1;
   }
+
   .terminal-close { 
     background: rgba(255,95,86,0.2);
     border: none;
@@ -132,10 +170,12 @@ const FOOTER_STYLES = `
     line-height: 1;
     flex-shrink: 0;
   }
+
   .terminal-close:hover { 
     background: #ff5f56;
     color: white;
   }
+
   .terminal-tab {
     padding: 0.75rem 1.5rem;
     background: transparent;
@@ -148,14 +188,17 @@ const FOOTER_STYLES = `
     border-right: 1px solid #1a1a1a;
     position: relative;
   }
+
   .terminal-tab:hover { 
     background: #333; 
     color: #fff; 
   }
+
   .terminal-tab.active { 
     background: #1a1a1a;
     color: var(--accent-cyan);
   }
+
   .terminal-tab.active::before {
     content: '▶';
     position: absolute;
@@ -174,6 +217,7 @@ const FOOTER_STYLES = `
     scrollbar-width: thin;
     scrollbar-color: var(--accent-cyan) transparent;
   }
+
   .terminal-body::-webkit-scrollbar { width: 8px; }
   .terminal-body::-webkit-scrollbar-thumb { background-color: var(--accent-cyan); border-radius: 10px; }
 
@@ -182,6 +226,7 @@ const FOOTER_STYLES = `
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
   }
+
   .terminal-prompt-line::before {
     content: '$ ';
     color: var(--accent-cyan);
@@ -192,6 +237,7 @@ const FOOTER_STYLES = `
     max-width: 900px;
     margin: 0 auto;
   }
+
   .about-hero {
     margin-bottom: 2rem;
     padding: 1.5rem;
@@ -199,6 +245,7 @@ const FOOTER_STYLES = `
     border: 1px solid rgba(0,255,0,0.3);
     border-left: 4px solid var(--accent-cyan);
   }
+
   .about-hero h2 {
     font-size: 2rem;
     color: var(--accent-cyan);
@@ -207,10 +254,12 @@ const FOOTER_STYLES = `
     font-weight: 900;
     text-shadow: 0 0 10px rgba(34,211,238,0.5);
   }
+
   .about-hero h2::before {
     content: '> ';
     color: #00ff00;
   }
+
   .about-hero p {
     color: #00ff00;
     font-size: 1rem;
@@ -224,6 +273,7 @@ const FOOTER_STYLES = `
     gap: 1.5rem;
     margin-top: 2rem;
   }
+
   .vm-card {
     background: rgba(0,0,0,0.4);
     padding: 1.5rem;
@@ -231,11 +281,13 @@ const FOOTER_STYLES = `
     border-left: 4px solid var(--accent-cyan);
     transition: all 0.3s;
   }
+
   .vm-card:hover {
     transform: translateX(4px);
     box-shadow: 0 0 20px rgba(34,211,238,0.3);
     background: rgba(0,0,0,0.6);
   }
+
   .vm-card h3 {
     color: var(--accent-cyan);
     font-size: 1.3rem;
@@ -245,10 +297,12 @@ const FOOTER_STYLES = `
     align-items: center;
     gap: 0.5rem;
   }
+
   .vm-card h3::before {
     content: '>';
     color: #00ff00;
   }
+
   .vm-card p {
     color: #00ff00;
     line-height: 1.8;
@@ -260,9 +314,11 @@ const FOOTER_STYLES = `
   .contributors-section {
     text-align: center;
   }
+
   .team-header {
     margin-bottom: 2rem;
   }
+
   .team-header h2 {
     font-size: 2rem;
     color: var(--accent-cyan);
@@ -271,10 +327,12 @@ const FOOTER_STYLES = `
     font-weight: 900;
     text-shadow: 0 0 10px rgba(34,211,238,0.5);
   }
+
   .team-header h2::before {
     content: '> ';
     color: #00ff00;
   }
+
   .team-header p {
     color: #888;
     font-size: 0.95rem;
@@ -287,6 +345,7 @@ const FOOTER_STYLES = `
     max-width: 1200px;
     margin: 0 auto;
   }
+
   .team-card {
     background: rgba(0,0,0,0.4);
     padding: 1.5rem;
@@ -295,11 +354,13 @@ const FOOTER_STYLES = `
     transition: all 0.3s;
     text-align: left;
   }
+
   .team-card:hover {
     transform: translateX(4px);
     box-shadow: 0 0 20px rgba(34,211,238,0.3);
     border-color: var(--accent-cyan);
   }
+
   .team-card-header {
     display: flex;
     align-items: center;
@@ -308,31 +369,37 @@ const FOOTER_STYLES = `
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(0,255,0,0.2);
   }
+
   .team-info {
     flex: 1;
   }
+
   .team-name {
     font-size: 1.3rem;
     color: var(--accent-cyan);
     margin: 0 0 0.3rem 0;
     font-weight: bold;
   }
+
   .team-role {
     color: #00ff00;
     font-size: 0.85rem;
     font-weight: bold;
     margin: 0;
   }
+
   .team-specialty {
     color: #888;
     font-size: 0.8rem;
     margin: 0.5rem 0 1rem 0;
     font-style: italic;
   }
+
   .team-specialty::before {
     content: '// ';
     color: #666;
   }
+
   .team-responsibilities {
     color: #00ff00;
     font-size: 0.85rem;
@@ -340,17 +407,64 @@ const FOOTER_STYLES = `
     margin: 0;
     padding: 0;
   }
+
   .team-responsibilities li {
     margin-bottom: 0.4rem;
     list-style: none;
     padding-left: 1.5rem;
     position: relative;
   }
+
   .team-responsibilities li::before {
     content: ">";
     position: absolute;
     left: 0;
     color: var(--accent-cyan);
+  }
+
+  .team-contact-card {
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(0,255,0,0.3);
+    border-left: 4px solid var(--accent-cyan);
+    text-align: left;
+  }
+
+  .team-contact-title {
+    color: var(--accent-cyan);
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+  }
+
+  .team-contact-title::before {
+    content: '> ';
+    color: #00ff00;
+  }
+
+  .team-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .team-contact-link {
+    color: #00ff00;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    word-break: break-word;
+  }
+
+  .team-contact-link.github {
+    color: var(--accent-cyan);
+  }
+
+  .team-contact-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(34,211,238,0.6);
   }
 
   .contributors-header {
@@ -360,6 +474,7 @@ const FOOTER_STYLES = `
     border: 1px solid rgba(0,255,0,0.3);
     border-left: 4px solid var(--accent-cyan);
   }
+
   .contributors-header h2 {
     font-size: 2rem;
     color: #00ff00;
@@ -367,14 +482,17 @@ const FOOTER_STYLES = `
     font-family: 'Courier New',monospace;
     font-weight: 900;
   }
+
   .contributors-header h2::before {
     content: '> ';
     color: var(--accent-cyan);
   }
+
   .contributors-header .highlight {
     color: var(--accent-cyan);
     text-shadow: 0 0 10px rgba(34,211,238,0.5);
   }
+
   .contributors-header p {
     color: #888;
     font-size: 0.95rem;
@@ -386,6 +504,7 @@ const FOOTER_STYLES = `
   .contributors-category {
     margin-bottom: 2.5rem;
   }
+
   .category-title {
     font-size: 1.5rem;
     color: var(--accent-cyan);
@@ -396,6 +515,7 @@ const FOOTER_STYLES = `
     letter-spacing: 0.1em;
     text-shadow: 0 0 10px rgba(34,211,238,0.5);
   }
+
   .category-title::before {
     content: '> ';
     color: #00ff00;
@@ -408,6 +528,7 @@ const FOOTER_STYLES = `
     max-width: 1200px;
     margin: 0 auto;
   }
+
   .contributor-card {
     background: rgba(0,0,0,0.4);
     padding: 1.2rem;
@@ -416,17 +537,20 @@ const FOOTER_STYLES = `
     transition: all 0.3s;
     text-align: left;
   }
+
   .contributor-card:hover {
     transform: translateX(4px);
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
     border-left-color: var(--accent-cyan);
   }
+
   .contributor-card-header {
     display: flex;
     gap: 1rem;
     align-items: center;
     margin-bottom: 0.8rem;
   }
+
   .contributor-avatar {
     width: 64px;
     height: 64px;
@@ -436,22 +560,26 @@ const FOOTER_STYLES = `
     flex-shrink: 0;
     border: 1px solid rgba(0,255,0,0.2);
   }
+
   .contributor-name {
     font-size: 1rem;
     color: var(--accent-cyan);
     margin: 0 0 0.3rem 0;
     font-weight: bold;
   }
+
   .contributor-name::before {
     content: '> ';
     color: #00ff00;
   }
+
   .contributor-title {
     color: #00ff00;
     font-size: 0.8rem;
     margin-bottom: 0.3rem;
     font-style: italic;
   }
+
   .contributor-affiliation,
   .contributor-email,
   .contributor-expertise {
@@ -460,9 +588,11 @@ const FOOTER_STYLES = `
     line-height: 1.4;
     margin-top: 0.35rem;
   }
+
   .contributor-email {
     color: #00ff00;
   }
+
   .contributor-expertise::before {
     content: '// ';
     color: #666;
@@ -475,6 +605,7 @@ const FOOTER_STYLES = `
     border: 1px solid rgba(0,255,0,0.3);
     border-left: 4px solid var(--accent-cyan);
   }
+
   .contributors-footer p {
     color: #00ff00;
     font-size: 0.85rem;
@@ -484,16 +615,61 @@ const FOOTER_STYLES = `
   }
 
   @media (max-width: 768px) { 
-    .terminal-popup { max-width: 100%; max-height: 95vh; }
-    .terminal-tabs { overflow-x: auto; }
-    .terminal-tab { padding: 0.6rem 1rem; font-size: 0.75rem; white-space: nowrap; }
-    .terminal-body { padding: 1.5rem; font-size: 13px; }
-    .team-grid, .contributors-grid { grid-template-columns: 1fr; }
-    .vision-mission { grid-template-columns: 1fr; }
+    .footer {
+      margin-top: 0;
+      padding: 10px 0;
+    }
+
+    .footer-nav,
+    .footer-game-label {
+      display: none;
+    }
+
+    .terminal-popup { 
+      max-width: 100%; 
+      max-height: 95vh; 
+    }
+
+    .terminal-tabs { 
+      overflow-x: auto; 
+    }
+
+    .terminal-tab { 
+      padding: 0.6rem 1rem; 
+      font-size: 0.75rem; 
+      white-space: nowrap; 
+    }
+
+    .terminal-body { 
+      padding: 1.5rem; 
+      font-size: 13px; 
+    }
+
+    .team-grid, 
+    .contributors-grid { 
+      grid-template-columns: 1fr; 
+    }
+
+    .vision-mission { 
+      grid-template-columns: 1fr; 
+    }
+
+    .team-contact-card {
+      margin-top: 1rem;
+      padding: 1.2rem;
+    }
   }
+
   @media (max-width: 480px) { 
-    .terminal-title { font-size: 11px; }
-    .about-hero h2, .team-header h2, .contributors-header h2 { font-size: 1.5rem; }
+    .terminal-title { 
+      font-size: 11px; 
+    }
+
+    .about-hero h2, 
+    .team-header h2, 
+    .contributors-header h2 { 
+      font-size: 1.5rem; 
+    }
   }
 `;
 
@@ -560,10 +736,17 @@ export default function Footer() {
   return (
     <>
       <style>{FOOTER_STYLES}</style>
+
       <footer className="footer">
         <div className="container">
           <div className="footer-top">
-            <button className="footer-logo" onClick={() => setShowTerminal(true)}>POWERED BY COFFEE</button>
+            <button
+              className="footer-logo"
+              onClick={() => setShowTerminal(true)}
+            >
+              POWERED BY COFFEE
+            </button>
+
             <nav className="footer-nav">
               <span className="footer-game-label">Game:</span>
               <span className="footer-link" onClick={() => { setShowTerminal(true); setActiveTab('about'); }}>About</span>
@@ -575,6 +758,7 @@ export default function Footer() {
 
           <div className="footer-bottom">
             <p className="footer-text">© 2025 SIKLAB. All rights reserved.</p>
+
             <div className="footer-legal">
               <span className="footer-legal-label">Legal:</span>
               <span className="footer-link" onClick={() => { setShowLegal(true); setLegalTab('privacy'); }}>Privacy</span>
@@ -590,19 +774,12 @@ export default function Footer() {
             <div className="terminal-window">
               <div className="terminal-tabs">
                 <div className="terminal-tabs-wrapper">
-                  <button className={`terminal-tab ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>
-                    about.txt
-                  </button>
-                  <button className={`terminal-tab ${activeTab === 'team' ? 'active' : ''}`} onClick={() => setActiveTab('team')}>
-                    team.sh
-                  </button>
-                  <button className={`terminal-tab ${activeTab === 'contributors' ? 'active' : ''}`} onClick={() => setActiveTab('contributors')}>
-                    contributors.log
-                  </button>
-                  <button className={`terminal-tab ${activeTab === 'faq' ? 'active' : ''}`} onClick={() => setActiveTab('faq')}>
-                    faq.md
-                  </button>
+                  <button className={`terminal-tab ${activeTab === 'about' ? 'active' : ''}`} onClick={() => setActiveTab('about')}>about.txt</button>
+                  <button className={`terminal-tab ${activeTab === 'team' ? 'active' : ''}`} onClick={() => setActiveTab('team')}>team.sh</button>
+                  <button className={`terminal-tab ${activeTab === 'contributors' ? 'active' : ''}`} onClick={() => setActiveTab('contributors')}>contributors.log</button>
+                  <button className={`terminal-tab ${activeTab === 'faq' ? 'active' : ''}`} onClick={() => setActiveTab('faq')}>faq.md</button>
                 </div>
+
                 <button className="terminal-close" onClick={() => setShowTerminal(false)}>×</button>
               </div>
 
@@ -610,6 +787,7 @@ export default function Footer() {
                 {activeTab === 'about' && (
                   <div className="about-section">
                     <div className="terminal-prompt-line">cat about.txt</div>
+
                     <div className="about-hero">
                       <h2>SIKLAB</h2>
                       <p>
@@ -642,6 +820,7 @@ export default function Footer() {
                 {activeTab === 'team' && (
                   <div className="team-section">
                     <div className="terminal-prompt-line">./team.sh --list-all</div>
+
                     <div className="team-header">
                       <h2>Meet the Team</h2>
                       <p>The passionate developers behind SIKLAB</p>
@@ -652,12 +831,15 @@ export default function Footer() {
                         <div key={member.id} className="team-card">
                           <div className="team-card-header">
                             <img className="team-avatar" src={member.image} alt={member.name} />
+
                             <div className="team-info">
                               <h3 className="team-name">{member.name}</h3>
                               <div className="team-role">{member.role}</div>
                             </div>
                           </div>
+
                           <div className="team-specialty">{member.specialty}</div>
+
                           <ul className="team-responsibilities">
                             {member.responsibilities.map((resp, idx) => (
                               <li key={idx}>{resp}</li>
@@ -666,12 +848,35 @@ export default function Footer() {
                         </div>
                       ))}
                     </div>
+
+                    <div className="team-contact-card">
+                      <h3 className="team-contact-title">Contact Us</h3>
+
+                      <div className="team-contact-links">
+                        <a
+                          className="team-contact-link"
+                          href="mailto:bycoffeepowered@gmail.com"
+                        >
+                          📧 bycoffeepowered@gmail.com
+                        </a>
+
+                        <a
+                          className="team-contact-link github"
+                          href="https://github.com/bycoffeepowered-prog"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          💻 github.com/bycoffeepowered-prog
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 )}
 
                 {activeTab === 'contributors' && (
                   <div className="contributors-section">
                     <div className="terminal-prompt-line">tail -f contributors.log</div>
+
                     <div className="contributors-header">
                       <h2>SYSTEM <span className="highlight">CONTRIBUTORS</span></h2>
                       <p>
@@ -682,6 +887,7 @@ export default function Footer() {
 
                     <div className="contributors-category">
                       <h3 className="category-title">Academic Validation</h3>
+
                       <div className="contributors-grid">
                         {CONTRIBUTORS_DATA.academic.map((contributor, idx) => (
                           <div key={idx} className="contributor-card">
@@ -689,6 +895,7 @@ export default function Footer() {
                               {contributor.image && (
                                 <img className="contributor-avatar" src={contributor.image} alt={contributor.name} />
                               )}
+
                               <div>
                                 <h4 className="contributor-name">{contributor.name}</h4>
                                 <div className="contributor-title">{contributor.title}</div>
@@ -702,6 +909,7 @@ export default function Footer() {
 
                     <div className="contributors-category">
                       <h3 className="category-title">Historians & Data Contributors</h3>
+
                       <div className="contributors-grid">
                         {CONTRIBUTORS_DATA.historians.map((contributor, idx) => (
                           <div key={idx} className="contributor-card">
@@ -717,6 +925,7 @@ export default function Footer() {
 
                     <div className="contributors-category">
                       <h3 className="category-title">Community Contributors</h3>
+
                       <div className="contributors-grid">
                         {CONTRIBUTORS_DATA.community.map((contributor, idx) => (
                           <div key={idx} className="contributor-card">
@@ -743,6 +952,7 @@ export default function Footer() {
                 {activeTab === 'faq' && (
                   <div className="about-section">
                     <div className="terminal-prompt-line">cat faq.md</div>
+
                     <div className="about-hero">
                       <h2>Frequently Asked Questions</h2>
                       <p>Got questions? We've got answers!</p>
@@ -799,13 +1009,10 @@ export default function Footer() {
             <div className="terminal-window">
               <div className="terminal-tabs">
                 <div className="terminal-tabs-wrapper">
-                  <button className={`terminal-tab ${legalTab === 'privacy' ? 'active' : ''}`} onClick={() => setLegalTab('privacy')}>
-                    privacy.txt
-                  </button>
-                  <button className={`terminal-tab ${legalTab === 'terms' ? 'active' : ''}`} onClick={() => setLegalTab('terms')}>
-                    terms.txt
-                  </button>
+                  <button className={`terminal-tab ${legalTab === 'privacy' ? 'active' : ''}`} onClick={() => setLegalTab('privacy')}>privacy.txt</button>
+                  <button className={`terminal-tab ${legalTab === 'terms' ? 'active' : ''}`} onClick={() => setLegalTab('terms')}>terms.txt</button>
                 </div>
+
                 <button className="terminal-close" onClick={() => setShowLegal(false)}>×</button>
               </div>
 
@@ -813,6 +1020,7 @@ export default function Footer() {
                 {legalTab === 'privacy' && (
                   <div className="about-section">
                     <div className="terminal-prompt-line">cat privacy.txt</div>
+
                     <div className="about-hero">
                       <h2>Privacy Policy</h2>
                       <p>Last updated: February 2025</p>
@@ -871,6 +1079,7 @@ export default function Footer() {
                 {legalTab === 'terms' && (
                   <div className="about-section">
                     <div className="terminal-prompt-line">cat terms.txt</div>
+
                     <div className="about-hero">
                       <h2>Terms of Service</h2>
                       <p>Last updated: February 2025</p>
