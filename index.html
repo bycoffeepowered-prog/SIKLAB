@@ -2,12 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Siklab</title>
+
+    <!-- Browser Tab Icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/title.png"
+      sizes="512x512"
+    />
+
+    <!-- Mobile -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <!-- Browser Theme Color -->
+    <meta
+      name="theme-color"
+      content="#0f172a"
+    />
+
+    <title>SIKLAB</title>
+
+    <style>
+      html,
+      body,
+      #root {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      body {
+        min-height: 100vh;
+        background: #0f172a;
+      }
+
+      img,
+      video,
+      canvas {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <script
+      type="module"
+      src="/src/main.jsx"
+    ></script>
   </body>
 </html>

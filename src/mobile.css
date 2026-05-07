@@ -1,13 +1,39 @@
 @media (max-width: 768px) {
-  /* Header */
-  .header .container {
-    padding: 0 10px !important;
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .retro-site,
+  .main-scrollable,
+  .section-full {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
   }
 
   .header-row {
+    flex-wrap: nowrap !important;
     padding: 6px 0 !important;
     gap: 6px !important;
-    flex-wrap: nowrap !important;
+    position: relative !important;
   }
 
   .logo-gif {
@@ -37,22 +63,20 @@
 
   .nav-tabs {
     display: none !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    gap: 6px !important;
-    margin-top: 6px !important;
   }
 
   .nav-tabs.open {
     display: flex !important;
+    flex-direction: column !important;
     position: absolute !important;
     top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
+    left: -14px !important;
+    right: -14px !important;
+    width: auto !important;
     background: var(--card-bg-solid, #020617) !important;
-    padding: 10px !important;
+    padding: 10px 14px !important;
     border-bottom: 2px solid var(--accent-color, #ef4444) !important;
-    z-index: 999 !important;
+    z-index: 9999 !important;
   }
 
   .nav-tab {
@@ -60,102 +84,357 @@
     text-align: left !important;
     font-size: 11px !important;
     padding: 10px !important;
-    letter-spacing: 0.04em !important;
   }
 
-  /* Home / Arcade section */
-  .hero-section,
-  .home-section,
-  .arcade-section {
-    min-height: calc(100vh - 60px) !important;
-    height: calc(100vh - 60px) !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .arcade-machine,
-  .arcade-container,
-  .arcade-wrapper {
-    width: 92vw !important;
-    max-width: 430px !important;
-    margin: 0 auto !important;
-    transform: translateY(-15px) !important;
-  }
-
-  .arcade-screen-video {
-    width: 58% !important;
-    max-height: none !important;
+  /* SECTIONS */
+  .hero,
+  .main-content,
+  .mechanics-section,
+  .download-section,
+  .scenery-section,
+  .feedback-section {
+    min-height: auto !important;
     height: auto !important;
-    top: 42% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    object-fit: cover !important;
-    border-radius: 6px !important;
+    overflow: visible !important;
   }
 
-  /* Mechanics */
-  .mechanics-section {
-    padding: 40px 16px !important;
+  .main-content,
+  .mechanics-section,
+  .download-section,
+  .scenery-section,
+  .feedback-section {
+    padding: 50px 16px !important;
   }
 
+  /* MAIN CONTENT */
+  .main-title {
+    font-size: 2rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .main-description {
+    font-size: 0.95rem !important;
+  }
+
+  .room-sections-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .room-title,
+  .mc-section-title {
+    font-size: 1.45rem !important;
+  }
+
+  .room-card-content {
+    align-items: center !important;
+  }
+
+  .room-icon,
+  .bottom-icon {
+    font-size: 3rem !important;
+  }
+
+  .bottom-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* MAP / GENERIC POPUPS */
+  .map-popup-overlay,
+  .generic-popup-overlay {
+    padding: 10px !important;
+    align-items: center !important;
+  }
+
+  .map-popup-container,
+  .generic-popup-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+  }
+
+  .generic-popup-content {
+    flex-direction: column !important;
+    padding: 1rem !important;
+    gap: 1rem !important;
+  }
+
+  .generic-left-section,
+  .generic-right-section {
+    width: 100% !important;
+  }
+
+  .generic-popup-title {
+    font-size: 1.7rem !important;
+  }
+
+  .generic-popup-description {
+    font-size: 0.9rem !important;
+  }
+
+  .map-footer-image-container {
+    height: auto !important;
+    max-height: 65vh !important;
+  }
+
+  .map-footer-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* MECHANICS */
   .mechanics-container {
     grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 
   .mechanics-right-panel {
     order: -1 !important;
     height: auto !important;
-    min-height: 300px !important;
+    min-height: auto !important;
+    padding: 20px !important;
+  }
+
+  .mechanics-left-panel {
+    padding: 18px !important;
   }
 
   .mechanics-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px !important;
   }
 
+  .polaroid-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 8px !important;
+  }
+
+  .polaroid-icon {
+    font-size: 34px !important;
+  }
+
+  .polaroid-title {
+    font-size: 11px !important;
+  }
+
+  .polaroid-desc p {
+    font-size: 10px !important;
+  }
+
+  .mechanics-intro {
+    padding: 30px 12px !important;
+  }
+
+  .intro-icon {
+    font-size: 54px !important;
+  }
+
+  .intro-title {
+    font-size: 26px !important;
+  }
+
+  .intro-text {
+    font-size: 14px !important;
+  }
+
+  .intro-arrow {
+    display: none !important;
+  }
+
+  .detail-card {
+    min-height: auto !important;
+  }
+
+  .detail-body {
+    padding: 20px !important;
+  }
+
   .detail-title {
-    font-size: 20px !important;
+    font-size: 24px !important;
   }
 
   .detail-description {
     font-size: 14px !important;
   }
 
-  .intro-title {
+  /* DOWNLOAD */
+  .download-inner {
+    flex-direction: column !important;
+    gap: 24px !important;
+    align-items: stretch !important;
+  }
+
+  .download-card,
+  .download-buttons {
+    flex: none !important;
+    width: 100% !important;
+  }
+
+  .download-card {
+    border-radius: 18px !important;
+  }
+
+  .download-heading {
     font-size: 24px !important;
   }
 
-  .intro-text {
+  .download-caption {
     font-size: 14px !important;
+  }
+
+  .download-btn {
+    padding: 12px 14px !important;
+  }
+
+  /* SCENERY */
+  .scenery-inner {
+    width: 100% !important;
+  }
+
+  .scenery-title {
+    font-size: 28px !important;
+  }
+
+  .scenery-carousel-wrapper {
+    gap: 8px !important;
+  }
+
+  .scenery-arrow {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 18px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .scenery-card {
+    flex-basis: 260px !important;
+  }
+
+  .scenery-card-glass {
+    height: 380px !important;
+    border-radius: 28px !important;
+  }
+
+  .scenery-image {
+    height: 230px !important;
+  }
+
+  /* FEEDBACK / PAINT */
+  .paint-window {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .paint-content {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+
+  .paint-toolbox {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+
+  .paint-canvas-container {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .paint-inner,
+  .paint-inner-draw {
+    width: 100% !important;
+    min-height: 420px !important;
+    box-sizing: border-box !important;
+  }
+
+  .dev-profile-btn {
+    width: 54px !important;
+    height: 54px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .reviews-wall {
+    grid-template-columns: 1fr !important;
+  }
+
+  .post-it-inline {
+    min-width: 210px !important;
+    max-width: 85% !important;
+    padding: 22px !important;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 1.5rem 0 !important;
+    margin-top: 2rem !important;
+  }
+
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .footer-nav,
+  .footer-legal {
+    gap: 0.8rem !important;
+  }
+
+  .terminal-overlay {
+    padding: 10px !important;
+  }
+
+  .terminal-popup,
+  .terminal-window {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 90vh !important;
+  }
+
+  .terminal-tabs-wrapper {
+    overflow-x: auto !important;
+  }
+
+  .terminal-tab {
+    white-space: nowrap !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .terminal-body {
+    padding: 1rem !important;
+    font-size: 12px !important;
+  }
+
+  .about-hero h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .vision-mission,
+  .contributors-grid,
+  .team-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
+  .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
   .logo-gif {
     height: 38px !important;
   }
 
-  .hero-section,
-  .home-section,
-  .arcade-section {
-    min-height: calc(100vh - 56px) !important;
-    height: calc(100vh - 56px) !important;
+  .mechanics-grid {
+    grid-template-columns: 1fr !important;
   }
 
-  .arcade-machine,
-  .arcade-container,
-  .arcade-wrapper {
-    width: 96vw !important;
-    transform: translateY(-10px) !important;
-  }
-
-  .arcade-screen-video {
-    width: 62% !important;
-    top: 43% !important;
-    max-height: none !important;
+  .scenery-card {
+    flex-basis: 235px !important;
   }
 }

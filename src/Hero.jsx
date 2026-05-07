@@ -12,6 +12,7 @@ const HERO_STYLES = `
       transform: translateY(0) scale(1);
     }
   }
+
   .hero {
     padding: 0;
     min-height: 50vh;
@@ -25,18 +26,21 @@ const HERO_STYLES = `
     transform: translateY(50px) scale(0.95);
     transition: background 0.3s ease;
   }
+
   .hero.animate-in {
     animation: heroPopUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
+
   .hero-content {
     position: relative;
     z-index: 2;
-    width: 57%;
+    width: min(57%, 900px);
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding: 0;
   }
+
   .arcade-container {
     display: flex;
     align-items: flex-end;
@@ -44,6 +48,7 @@ const HERO_STYLES = `
     width: 100%;
     position: relative;
   }
+
   .arcade-img {
     width: 75%;
     max-width: 900px;
@@ -57,6 +62,7 @@ const HERO_STYLES = `
     z-index: 2;
     pointer-events: none;
   }
+
   .arcade-screen-video {
     position: absolute;
     top: 31%;
@@ -70,30 +76,66 @@ const HERO_STYLES = `
     border-radius: 12px;
     background: #000;
   }
+
   @media (max-width: 768px) {
-    .arcade-img { width: 95%; min-width: unset; }
-    .arcade-screen-video { width: 38%; top: 18%; }
+    .hero {
+      min-height: auto;
+      padding-top: 28px;
+      overflow: visible;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 12px;
+    }
+
+    .arcade-img {
+      width: 100%;
+      min-width: 0;
+      max-width: 520px;
+    }
+
+    .arcade-screen-video {
+      width: 51%;
+      top: 31%;
+      border-radius: 8px;
+    }
   }
-  @media (max-width: 480px) {
-    .arcade-img { width: 100%; min-width: unset; }
-    .arcade-screen-video { width: 40%; top: 18%; }
+
+  @media (max-width: 420px) {
+    .hero-content {
+      padding: 0 8px;
+    }
+
+    .arcade-screen-video {
+      border-radius: 5px;
+    }
   }
 `;
 
 const Hero = forwardRef(function Hero(_props, ref) {
   const [animRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
-  
+
   return (
     <>
       <style>{HERO_STYLES}</style>
-      <section className={`hero section-full ${isVisible ? 'animate-in' : ''}`} ref={(node) => {
-        animRef.current = node;
-        if (typeof ref === 'function') ref(node);
-        else if (ref) ref.current = node;
-      }} id="home">
+      <section
+        className={`hero section-full ${isVisible ? 'animate-in' : ''}`}
+        ref={(node) => {
+          animRef.current = node;
+          if (typeof ref === 'function') ref(node);
+          else if (ref) ref.current = node;
+        }}
+        id="home"
+      >
         <div className="hero-content">
           <div className="arcade-container">
-            <img src="/images/arcade-cabinet.png" alt="Siklab Arcade Cabinet" className="arcade-img" />
+            <img
+              src="/images/arcade-cabinet.png"
+              alt="Siklab Arcade Cabinet"
+              className="arcade-img"
+            />
             <video className="arcade-screen-video" autoPlay loop muted playsInline>
               <source src="/images/TrialTrailer.mp4" type="video/mp4" />
               Your browser does not support the video tag.

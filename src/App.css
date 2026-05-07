@@ -1,5 +1,4 @@
 :root {
-  /* Dark mode (default - current purple theme) */
   --bg-primary: #0f172a;
   --bg-secondary: #1a1a2e;
   --bg-gradient: linear-gradient(180deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
@@ -24,7 +23,6 @@
 }
 
 [data-theme="light"] {
-  /* Light mode - white/orange/green */
   --bg-primary: #ffffff;
   --bg-secondary: #fff5eb;
   --bg-gradient: linear-gradient(180deg, #fff5eb 0%, #ffe8cc 50%, #fef3c7 100%);
@@ -47,15 +45,21 @@
   --terminal-bg: #f5f5f5;
   --terminal-text: #2d7a3e;
 }
-@media (min-width: 769px) {
-  .hero-section,
-  .home-section,
-  .arcade-section {
-    min-height: calc(100vh - 105px) !important;
-    height: calc(100vh - 105px) !important;
-    overflow: hidden !important;
-  }
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
+
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
 }
