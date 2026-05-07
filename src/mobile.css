@@ -10,8 +10,7 @@
   .container {
     width: 100%;
     max-width: 100%;
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+    padding: 0 12px !important;
   }
 
   .retro-site,
@@ -22,11 +21,14 @@
     overflow-x: hidden;
   }
 
-  /* HEADER */
+  /* HEADER ALWAYS STICKY */
   .header {
     position: sticky !important;
+    position: -webkit-sticky !important;
     top: 0 !important;
-    z-index: 9999 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 99999 !important;
   }
 
   .header-row {
@@ -38,6 +40,9 @@
 
   .logo-gif {
     height: 42px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
   }
 
   .menu-toggle {
@@ -70,13 +75,12 @@
     flex-direction: column !important;
     position: absolute !important;
     top: 100% !important;
-    left: -14px !important;
-    right: -14px !important;
-    width: auto !important;
+    left: -12px !important;
+    right: -12px !important;
     background: var(--card-bg-solid, #020617) !important;
-    padding: 10px 14px !important;
+    padding: 10px 12px !important;
     border-bottom: 2px solid var(--accent-color, #ef4444) !important;
-    z-index: 9999 !important;
+    z-index: 99999 !important;
   }
 
   .nav-tab {
@@ -86,7 +90,7 @@
     padding: 10px !important;
   }
 
-  /* SECTIONS */
+  /* GENERAL SECTIONS */
   .hero,
   .main-content,
   .mechanics-section,
@@ -103,51 +107,18 @@
   .download-section,
   .scenery-section,
   .feedback-section {
-    padding: 50px 16px !important;
+    padding: 42px 14px !important;
   }
 
-  /* MAIN CONTENT */
-  .main-title {
-    font-size: 2rem !important;
-    line-height: 1.15 !important;
-  }
-
-  .main-description {
-    font-size: 0.95rem !important;
-  }
-
-  .room-sections-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-
-  .room-title,
-  .mc-section-title {
-    font-size: 1.45rem !important;
-  }
-
-  .room-card-content {
-    align-items: center !important;
-  }
-
-  .room-icon,
-  .bottom-icon {
-    font-size: 3rem !important;
-  }
-
-  .bottom-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* MAP / GENERIC POPUPS */
-  .map-popup-overlay,
-  .generic-popup-overlay {
+  /* CHARACTER POPUP */
+  .generic-popup-overlay,
+  .map-popup-overlay {
     padding: 10px !important;
     align-items: center !important;
   }
 
-  .map-popup-container,
-  .generic-popup-container {
+  .generic-popup-container,
+  .map-popup-container {
     width: 100% !important;
     max-width: 100% !important;
     max-height: 92vh !important;
@@ -156,175 +127,161 @@
 
   .generic-popup-content {
     flex-direction: column !important;
-    padding: 1rem !important;
-    gap: 1rem !important;
+    padding: 14px !important;
+    gap: 14px !important;
   }
 
+  .character-preview,
+  .character-main-preview,
   .generic-left-section,
   .generic-right-section {
     width: 100% !important;
+    max-width: 100% !important;
   }
 
-  .generic-popup-title {
-    font-size: 1.7rem !important;
+  .character-img,
+  .character-preview-img {
+    max-height: 280px !important;
+    object-fit: contain !important;
   }
 
-  .generic-popup-description {
-    font-size: 0.9rem !important;
+  .character-grid,
+  .character-list,
+  .character-cards,
+  .character-selector-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    max-height: 250px !important;
+    overflow-y: auto !important;
   }
 
-  .map-footer-image-container {
-    height: auto !important;
-    max-height: 65vh !important;
+  .character-card,
+  .character-select-card,
+  .character-option {
+    height: 105px !important;
+    min-height: 105px !important;
+    padding: 5px !important;
+    overflow: hidden !important;
   }
 
-  .map-footer-image {
+  .character-card img,
+  .character-select-card img,
+  .character-option img {
     width: 100% !important;
-    height: auto !important;
+    height: 90px !important;
+    object-fit: contain !important;
+  }
+
+  .character-tabs,
+  .popup-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .character-tab,
+  .popup-tab {
+    font-size: 11px !important;
+    padding: 10px 4px !important;
+  }
+
+  .bio-card,
+  .character-bio {
+    padding: 18px !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
   }
 
   /* MECHANICS */
   .mechanics-container {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: 16px !important;
+  }
+
+  .mechanics-left-panel,
+  .mechanics-right-panel {
+    padding: 14px !important;
   }
 
   .mechanics-right-panel {
-    order: -1 !important;
     height: auto !important;
     min-height: auto !important;
-    padding: 20px !important;
-  }
-
-  .mechanics-left-panel {
-    padding: 18px !important;
   }
 
   .mechanics-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 12px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
 
   .polaroid-card {
-    width: 100% !important;
-    min-width: 0 !important;
-    padding: 8px !important;
+    padding: 6px !important;
+    min-height: auto !important;
   }
 
-  .polaroid-icon {
-    font-size: 34px !important;
+  .polaroid-card img,
+  .polaroid-img,
+  .mechanic-img {
+    height: 120px !important;
+    object-fit: cover !important;
   }
 
   .polaroid-title {
     font-size: 11px !important;
+    line-height: 1.2 !important;
   }
 
+  .polaroid-desc,
   .polaroid-desc p {
-    font-size: 10px !important;
+    font-size: 9px !important;
+    line-height: 1.2 !important;
   }
 
   .mechanics-intro {
-    padding: 30px 12px !important;
+    padding: 20px 10px !important;
   }
 
   .intro-icon {
-    font-size: 54px !important;
+    font-size: 42px !important;
   }
 
   .intro-title {
-    font-size: 26px !important;
+    font-size: 22px !important;
   }
 
   .intro-text {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 
   .intro-arrow {
     display: none !important;
   }
 
-  .detail-card {
-    min-height: auto !important;
-  }
-
-  .detail-body {
-    padding: 20px !important;
-  }
-
   .detail-title {
-    font-size: 24px !important;
+    font-size: 22px !important;
   }
 
   .detail-description {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 
-  /* DOWNLOAD */
-  .download-inner {
-    flex-direction: column !important;
-    gap: 24px !important;
-    align-items: stretch !important;
-  }
-
-  .download-card,
-  .download-buttons {
-    flex: none !important;
-    width: 100% !important;
-  }
-
-  .download-card {
-    border-radius: 18px !important;
-  }
-
-  .download-heading {
-    font-size: 24px !important;
-  }
-
-  .download-caption {
-    font-size: 14px !important;
-  }
-
-  .download-btn {
-    padding: 12px 14px !important;
-  }
-
-  /* SCENERY */
-  .scenery-inner {
-    width: 100% !important;
-  }
-
-  .scenery-title {
-    font-size: 28px !important;
-  }
-
-  .scenery-carousel-wrapper {
-    gap: 8px !important;
-  }
-
-  .scenery-arrow {
-    width: 34px !important;
-    height: 34px !important;
-    font-size: 18px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .scenery-card {
-    flex-basis: 260px !important;
-  }
-
-  .scenery-card-glass {
-    height: 380px !important;
-    border-radius: 28px !important;
-  }
-
-  .scenery-image {
-    height: 230px !important;
-  }
-
-  /* FEEDBACK / PAINT */
+  /* FEEDBACK */
   .paint-window {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  .paint-menubar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px !important;
+    padding: 6px !important;
+  }
+
+  .paint-menu-item {
+    font-size: 13px !important;
+    padding: 10px 6px !important;
+    text-align: center !important;
   }
 
   .paint-content {
@@ -333,9 +290,23 @@
   }
 
   .paint-toolbox {
+    width: 100% !important;
     flex-direction: row !important;
     overflow-x: auto !important;
-    width: 100% !important;
+    padding: 8px !important;
+    gap: 8px !important;
+  }
+
+  .paint-tools-label {
+    display: none !important;
+  }
+
+  .dev-profile-btn,
+  .paint-tool-btn {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    font-size: 24px !important;
   }
 
   .paint-canvas-container {
@@ -346,52 +317,88 @@
   .paint-inner,
   .paint-inner-draw {
     width: 100% !important;
-    min-height: 420px !important;
+    min-height: auto !important;
+    padding: 18px !important;
     box-sizing: border-box !important;
-  }
-
-  .dev-profile-btn {
-    width: 54px !important;
-    height: 54px !important;
-    flex-shrink: 0 !important;
   }
 
   .reviews-wall {
     grid-template-columns: 1fr !important;
   }
 
-  .post-it-inline {
-    min-width: 210px !important;
-    max-width: 85% !important;
-    padding: 22px !important;
+  .paint-input,
+  .paint-select,
+  .paint-textarea {
+    font-size: 14px !important;
   }
 
-  /* FOOTER */
+  .paint-submit-btn {
+    font-size: 13px !important;
+    padding: 12px !important;
+  }
+
+  /* FOOTER SAME MOBILE SIZE */
   .footer {
-    padding: 1.5rem 0 !important;
-    margin-top: 2rem !important;
+    margin-top: 0 !important;
+    padding: 18px 0 !important;
+    min-height: auto !important;
   }
 
   .footer-top,
   .footer-bottom {
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    gap: 12px !important;
   }
 
-  .footer-nav,
+  .footer-logo {
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+  }
+
+  .footer-nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, auto) !important;
+    gap: 10px 16px !important;
+  }
+
+  .footer-link {
+    font-size: 12px !important;
+  }
+
+  .footer-text,
+  .footer-game-label,
+  .footer-legal-label {
+    font-size: 11px !important;
+  }
+
   .footer-legal {
-    gap: 0.8rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
   }
 
+  /* FOOTER TERMINAL POPUP */
   .terminal-overlay {
     padding: 10px !important;
+    align-items: center !important;
   }
 
   .terminal-popup,
   .terminal-window {
     width: 100% !important;
     max-width: 100% !important;
-    max-height: 90vh !important;
+    height: auto !important;
+    max-height: 86vh !important;
+  }
+
+  .terminal-window {
+    border-radius: 10px !important;
+  }
+
+  .terminal-tabs {
+    min-height: 38px !important;
   }
 
   .terminal-tabs-wrapper {
@@ -400,17 +407,35 @@
 
   .terminal-tab {
     white-space: nowrap !important;
-    padding: 0.7rem 1rem !important;
-    font-size: 0.75rem !important;
+    padding: 9px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .terminal-close {
+    width: 42px !important;
+    min-height: 38px !important;
+    font-size: 18px !important;
   }
 
   .terminal-body {
-    padding: 1rem !important;
+    padding: 16px !important;
     font-size: 12px !important;
+    line-height: 1.6 !important;
+    max-height: calc(86vh - 42px) !important;
+    overflow-y: auto !important;
+  }
+
+  .about-hero {
+    padding: 16px !important;
   }
 
   .about-hero h2 {
     font-size: 1.4rem !important;
+  }
+
+  .about-hero p {
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
   }
 
   .vision-mission,
@@ -418,12 +443,23 @@
   .team-grid {
     grid-template-columns: 1fr !important;
   }
+
+  .vm-card,
+  .team-member-card,
+  .contributor-card {
+    padding: 14px !important;
+  }
+
+  .team-avatar,
+  .contributor-avatar {
+    width: 56px !important;
+    height: 56px !important;
+  }
 }
 
 @media (max-width: 420px) {
   .container {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding: 0 10px !important;
   }
 
   .logo-gif {
@@ -434,7 +470,18 @@
     grid-template-columns: 1fr !important;
   }
 
-  .scenery-card {
-    flex-basis: 235px !important;
+  .character-grid,
+  .character-list,
+  .character-cards,
+  .character-selector-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .footer-nav {
+    grid-template-columns: 1fr !important;
+  }
+
+  .terminal-body {
+    font-size: 11px !important;
   }
 }
