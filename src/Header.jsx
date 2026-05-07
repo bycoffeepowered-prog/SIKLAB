@@ -3,6 +3,14 @@ import { useState } from 'react';
 const siklabGif = '/images/siklab.gif';
 
 const HEADER_STYLES = `
+  :root {
+    --site-header-height: 104px;
+  }
+
+  .retro-site {
+    padding-top: var(--site-header-height);
+  }
+
   .header {
     background: var(--card-bg-solid, #020617);
     border-bottom: 4px solid var(--accent-color, #ef4444);
@@ -13,11 +21,8 @@ const HEADER_STYLES = `
     right: 0;
     z-index: 999999;
     width: 100%;
+    overflow: visible;
     transition: background 0.3s ease, border-color 0.3s ease;
-  }
-
-  body {
-    padding-top: 106px;
   }
 
   .header-row {
@@ -27,6 +32,13 @@ const HEADER_STYLES = `
     padding: 0.65rem 0;
     flex-wrap: wrap;
     position: relative;
+    min-height: 84px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
   }
 
   .logo-gif {
@@ -113,8 +125,8 @@ const HEADER_STYLES = `
   }
 
   @media (max-width: 768px) {
-    body {
-      padding-top: 54px;
+    :root {
+      --site-header-height: 54px;
     }
 
     .header {
@@ -125,6 +137,7 @@ const HEADER_STYLES = `
       padding: 6px 0;
       gap: 6px;
       flex-wrap: nowrap;
+      min-height: 42px;
     }
 
     .logo-gif {
@@ -176,8 +189,12 @@ const HEADER_STYLES = `
   }
 
   @media (max-width: 400px) {
-    body {
-      padding-top: 50px;
+    :root {
+      --site-header-height: 50px;
+    }
+
+    .header-row {
+      min-height: 38px;
     }
 
     .logo-gif {

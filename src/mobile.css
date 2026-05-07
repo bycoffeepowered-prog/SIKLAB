@@ -1,4 +1,5 @@
 @media (max-width: 768px) {
+
   html,
   body,
   #root {
@@ -7,17 +8,13 @@
     overflow-x: hidden;
   }
 
-  body {
-    padding-top: 54px !important;
-  }
-
   .container {
     width: 100%;
     max-width: 100%;
     padding: 0 10px !important;
   }
 
-  /* POPUPS SHOULD START UNDER FIXED HEADER */
+  /* POPUPS UNDER FIXED HEADER */
   .map-popup-overlay,
   .generic-popup-overlay,
   .terminal-overlay {
@@ -65,6 +62,57 @@
     width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
+  }
+
+  /* CHARACTER SELECT SIDE SCROLL */
+  .character-popup-container {
+    width: calc(100vw - 20px) !important;
+    height: calc(100vh - 74px) !important;
+    max-height: calc(100vh - 74px) !important;
+    overflow: hidden !important;
+  }
+
+  .character-popup-body {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+
+  .character-grid-panel {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .character-grid,
+  .character-grid.others {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    padding: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    max-height: none !important;
+  }
+
+  .character-portrait,
+  .character-grid.others .character-portrait {
+    flex: 0 0 145px !important;
+    width: 145px !important;
+    min-width: 145px !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    scroll-snap-align: start !important;
+  }
+
+  .character-portrait img,
+  .character-grid.others .character-portrait img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    padding: 6px !important;
   }
 
   /* MECHANICS MOBILE FIX */
@@ -130,17 +178,6 @@
     object-fit: cover !important;
   }
 
-  .polaroid-title {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-  }
-
-  .polaroid-desc,
-  .polaroid-desc p {
-    font-size: 9px !important;
-    line-height: 1.2 !important;
-  }
-
   .detail-card {
     width: 100% !important;
     max-width: 100% !important;
@@ -158,68 +195,7 @@
     object-fit: contain !important;
   }
 
-  .detail-icon {
-    font-size: 58px !important;
-  }
-
-  .detail-body {
-    padding: 18px !important;
-  }
-
-  .detail-title {
-    font-size: 24px !important;
-    line-height: 1.2 !important;
-  }
-
-  .detail-subtitle {
-    font-size: 13px !important;
-  }
-
-  .detail-description {
-    font-size: 13px !important;
-    line-height: 1.55 !important;
-  }
-
-  .mechanics-intro {
-    padding: 24px 12px !important;
-  }
-
-  .intro-icon {
-    font-size: 48px !important;
-  }
-
-  .intro-title {
-    font-size: 24px !important;
-  }
-
-  .intro-text {
-    font-size: 13px !important;
-  }
-
-  .intro-arrow {
-    display: none !important;
-  }
-
-  /* FEEDBACK MOBILE FIX */
-  .feedback-section {
-    padding: 38px 12px !important;
-    min-height: auto !important;
-  }
-
-  .feedback-title {
-    font-size: 1.8rem !important;
-  }
-
-  .feedback-description {
-    font-size: 0.9rem !important;
-  }
-
-  .paint-interface-wrapper,
-  .paint-window {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
+  /* FEEDBACK ICON BUTTONS SIDE BY SIDE */
   .paint-menubar {
     display: flex !important;
     flex-direction: row !important;
@@ -286,46 +262,6 @@
     box-sizing: border-box !important;
   }
 
-  .paint-input,
-  .paint-select,
-  .paint-textarea {
-    font-size: 14px !important;
-  }
-
-  .paint-star-btn {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 20px !important;
-  }
-
-  .draw-canvas {
-    height: 260px !important;
-    min-height: 260px !important;
-  }
-
-  /* TEAM / FOOTER TERMINAL POPUP */
-  .terminal-body {
-    padding: 14px !important;
-    font-size: 12px !important;
-    line-height: 1.55 !important;
-  }
-
-  .terminal-tabs-wrapper {
-    overflow-x: auto !important;
-  }
-
-  .terminal-tab {
-    white-space: nowrap !important;
-    font-size: 11px !important;
-    padding: 9px 12px !important;
-  }
-
-  .team-grid,
-  .contributors-grid,
-  .vision-mission {
-    grid-template-columns: 1fr !important;
-  }
-
   /* FOOTER SMALL */
   .footer {
     margin-top: 0 !important;
@@ -351,10 +287,6 @@
 }
 
 @media (max-width: 400px) {
-  body {
-    padding-top: 50px !important;
-  }
-
   .map-popup-overlay,
   .generic-popup-overlay,
   .terminal-overlay {
@@ -363,9 +295,13 @@
     inset: 50px 0 0 0 !important;
   }
 
-  .detail-image {
-    height: 190px !important;
-    min-height: 190px !important;
+  .character-portrait,
+  .character-grid.others .character-portrait {
+    flex-basis: 130px !important;
+    width: 130px !important;
+    min-width: 130px !important;
+    height: 165px !important;
+    min-height: 165px !important;
   }
 
   .polaroid-card {
@@ -374,14 +310,8 @@
     min-width: 130px !important;
   }
 
-  .polaroid-image {
-    height: 100px !important;
-    min-height: 100px !important;
-  }
-
-  .dev-profile-btn {
-    width: 56px !important;
-    height: 56px !important;
-    min-width: 56px !important;
+  .detail-image {
+    height: 190px !important;
+    min-height: 190px !important;
   }
 }
