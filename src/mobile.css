@@ -10,303 +10,229 @@
   .container {
     width: 100%;
     max-width: 100%;
-    padding: 0 12px !important;
+    padding: 0 10px !important;
   }
 
-  .retro-site,
-  .main-scrollable,
-  .section-full {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+  /* MOBILE FOOTER: small like header */
+  .footer {
+    margin-top: 0 !important;
+    padding: 10px 0 !important;
+    min-height: auto !important;
   }
 
-  /* HEADER ALWAYS STICKY */
-  .header {
-    position: sticky !important;
-    position: -webkit-sticky !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 99999 !important;
+  .footer-top,
+  .footer-bottom {
+    margin: 0 !important;
+    gap: 8px !important;
   }
 
-  .header-row {
-    flex-wrap: nowrap !important;
-    padding: 6px 0 !important;
-    gap: 6px !important;
-    position: relative !important;
+  .footer-logo {
+    font-size: 12px !important;
+    padding: 7px 10px !important;
   }
 
-  .logo-gif {
-    height: 42px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    flex-shrink: 0 !important;
-  }
-
-  .menu-toggle {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: 34px !important;
-    height: 34px !important;
-    padding: 0 !important;
-  }
-
-  .header-spacer {
-    flex: 1 !important;
-  }
-
-  .theme-toggle-btn,
-  .mute-btn {
-    min-width: 34px !important;
-    height: 34px !important;
-    padding: 0 !important;
-    font-size: 0.9rem !important;
-  }
-
-  .nav-tabs {
+  .footer-game-label,
+  .footer-nav {
     display: none !important;
   }
 
-  .nav-tabs.open {
-    display: flex !important;
-    flex-direction: column !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: -12px !important;
-    right: -12px !important;
-    background: var(--card-bg-solid, #020617) !important;
-    padding: 10px 12px !important;
-    border-bottom: 2px solid var(--accent-color, #ef4444) !important;
-    z-index: 99999 !important;
+  .footer-text,
+  .footer-legal-label,
+  .footer-link {
+    font-size: 10px !important;
   }
 
-  .nav-tab {
-    width: 100% !important;
-    text-align: left !important;
-    font-size: 11px !important;
-    padding: 10px !important;
-  }
-
-  /* GENERAL SECTIONS */
-  .hero,
-  .main-content,
-  .mechanics-section,
-  .download-section,
-  .scenery-section,
-  .feedback-section {
-    min-height: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  .main-content,
-  .mechanics-section,
-  .download-section,
-  .scenery-section,
-  .feedback-section {
-    padding: 42px 14px !important;
-  }
-
-  /* CHARACTER POPUP */
-  .generic-popup-overlay,
-  .map-popup-overlay {
-    padding: 10px !important;
-    align-items: center !important;
-  }
-
-  .generic-popup-container,
-  .map-popup-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 92vh !important;
-    overflow-y: auto !important;
-  }
-
-  .generic-popup-content {
-    flex-direction: column !important;
-    padding: 14px !important;
-    gap: 14px !important;
-  }
-
-  .character-preview,
-  .character-main-preview,
-  .generic-left-section,
-  .generic-right-section {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .character-img,
-  .character-preview-img {
-    max-height: 280px !important;
-    object-fit: contain !important;
-  }
-
-  .character-grid,
-  .character-list,
-  .character-cards,
-  .character-selector-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+  .footer-legal {
     gap: 8px !important;
-    max-height: 250px !important;
-    overflow-y: auto !important;
   }
 
-  .character-card,
-  .character-select-card,
-  .character-option {
-    height: 105px !important;
-    min-height: 105px !important;
-    padding: 5px !important;
+  /* CHARACTER POPUP MOBILE */
+  .character-popup-container {
+    width: calc(100vw - 20px) !important;
+    height: 92vh !important;
+    max-height: 92vh !important;
     overflow: hidden !important;
   }
 
-  .character-card img,
-  .character-select-card img,
-  .character-option img {
-    width: 100% !important;
-    height: 90px !important;
+  .character-popup-body {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+
+  .character-display-panel {
+    order: 1 !important;
+    min-height: 310px !important;
+    height: 310px !important;
+    flex-shrink: 0 !important;
+    border-bottom: 2px solid #e94560 !important;
+  }
+
+  .character-display-image {
+    width: 88% !important;
+    height: 88% !important;
     object-fit: contain !important;
   }
 
-  .character-tabs,
-  .popup-tabs {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+  .character-display-info {
+    padding: 12px !important;
   }
 
-  .character-tab,
-  .popup-tab {
-    font-size: 11px !important;
-    padding: 10px 4px !important;
+  .character-name-bar {
+    padding: 12px !important;
   }
 
-  .bio-card,
-  .character-bio {
-    padding: 18px !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
+  .character-name-text {
+    font-size: 1.4rem !important;
   }
 
-  /* MECHANICS */
-  .mechanics-container {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  .mechanics-left-panel,
-  .mechanics-right-panel {
-    padding: 14px !important;
-  }
-
-  .mechanics-right-panel {
+  .character-grid-panel {
+    order: 2 !important;
     height: auto !important;
-    min-height: auto !important;
+    max-height: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: 2px solid #e94560 !important;
+    overflow: visible !important;
+    flex-shrink: 0 !important;
   }
 
-  .mechanics-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
+  .character-tabs {
+    display: flex !important;
+    flex-direction: row !important;
   }
 
-  .polaroid-card {
+  .character-tab {
+    flex: 1 !important;
+    padding: 12px 4px !important;
+    font-size: 12px !important;
+  }
+
+  .character-grid,
+  .character-grid.others {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+    padding: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    align-content: unset !important;
+    max-height: none !important;
+  }
+
+  .character-portrait,
+  .character-grid.others .character-portrait {
+    width: 145px !important;
+    min-width: 145px !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    aspect-ratio: unset !important;
+    scroll-snap-align: start !important;
+  }
+
+  .character-portrait img,
+  .character-grid.others .character-portrait img {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
     padding: 6px !important;
+  }
+
+  .character-portrait-name,
+  .character-grid.others .character-portrait-name {
+    font-size: 13px !important;
+    padding: 22px 4px 6px !important;
+    line-height: 1.1 !important;
+  }
+
+  .character-details-panel {
+    order: 3 !important;
+    border-left: none !important;
+    border-top: none !important;
+    padding: 18px !important;
+    overflow: visible !important;
+  }
+
+  .character-section {
+    padding: 18px !important;
+  }
+
+  .character-bio {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* FEEDBACK MOBILE: tabs beside each other */
+  .feedback-section {
+    padding: 45px 12px !important;
     min-height: auto !important;
   }
 
-  .polaroid-card img,
-  .polaroid-img,
-  .mechanic-img {
-    height: 120px !important;
-    object-fit: cover !important;
+  .feedback-title {
+    font-size: 1.8rem !important;
   }
 
-  .polaroid-title {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
+  .feedback-description {
+    font-size: 0.9rem !important;
   }
 
-  .polaroid-desc,
-  .polaroid-desc p {
-    font-size: 9px !important;
-    line-height: 1.2 !important;
-  }
-
-  .mechanics-intro {
-    padding: 20px 10px !important;
-  }
-
-  .intro-icon {
-    font-size: 42px !important;
-  }
-
-  .intro-title {
-    font-size: 22px !important;
-  }
-
-  .intro-text {
-    font-size: 13px !important;
-  }
-
-  .intro-arrow {
-    display: none !important;
-  }
-
-  .detail-title {
-    font-size: 22px !important;
-  }
-
-  .detail-description {
-    font-size: 13px !important;
-  }
-
-  /* FEEDBACK */
   .paint-window {
     width: 100% !important;
     max-width: 100% !important;
   }
 
+  .paint-titlebar {
+    min-height: 32px !important;
+  }
+
+  .paint-title {
+    font-size: 12px !important;
+  }
+
   .paint-menubar {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
     gap: 4px !important;
-    padding: 6px !important;
+    padding: 5px !important;
   }
 
   .paint-menu-item {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
     font-size: 13px !important;
-    padding: 10px 6px !important;
-    text-align: center !important;
+    padding: 8px 10px !important;
   }
 
   .paint-content {
+    display: flex !important;
     flex-direction: column !important;
     min-height: auto !important;
   }
 
   .paint-toolbox {
-    width: 100% !important;
+    display: flex !important;
     flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    padding: 8px !important;
     gap: 8px !important;
+    padding: 8px !important;
   }
 
   .paint-tools-label {
     display: none !important;
   }
 
-  .dev-profile-btn,
-  .paint-tool-btn {
-    width: 58px !important;
-    height: 58px !important;
-    min-width: 58px !important;
-    font-size: 24px !important;
+  .dev-profile-btn {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    font-size: 28px !important;
   }
 
   .paint-canvas-container {
@@ -322,14 +248,16 @@
     box-sizing: border-box !important;
   }
 
-  .reviews-wall {
-    grid-template-columns: 1fr !important;
-  }
-
   .paint-input,
   .paint-select,
   .paint-textarea {
     font-size: 14px !important;
+  }
+
+  .paint-star-btn {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 20px !important;
   }
 
   .paint-submit-btn {
@@ -337,68 +265,27 @@
     padding: 12px !important;
   }
 
-  /* FOOTER SAME MOBILE SIZE */
-  .footer {
-    margin-top: 0 !important;
-    padding: 18px 0 !important;
-    min-height: auto !important;
+  .draw-canvas {
+    height: 260px !important;
+    min-height: 260px !important;
   }
 
-  .footer-top,
-  .footer-bottom {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 12px !important;
-  }
-
-  .footer-logo {
-    font-size: 13px !important;
-    padding: 8px 12px !important;
-  }
-
-  .footer-nav {
-    display: grid !important;
-    grid-template-columns: repeat(2, auto) !important;
-    gap: 10px 16px !important;
-  }
-
-  .footer-link {
-    font-size: 12px !important;
-  }
-
-  .footer-text,
-  .footer-game-label,
-  .footer-legal-label {
-    font-size: 11px !important;
-  }
-
-  .footer-legal {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-  }
-
-  /* FOOTER TERMINAL POPUP */
+  /* TERMINAL POPUP MOBILE */
   .terminal-overlay {
     padding: 10px !important;
-    align-items: center !important;
   }
 
   .terminal-popup,
   .terminal-window {
     width: 100% !important;
     max-width: 100% !important;
-    height: auto !important;
     max-height: 86vh !important;
   }
 
-  .terminal-window {
-    border-radius: 10px !important;
-  }
-
-  .terminal-tabs {
-    min-height: 38px !important;
+  .terminal-body {
+    padding: 14px !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
   }
 
   .terminal-tabs-wrapper {
@@ -407,81 +294,34 @@
 
   .terminal-tab {
     white-space: nowrap !important;
+    font-size: 11px !important;
     padding: 9px 12px !important;
-    font-size: 12px !important;
   }
 
-  .terminal-close {
-    width: 42px !important;
-    min-height: 38px !important;
-    font-size: 18px !important;
-  }
-
-  .terminal-body {
-    padding: 16px !important;
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-    max-height: calc(86vh - 42px) !important;
-    overflow-y: auto !important;
-  }
-
-  .about-hero {
-    padding: 16px !important;
-  }
-
-  .about-hero h2 {
-    font-size: 1.4rem !important;
-  }
-
-  .about-hero p {
-    font-size: 0.85rem !important;
-    line-height: 1.6 !important;
-  }
-
-  .vision-mission,
+  .team-grid,
   .contributors-grid,
-  .team-grid {
+  .vision-mission {
     grid-template-columns: 1fr !important;
-  }
-
-  .vm-card,
-  .team-member-card,
-  .contributor-card {
-    padding: 14px !important;
-  }
-
-  .team-avatar,
-  .contributor-avatar {
-    width: 56px !important;
-    height: 56px !important;
   }
 }
 
-@media (max-width: 420px) {
-  .container {
-    padding: 0 10px !important;
+@media (max-width: 400px) {
+  .character-portrait,
+  .character-grid.others .character-portrait {
+    width: 130px !important;
+    min-width: 130px !important;
+    height: 165px !important;
+    min-height: 165px !important;
   }
 
-  .logo-gif {
-    height: 38px !important;
+  .character-display-panel {
+    height: 285px !important;
+    min-height: 285px !important;
   }
 
-  .mechanics-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .character-grid,
-  .character-list,
-  .character-cards,
-  .character-selector-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .footer-nav {
-    grid-template-columns: 1fr !important;
-  }
-
-  .terminal-body {
-    font-size: 11px !important;
+  .footer-text,
+  .footer-legal-label,
+  .footer-link {
+    font-size: 9px !important;
   }
 }

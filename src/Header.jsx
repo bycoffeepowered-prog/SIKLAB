@@ -7,10 +7,17 @@ const HEADER_STYLES = `
     background: var(--card-bg-solid, #020617);
     border-bottom: 4px solid var(--accent-color, #ef4444);
     box-shadow: 0 4px 20px var(--shadow, rgba(0,0,0,0.5));
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 999;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+    width: 100%;
     transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  body {
+    padding-top: 106px;
   }
 
   .header-row {
@@ -19,11 +26,15 @@ const HEADER_STYLES = `
     gap: 0.5rem;
     padding: 0.65rem 0;
     flex-wrap: wrap;
+    position: relative;
   }
 
   .logo-gif {
     height: 80px;
+    width: auto;
+    object-fit: contain;
     display: block;
+    flex-shrink: 0;
   }
 
   .nav-tabs {
@@ -102,6 +113,10 @@ const HEADER_STYLES = `
   }
 
   @media (max-width: 768px) {
+    body {
+      padding-top: 54px;
+    }
+
     .header {
       border-bottom-width: 2px;
     }
@@ -109,6 +124,7 @@ const HEADER_STYLES = `
     .header-row {
       padding: 6px 0;
       gap: 6px;
+      flex-wrap: nowrap;
     }
 
     .logo-gif {
@@ -121,15 +137,22 @@ const HEADER_STYLES = `
       justify-content: center;
       min-width: 34px;
       height: 34px;
+      padding: 0;
     }
 
     .nav-tabs {
       display: none;
       flex-direction: column;
-      width: 100%;
+      width: auto;
       gap: 6px;
-      order: 10;
-      margin-top: 6px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card-bg-solid, #020617);
+      padding: 10px;
+      border-bottom: 2px solid var(--accent-color, #ef4444);
+      z-index: 999999;
     }
 
     .nav-tabs.open {
@@ -139,8 +162,8 @@ const HEADER_STYLES = `
     .nav-tab {
       width: 100%;
       text-align: left;
-      font-size: 0.68rem;
-      padding: 0.55rem 0.7rem;
+      font-size: 11px;
+      padding: 10px;
     }
 
     .theme-toggle-btn,
@@ -149,6 +172,16 @@ const HEADER_STYLES = `
       height: 34px;
       padding: 0;
       font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-top: 50px;
+    }
+
+    .logo-gif {
+      height: 38px;
     }
   }
 `;
