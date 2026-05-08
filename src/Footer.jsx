@@ -704,14 +704,14 @@ const CONTRIBUTORS_DATA = {
   ],
   historians: [
     {
-      name: 'April Hope Castro',
+      name: 'Dr. April Hope Castro',
       title: 'Assistant Professor',
       email: 'atcastro1@up.edu.ph',
       affiliation: 'UP Los Baños',
       expertise: 'Local History, Biography, Archival Research, Vocabularies, Deportados, Institutional History, and Feminist Studies'
     },
     {
-      name: 'Eugene Raymond Crudo',
+      name: 'Sir. Eugene Raymond Crudo',
       title: 'Assistant Professor',
       email: 'epcrudo@up.edu.ph',
       affiliation: 'UP Los Baños',

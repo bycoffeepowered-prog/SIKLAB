@@ -435,7 +435,7 @@ function ArtItem({ drawing, index }) {
 
 // ─── Tab config ───────────────────────────────────────────────────────────────
 const TABS = [
-  { id: "form",   label: "📝 Reivew Form", toolIcon: "📋", toolLabel: "📝 FORM"  },
+  { id: "form",   label: "📝 Review Form", toolIcon: "📋", toolLabel: "📝 FORM"  },
   { id: "wall",   label: "⭐ Reviews",       toolIcon: "⭐", toolLabel: "⭐ WALL"  },
   { id: "art",    label: "🖼️ Art Wall",      toolIcon: "🖼️", toolLabel: "🖼️ ART"  },
   { id: "canvas", label: "✏️ Draw",          toolIcon: "🖌️", toolLabel: "🖌️ DRAW" },
