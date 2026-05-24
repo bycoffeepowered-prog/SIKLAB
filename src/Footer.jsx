@@ -614,6 +614,130 @@ const FOOTER_STYLES = `
     text-align: left;
   }
 
+
+  .credits-section {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .credits-intro {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(0,255,0,0.05);
+    border: 1px solid rgba(0,255,0,0.3);
+    border-left: 4px solid var(--accent-cyan);
+  }
+
+  .credits-intro h2 {
+    font-size: 2rem;
+    color: var(--accent-cyan);
+    margin: 0 0 0.8rem 0;
+    font-family: 'Courier New',monospace;
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(34,211,238,0.5);
+  }
+
+  .credits-intro h2::before {
+    content: '> ';
+    color: #00ff00;
+  }
+
+  .credits-intro p {
+    color: #00ff00;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .music-credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .music-credit-card {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(0,255,0,0.3);
+    border-left: 4px solid var(--accent-cyan);
+    padding: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: all 0.3s;
+  }
+
+  .music-credit-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 0 20px rgba(34,211,238,0.3);
+    border-color: var(--accent-cyan);
+  }
+
+  .vinyl-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #00ff00 0 8px, #1a1a1a 9px 18px, #111 19px 34px, #2a2a2a 35px 36px);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 14px rgba(34,211,238,0.25);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .vinyl-icon::before,
+  .vinyl-icon::after {
+    content: '';
+    position: absolute;
+    inset: 13px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,255,0,0.25);
+  }
+
+  .vinyl-icon::after {
+    inset: 25px;
+    border-color: rgba(34,211,238,0.35);
+  }
+
+  .music-credit-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .music-credit-label {
+    color: var(--accent-cyan);
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.25rem;
+  }
+
+  .music-credit-title {
+    color: #00ff00;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 0.35rem;
+    word-break: break-word;
+  }
+
+  .music-credit-status {
+    color: #888;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .music-credit-link {
+    color: var(--accent-cyan);
+    font-size: 0.8rem;
+    text-decoration: none;
+    word-break: break-word;
+    font-weight: bold;
+  }
+
+  .music-credit-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(34,211,238,0.6);
+  }
+
   @media (max-width: 768px) { 
     .footer {
       margin-top: 0;
@@ -763,6 +887,7 @@ export default function Footer() {
               <span className="footer-legal-label">Legal:</span>
               <span className="footer-link" onClick={() => { setShowLegal(true); setLegalTab('privacy'); }}>Privacy</span>
               <span className="footer-link" onClick={() => { setShowLegal(true); setLegalTab('terms'); }}>Terms</span>
+              <span className="footer-link" onClick={() => { setShowLegal(true); setLegalTab('credits'); }}>Credits</span>
             </div>
           </div>
         </div>
@@ -1011,6 +1136,7 @@ export default function Footer() {
                 <div className="terminal-tabs-wrapper">
                   <button className={`terminal-tab ${legalTab === 'privacy' ? 'active' : ''}`} onClick={() => setLegalTab('privacy')}>privacy.txt</button>
                   <button className={`terminal-tab ${legalTab === 'terms' ? 'active' : ''}`} onClick={() => setLegalTab('terms')}>terms.txt</button>
+                  <button className={`terminal-tab ${legalTab === 'credits' ? 'active' : ''}`} onClick={() => setLegalTab('credits')}>credits.txt</button>
                 </div>
 
                 <button className="terminal-close" onClick={() => setShowLegal(false)}>×</button>
@@ -1150,6 +1276,57 @@ export default function Footer() {
                     </div>
                   </div>
                 )}
+
+                {legalTab === 'credits' && (
+                  <div className="credits-section">
+                    <div className="terminal-prompt-line">cat credits.txt</div>
+
+                    <div className="credits-intro">
+                      <h2>Music Credits</h2>
+                      <p>
+                        This section displays music used in the SIKLAB website and game. The website music is credited below,
+                        while the actual game music credits are still pending and will be updated once finalized.
+                      </p>
+                    </div>
+
+                    <div className="music-credits-grid">
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Website Music</div>
+                          <div className="music-credit-title">NoCopyrightSound633</div>
+                          <a
+                            className="music-credit-link"
+                            href="https://pixabay.com/music/video-games-arcade-beat-323176/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Pixabay Music Source
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Game Music 1</div>
+                          <div className="music-credit-title">Pending</div>
+                          <div className="music-credit-status">Music credit will be added once finalized.</div>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Game Music 2</div>
+                          <div className="music-credit-title">Pending</div>
+                          <div className="music-credit-status">Music credit will be added once finalized.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
               </div>
             </div>
           </div>
