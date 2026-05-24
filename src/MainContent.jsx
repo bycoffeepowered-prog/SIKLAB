@@ -492,11 +492,6 @@ const CHARACTERS_DATA = {
     { id: 1, name: 'Emmanuel', image: '/images/boy.png', bio: 'Isang estudyanteng kilala sa pagiging madiskarte at laging may plano para yumaman at umasenso sa buhay. Ngunit habang pilit niyang kinokontrol ang kanyang kapalaran, unti-unti niyang natutuklasan na may ibang plano ang tadhana para sa kanya.' },
     { id: 2, name: 'Grasya', image: '/images/girl.png', bio: 'Isang babaeng walang takot humarap sa panganib dahil sa kanyang pambihirang “matalas na pakiramdam.” Ngunit sa bawat pagkakataong nauunahan niya ang sakuna, may kapalit na pangyayaring hindi niya kailanman kayang hulaan.' }
   ],
-  heroes: [
-    { id: 3, name: 'Emilio Aguinaldo', image: '/images/ea.png', bio: 'Unang Pangulo ng Pilipinas na namuno sa rebolusyon laban sa Espanya at nagtatag ng unang pamahalaang rebolusyonaryo.'},
-    { id: 4, name: 'Jose Rizal', image: '/images/rizal.png', bio: 'Isang pambansang bayani ng Pilipinas na manunulat at doktor na gumising sa damdaming makabayan laban sa kolonyalismong Espanyol.' },
-    { id: 5, name: 'Juan Luna', image: '/images/Luna.png', bio: 'Isang kilalang pintor at rebolusyonaryong Pilipino na tanyag sa kanyang makasaysayang obra na sumasalamin sa diwa ng nasyonalismo.'}
-  ],
   others: [
     { id: 6, name: 'Jelyn',         image: '/images/Jennib.png',    bio: 'Isang Chinoy na dalagang Caviteña na lumaki sa panahong buhay pa si Heneral Paua at umiikot ang bansa sa tensyon ng digmaan at pagbabago. Sa kabila ng kanyang tahimik na kilos, dala niya ang talas ng isip at tibay ng mga taong sanay mabuhay sa gitna ng kaguluhan.'},
     { id: 7, name: 'Maria',         image: '/images/maria.png',     bio: 'Kilala bilang “Distanciada” na tindera dahil sa kanyang talino, ganda, at malamig na pakikitungo sa iba. Ngunit sa harap ng taong mahal niya, unti-unting nawawala ang kanyang matigas na anyo at lumalabas ang tunay niyang lambing.' },
@@ -695,7 +690,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
             <div className="character-popup-body">
               <div className="character-grid-panel">
                 <div className="character-tabs">
-                  {['main','heroes','others'].map(cat => (
+                  {['main','others'].map(cat => (
                     <button key={cat} className={`character-tab ${characterCategory === cat ? 'active' : ''}`} onClick={() => { setCharacterCategory(cat); setSelectedCharacter(CHARACTERS_DATA[cat][0]); }}>
                       {cat.toUpperCase()}
                     </button>
