@@ -490,7 +490,7 @@ const MAIN_STYLES = `
 const CHARACTERS_DATA = {
   main: [
     { id: 1, name: 'Emmanuel', image: '/images/boy.png', bio: 'Isang estudyanteng kilala sa pagiging madiskarte at laging may plano para yumaman at umasenso sa buhay. Ngunit habang pilit niyang kinokontrol ang kanyang kapalaran, unti-unti niyang natutuklasan na may ibang plano ang tadhana para sa kanya.' },
-    { id: 2, name: 'Grasya', image: '/images/girl.png', bio: 'Isang babaeng walang takot humarap sa panganib dahil sa kanyang pambihirang “matalas na pakiramdam.” Ngunit sa bawat pagkakataong nauunahan niya ang sakuna, may kapalit na pangyayaring hindi niya kailanman kayang hulaan.' }
+    { id: 2, name: 'Xandy', image: '/images/girl.png', bio: 'Isang babaeng walang takot humarap sa panganib dahil sa kanyang pambihirang “matalas na pakiramdam.” Ngunit sa bawat pagkakataong nauunahan niya ang sakuna, may kapalit na pangyayaring hindi niya kailanman kayang hulaan.' }
   ],
   others: [
     { id: 3,  name: 'Juan Melo',     image: '/images/melo.png',      bio: 'Ang "Tahimik na Matapang." Hindi siya mahilig sa maraming salita, ngunit sa kanyang mga kamay nakasalalay ang mga mahahalagang mensahe. Siya ang tagahatid ng liham na may dalang bigat ng katotohanan.' },
@@ -516,7 +516,7 @@ const SCENERY_DATA = [
   { id: 5, name: 'National Museum',   image: '/images/nationalmuseum.png', url: 'https://www.nationalmuseum.gov.ph/our-museums/national-museum-of-fine-arts/' }
 ];
 
-const MAP_IMAGE = '/images/map.jpg';
+const MAP_IMAGE = '/images/map.png';
 
 const MainContent = forwardRef(function MainContent(props, ref) {
   const { showMapPopup, setShowMapPopup, showCharacterPopup, setShowCharacterPopup, 
