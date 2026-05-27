@@ -493,27 +493,27 @@ const CHARACTERS_DATA = {
     { id: 2, name: 'Xandy', image: '/images/girl.png', bio: 'Isang babaeng walang takot humarap sa panganib dahil sa kanyang pambihirang “matalas na pakiramdam.” Ngunit sa bawat pagkakataong nauunahan niya ang sakuna, may kapalit na pangyayaring hindi niya kailanman kayang hulaan.' }
   ],
   others: [
-    { id: 3,  name: 'Juan Melo',     image: '/images/melo.png',      bio: 'Isang tahimik ngunit matapang na binata na nagsisilbing gabay ng Player sa panahon ng Espanyol. Kapansin-pansin ang pagkakahawig niya sa kaklase ng Player, dahilan upang mas lalo itong maging pamilyar at misteryoso.' },
-    { id: 4,  name: 'Jelyn',         image: '/images/Jennib.png',    bio: 'Isang Chinoy na dalaga na lumaki sa gitna ng gulo at digmaan. Sa kabila ng kanyang mahinhing kilos ay isang matapang at matalinong isip na sanay mabuhay sa kaguluhan.'},
-    { id: 5,  name: 'Maria',         image: '/images/maria.png',     bio: 'Isang kilalang babaylan na malamig makitungo sa iba dahil sa kanyang talino at matatag na loob. Ngunit kapag kasama ang taong mahal niya, lumalabas ang kanyang tunay na lambing.' },
-    { id: 6,  name: 'Luciano',       image: '/images/lancelot.png',  bio: 'Isang mailman na tuso at bihasa sa pagmanipula ng batas para sa sariling kapakinabangan. Palagi siyang isang hakbang sa unahan at alam kung paano dayain ang sistema.' },
-    { id: 7,  name: 'Isa',           image: '/images/isawho.png',    bio: 'sang dalagang nagsisilbing gabay ng Player sa panahon ng Amerikano at Hapon. Hawig na hawig niya ang kaklase ng Player, ngunit may tinatago siyang lihim na koneksyon sa sundalong Hapones na si George.'},
-    { id: 8,  name: 'Josepa',        image: '/images/josepa.png',    bio: 'Isang istriktong gwardya na mas pinapahalagahan ang batas kaysa emosyon. Kilala siya sa pagiging mapaghinala at sa mabilis niyang pagtakbo para maghatid ng mahahalagang sulat.'},
-    { id: 9,  name: 'Jerome',        image: '/images/jerom.png',     bio: 'Isang mayamang binata na laging may gitara at matatamis na salita. Madaling magpaibig ngunit takot masaktan kaya madalas siyang nauunang umiwas.'},
-    { id: 10, name: 'Rosa',          image: '/images/rosas.png',     bio: 'Isang babaeng madaling magalit at tila laging may mabigat na dinadala sa puso. Kahit siya mismo ay nahihirapang intindihin ang sarili niyang emosyon.' },
-    { id: 11, name: 'Maliya',        image: '/images/aliyahate.png', bio: 'Isang mataray ngunit maaasahang flight attendant na nagsisilbing gabay ng Player noong panahon ng Martial Law. Tulad nina Melo at Isa, kahawig rin niya ang kaklase ng Player, na tila konektado sa misteryo ng paglalakbay sa panahon.'},
-    { id: 12, name: 'Nicolo',        image: '/images/Nicholo.png',   bio: 'Isang mabait at tahimik na trabahador na lihim na nagpapalusot ng mga piraso ng Spoliarium upang maprotektahan ito mula sa pagkawasak at pagnanakaw. Kahit delikado ang kanyang ginagawa, naniniwala siyang mahalagang mailigtas ang kasaysayan ng bayan.'},
+    { id: 3,  name: 'Juan Melo',     image: '/images/melo.png',      bio: 'Isang tahimik ngunit matapang na binata na nagsisilbing gabay ng Player sa panahon ng pananakop ng Espanya. Kahit simple lang siya, marami siyang alam tungkol sa kasaysayan at lihim ng Fort Santiago.' },
+    { id: 4,  name: 'Jelyn',         image: '/images/Jennib.png',    bio: 'Isa siyang tahimik na Chinoy na dalaga na lumaki sa gitna ng kaguluhan at digmaan. Nagtayo siya ng sariling karihan upang mapakain ang mga mamamayan ng Bagumbayan sa panahon ng hirap at takot. Ngunit sa likod ng kaniyang kilos ay isang lihim na kasapi ng Katipunan matapang, matalino, at sanay mamuhay sa gitna ng panganib at kaguluhan.'},
+    { id: 5,  name: 'Maria',         image: '/images/maria.png',     bio: 'Isa siyang kilalang babaylan na nawalan ng katayuan matapos dumating at manakop ang mga Kastila. Dahil sa kaniyang talino at matatag na paninindigan, malamig siya makitungo sa karamihan at bihirang magpakita ng emosyon. Ngunit sa piling ng taong kaniyang minamahal, lumalabas ang kaniyang tunay na lambing at mahinahong puso.' },
+    { id: 6,  name: 'Luciano',       image: '/images/lancelot.png',  bio: 'Isa siyang kartero na tuso at bihasa sa pagbaluktot ng batas para sa sariling kapakinabangan. Palagi siyang isang hakbang sa unahan at marunong dumiskarte upang dayain at manipulahin ang sistema nang hindi agad nahuhuli.'},
+    { id: 7,  name: 'Isa',           image: '/images/isawho.png',    bio: 'Isang dalagang nagsisilbing gabay ng Player sa panahon ng Amerikano at Hapon. Sa likod ng kanyang mabait na anyo ay isang lihim na pag-ibig sa sundalong Hapones na si George.'},
+    { id: 8,  name: 'Josepa',        image: '/images/josepa.png',    bio: 'Siya ay isang lihim na rebolusyonista na tumutulong sa pagpapalaganap ng damdaming makabayan at laban sa mga Amerikano para sa adhikain ni Aguinaldo. Sa likod ng kaniyang tahimik na kilos ay isang pusong handang makipaglaban para sa kalayaan ng bayan.'},
+    { id: 9,  name: 'Jerome',        image: '/images/jerom.png',     bio: 'Isa siyang mayamang binata na nag-aaral sa Unibersidad ng Santo Tomas, kilala sa kaniyang gitara at matatamis na salita. Madali siyang makapagpaibig ng iba dahil sa kaniyang alindog at karisma, ngunit sa kabila nito ay takot siyang masaktan kaya madalas siyang nauunang umiwas bago pa man siya tunay na mahulog.'},
+    { id: 10, name: 'Rosa',          image: '/images/rosas.png',     bio: 'Isa siyang babaeng madaling magalit at may mabigat na dinadala sa puso. Pinatigas siya ng mga sugat na iniwan ng digmaan kaya madalas siyang malamig at mataray sa iba. Madalas siyang matagpuang nakatanaw sa dagat, tahimik na pinagmamasdan ang paglayag ng mga barkong Hapones habang umaasang balang araw ay magiging malaya rin siya.' },
+    { id: 11, name: 'Maliya',        image: '/images/aliyahate.png', bio: 'Isang mataray ngunit maaasahang flight attendant na nagsisilbing gabay ng Player. Kahit matalim magsalita, handa siyang tumulong kahit siya mismo ang nawawalan.'},
+    { id: 12, name: 'Nicolo',        image: '/images/Nicholo.png',   bio: 'Isa siyang lihim na operatiba ng pamahalaan na tanging hangarin ay gawin ang makabubuti para sa bayan. Handa niyang sundin ang anumang utos, gaano man ito kabigat, basta para sa kapakanan ng bansa.'},
     { id: 16, name: 'Eumir',         image: '/images/euriblue.png',  bio: 'Isang maliit ngunit masayahing taga-salubong sa paliparan na mahilig magpatawa. Ngunit kapag kailangan na siya, madalas siyang nawawala dahil nakakatulog.'},
     { id: 17, name: 'Manong Jhong',  image: '/images/ced.png',       bio: 'Isang mabait at masipag na bagger sa paliparan na laging handang tumulong sa iba. Mahilig siya sa basketball at may lihim na paghanga sa kambal ng kanyang kaibigan.' }    
   ]
 };
 
 const SCENERY_DATA = [
-  { id: 1, name: 'Gomburza Monument', image: '/images/gomburza.png',     url: 'https://memory.nhcp.gov.ph/collections/?ptermid=1306' },
-  { id: 2, name: 'Intramuros',        image: '/images/intramuros.png',   url: 'https://intramuros.gov.ph/fs/' },
-  { id: 3, name: 'Malacañang Palace', image: '/images/malacanang.png',   url: 'https://museums.gov.ph/tour-request-form/' },
-  { id: 4, name: 'NAIA Terminal',     image: '/images/naia.png',         url: 'https://museums.gov.ph/tour-request-form/' },
-  { id: 5, name: 'National Museum',   image: '/images/nationalmuseum.png', url: 'https://www.nationalmuseum.gov.ph/our-museums/national-museum-of-fine-arts/' }
+  { id: 1, name: 'National University Dasmarinas', image: '/images/NUD.png',                  url: 'https://www.facebook.com/NUDasmaPH/' },
+  { id: 2, name: 'Intramuros',                     image: '/images/intramuros.png',           url: 'https://intramuros.gov.ph/' },
+  { id: 3, name: 'Baywalk',                        image: '/images/baywalk.png',              url: 'https://www.yelp.com/biz/baywalk-manila' },
+  { id: 4, name: 'NAIA Terminal',                  image: '/images/naia.png',                 url: 'https://museums.gov.ph/tour-request-form/' },
+  { id: 5, name: 'National Museum',                image: '/images/nationalmuseum.png',       url: 'https://www.nationalmuseum.gov.ph/our-museums/national-museum-of-fine-arts/' }
 ];
 
 const MAP_IMAGE = '/images/map.png';
@@ -559,18 +559,11 @@ const MainContent = forwardRef(function MainContent(props, ref) {
         <section className="main-content section-full" id="about">
           <div className="container">
             <h1 className="main-title">STORY</h1>
-            <p className="main-description">Siklab follows a student from Dasmariñas whose ordinary life is 
-              suddenly interrupted when they are transported into the past, into a Philippines that exists 
-              beyond textbooks and classrooms. What begins as confusion slowly turns into purpose as the 
-              player realizes that history is not simply a collection of dates and names, but a living world
-               shaped by struggle, courage, and sacrifice. Tasked with a once in a lifetime quest, the 
-               player journeys through key moments in Philippine history, meeting national heroes not as 
-               distant legends but as people with ideals, doubts, and convictions. Along the way, they e
-               ncounter diverse cultures and traditions, uncover secrets lost to time, and experience the 
-               realities faced by those who came before them. Through exploration and discovery, Siklab 
-               invites players to live history rather than merely study it, showing that the past is not 
-               something left behind, but something that continues to shape identity, memory, and the 
-               future.
+            <p className="main-description"> 
+              SIKLAB follows a student from Dasmariñas whose ordinary life is suddenly interrupted after a mysterious glitch transports them into different periods of Philippine history. What begins as a desperate attempt to return home soon becomes a journey through the struggles, sacrifices, and identities that shaped the nation.
+              Across multiple historical eras from the Spanish Colonial Period, to the American and Japanese Occupation, and eventually the Martial Law and EDSA era the player explores living versions of the past through interactive storytelling, mini-games, and historically inspired environments. Along the way, they meet individuals from different walks of life: revolutionaries, babaylan, students, workers, resistance members, and ordinary Filipinos trying to survive during times of conflict and change.
+              Rather than presenting history as a simple timeline of events, SIKLAB allows players to experience it through personal stories, cultural traditions, exploration, and meaningful choices. Through AR collectibles, larong kalye-inspired mini-games, side quests, and character driven encounters, the game aims to make Philippine history more immersive, emotional, and engaging for modern learners.
+              As the player travels deeper into the past, they slowly realize that history is not merely something written in textbooks, it is a living memory carried by people, sacrifices, and stories that continue to shape Filipino identity and the future of the nation.
             </p>
 
             <div className="room-sections-grid">
