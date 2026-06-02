@@ -1309,9 +1309,17 @@ export default function Footer() {
                       <div className="music-credit-card">
                         <div className="vinyl-icon" aria-hidden="true"></div>
                         <div className="music-credit-info">
-                          <div className="music-credit-label">Game Music 1</div>
-                          <div className="music-credit-title">Pending</div>
-                          <div className="music-credit-status">Music credit will be added once finalized.</div>
+                          <div className="music-credit-label">Game Music</div>
+                          <div className="music-credit-title">Path of Adventure – Free Music Pack for JRPG</div>
+                          <div className="music-credit-status">by Kounine</div>
+                          <a
+                            className="music-credit-link"
+                            href="https://assetstore.unity.com/packages/audio/music/path-of-adventure-free-music-pack-for-jrpg-363414"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Unity Asset Store
+                          </a>
                         </div>
                       </div>
 
