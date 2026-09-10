@@ -108,7 +108,6 @@ const SCENERY_DATA = [
   { id: 2, name: 'Intramuros',        image: '/images/intramuros.png' },
   { id: 3, name: 'Malacañang Palace', image: '/images/malacanang.png' },
   { id: 4, name: 'NAIA Terminal',     image: '/images/naia.png' },
-  { id: 5, name: 'National Museum',   image: '/images/nationalmuseum.png' },
 ];
 
 export default function ScenerySection() {

@@ -2,16 +2,17 @@ import { forwardRef, useEffect, useState } from "react";
 import { useScrollAnimation } from "./Usescrollanimation";
 import { supabase } from "./supabaseClient";
 
+const ITCH_URL = "https://siklab.itch.io/siklab";
+
 const DEFAULT_CONTROLS = {
   download_enabled: true,
-  download_title: "Download Chapter 1",
-  download_subtitle: "Hosted on itch.io",
-  download_link:
-    "https://derp145.itch.io/siklab-demo?fbclid=IwY2xjawRnbNNleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEedwteU16dBaZnavyYVBJWR8C1TkdBMZQpfc0oRyGK9H6RBAyhDSiDd4z-0hs_aem_BhIiv5dHU-Lb2xn-SASRig",
+  download_title: "Download APK",
+  download_subtitle: "Android",
+  download_link: ITCH_URL,
 
-  preview_enabled: false,
-  preview_title: "Download Official Version",
-  preview_link: "",
+  preview_enabled: true,
+  preview_title: "Download EXE",
+  preview_link: ITCH_URL,
 };
 
 const DOWNLOAD_STYLES = `
@@ -49,21 +50,50 @@ const DOWNLOAD_STYLES = `
     gap: 48px;
   }
 
-  .download-card { 
+  .download-tablet {
     flex: 0 0 52%;
-    border-radius: 28px; 
-    overflow: hidden; 
-    box-shadow: 0 24px 60px var(--shadow-heavy); 
-    background: #000; 
-    border: 3px solid var(--accent-cyan); 
+    position: relative;
+  }
+
+  .download-tablet-bezel {
+    position: relative;
+    background: linear-gradient(160deg, #3a3a40 0%, #1c1c20 42%, #0d0d0f 100%);
+    border-radius: 32px;
+    padding: 16px 20px 16px 32px;
+    border: 3px solid var(--accent-cyan);
+    box-shadow:
+      0 24px 60px var(--shadow-heavy),
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -2px 8px rgba(0,0,0,0.45);
+  }
+
+  .download-tablet-camera {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #4b5563, #111 55%);
+    box-shadow: 0 0 0 2px #2a2a2e, inset 0 0 3px #000;
+  }
+
+  .download-tablet-screen {
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
     line-height: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
   }
 
   .download-video { 
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
+    background: #000;
   }
 
   .download-buttons {
@@ -194,7 +224,7 @@ const DOWNLOAD_STYLES = `
       gap: 28px;
     }
 
-    .download-card {
+    .download-tablet {
       width: 100%;
       max-width: 480px;
     }
@@ -231,15 +261,15 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
       }
 
       setControls({
-        download_enabled: data.download_enabled ?? true,
-        download_title: data.download_title || DEFAULT_CONTROLS.download_title,
+        download_enabled: true,
+        download_title: "Download APK",
         download_subtitle:
           data.download_subtitle || DEFAULT_CONTROLS.download_subtitle,
-        download_link: data.download_link || DEFAULT_CONTROLS.download_link,
+        download_link: ITCH_URL,
 
-        preview_enabled: data.preview_enabled ?? false,
-        preview_title: data.preview_title || DEFAULT_CONTROLS.preview_title,
-        preview_link: data.preview_link || "",
+        preview_enabled: true,
+        preview_title: "Download EXE",
+        preview_link: ITCH_URL,
       });
     }
 
@@ -268,15 +298,20 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
         id="download"
       >
         <div className="download-inner">
-          <div className="download-card">
-            <video className="download-video" autoPlay loop muted playsInline>
-              <source src="/images/TRAILER.mp4" type="video/mp4" />
-            </video>
+          <div className="download-tablet">
+            <div className="download-tablet-bezel">
+              <span className="download-tablet-camera" aria-hidden="true" />
+              <div className="download-tablet-screen">
+                <video className="download-video" autoPlay loop muted playsInline>
+                  <source src="/images/download-preview.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
           </div>
 
           <div className="download-buttons">
             <h2 className="download-heading">Download Now</h2>
-            <p className="download-caption">Available on mobile</p>
+            <p className="download-caption">Android APK and Windows EXE</p>
 
             <div className="download-btn-group">
               {downloadActive ? (
@@ -289,8 +324,8 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                   <ButtonContent
                     img="/images/girl.png"
                     alt="Download"
-                    title={controls.download_title}
-                    subtitle={controls.download_subtitle}
+                    title="Download APK"
+                    subtitle="Android"
                   />
                 </a>
               ) : (
@@ -299,8 +334,8 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                     <ButtonContent
                       img="/images/girl.png"
                       alt="Download"
-                      title={controls.download_title}
-                      subtitle={controls.download_subtitle || "Unavailable"}
+                      title="Download APK"
+                      subtitle="Android"
                     />
                   </button>
                   <span className="download-soon">OFF</span>
@@ -317,8 +352,8 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                   <ButtonContent
                     img="/images/boy.png"
                     alt="Preview"
-                    title={controls.preview_title}
-                    subtitle="Available Now"
+                    title="Download EXE"
+                    subtitle="Hosted on itch.io"
                   />
                 </a>
               ) : (
@@ -327,8 +362,8 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                     <ButtonContent
                       img="/images/boy.png"
                       alt="Official"
-                      title={controls.preview_title}
-                      subtitle="Coming Soon"
+                      title="Download EXE"
+                      subtitle="Hosted on itch.io"
                     />
                   </button>
                   <span className="download-soon">Soon</span>

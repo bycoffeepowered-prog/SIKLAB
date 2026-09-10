@@ -65,8 +65,8 @@ const MAIN_STYLES = `
     background-repeat: repeat-x;
   }
   
-  .main-title { font-size: 3rem; font-weight: 900; color: #1e293b; margin-bottom: 1rem; line-height: 1.1; letter-spacing: -0.02em; }
-  .main-description { color: #475569; margin-bottom: 2rem; line-height: 1.6; }
+  .main-title { font-family: 'Cinzel', serif; font-size: 3rem; font-weight: 900; color: #1e293b; margin-bottom: 1rem; line-height: 1.1; letter-spacing: 0.08em; }
+  .main-description { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.28rem; font-weight: 600; color: #3f2f1e; margin-bottom: 2rem; line-height: 1.85; }
   .room-sections-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; margin-bottom: 2rem; }
   .room-section { width: 100%; }
   .room-title { font-size: 2rem; font-weight: 900; color: #1e293b; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 4px solid #dc2626; line-height: 1.2; }
@@ -247,12 +247,18 @@ const MAIN_STYLES = `
   .character-tab:hover { background: rgba(233,69,96,0.2); color: #fff; }
   .character-tab.active { background: rgba(233,69,96,0.3); color: #e94560; border-bottom-color: #e94560; }
   .character-grid { flex: 1; padding: 1rem; overflow-y: auto; display: grid; grid-template-columns: repeat(2,1fr); gap: 0.8rem; align-content: start; }
-  .character-grid.others { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .character-grid.others .character-portrait { aspect-ratio: 1; }
-  .character-grid.others .character-portrait img { min-width: 0; min-height: 0; object-fit: cover; object-position: center top; }
-  .character-grid.others .character-portrait-name { font-size: 0.65rem; padding: 6px 3px 3px; line-height: 1.1; }
+  .character-grid.others,
+  .character-grid.soldiers { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .character-grid.others .character-portrait,
+  .character-grid.soldiers .character-portrait { aspect-ratio: 1; }
+  .character-grid.others .character-portrait img,
+  .character-grid.soldiers .character-portrait img { min-width: 0; min-height: 0; object-fit: cover; object-position: center top; }
+  .character-grid.others .character-portrait-name,
+  .character-grid.soldiers .character-portrait-name { font-size: 0.65rem; padding: 6px 3px 3px; line-height: 1.1; }
   .character-portrait { position: relative; aspect-ratio: 1; border: 3px solid #444; border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.2s; background: linear-gradient(135deg,#1a1a2e,#0f3460); }
-  .character-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; min-width: 120px; min-height: 120px; transition: transform 0.2s; }
+  .character-portrait img,
+  .character-portrait-fallback { width: 100%; height: 100%; object-fit: cover; object-position: center top; min-width: 120px; min-height: 120px; transition: transform 0.2s; }
+  .character-portrait-fallback { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg,#3d1a1a,#1a1a2e); color: #f4e4c1; font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 900; }
   .character-portrait:hover { border-color: #e94560; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(233,69,96,0.4); }
   .character-portrait:hover img { transform: scale(1.1); }
   .character-portrait.selected { border-color: #e94560; box-shadow: 0 0 20px rgba(233,69,96,0.6),inset 0 0 20px rgba(233,69,96,0.2); }
@@ -260,6 +266,7 @@ const MAIN_STYLES = `
   .character-display-panel { position: relative; display: flex; flex-direction: column; justify-content: flex-end; background: radial-gradient(circle at center,#e94560 0%,transparent 70%),linear-gradient(180deg,#0f3460 0%,#1a1a2e 100%); overflow: hidden; }
   .character-display-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .character-display-image { width: 85%; height: 85%; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); animation: charFloat 3s ease-in-out infinite; }
+  .character-display-fallback { width: 220px; height: 220px; border-radius: 50%; border: 4px solid #e94560; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.45); color: #fff; font-family: 'Cinzel', serif; font-size: 4.5rem; font-weight: 900; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); animation: charFloat 3s ease-in-out infinite; }
   .character-display-info { position: relative; z-index: 2; background: linear-gradient(to top,rgba(0,0,0,0.9),transparent); padding: 1.5rem; }
   .character-name-bar { display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.6); padding: 1rem; border-radius: 8px; border: 2px solid #e94560; }
   .character-name-text { color: #fff; font-size: 1.8rem; font-weight: bold; font-family: 'Impact',sans-serif; text-transform: uppercase; letter-spacing: 0.1em; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
@@ -270,7 +277,7 @@ const MAIN_STYLES = `
   .character-bio { color: #ccc; line-height: 1.8; font-size: 0.9rem; }
   .character-details-placeholder { text-align: center; color: #666; padding: 3rem; }
 
-  /* Generic popup for AR, Papers, Collectibles - Modern Anime Style */
+  /* Generic popup for AR and Collectibles - Modern Anime Style */
   .generic-popup-overlay { 
     position: fixed !important; 
     inset: 0 !important; 
@@ -285,8 +292,8 @@ const MAIN_STYLES = `
   }
   .generic-popup-container { 
     width: 100%; 
-    max-width: 900px; 
-    max-height: 85vh; 
+    max-width: 980px; 
+    max-height: 90vh; 
     background: #e8e4d9;
     border-radius: 32px; 
     border: 8px solid #1a1a1a; 
@@ -445,11 +452,110 @@ const MAIN_STYLES = `
     font-size: 0.55rem;
     opacity: 0.8;
   }
+  .generic-popup-content.reward-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .reward-top {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .reward-catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.9rem;
+  }
+  .reward-item {
+    background: #fff;
+    border: 3px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 0.9rem;
+    text-align: left;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.12);
+  }
+  .reward-item-thumb,
+  .reward-item-fallback {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    border: 2px solid #1a1a1a;
+    background: #fff5e1;
+  }
+  .reward-item-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #3d2817;
+  }
+  .reward-item-era {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #dc2626;
+  }
+  .reward-item-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0.25rem 0 0.35rem;
+    line-height: 1.25;
+  }
+  .reward-item-text {
+    font-size: 0.78rem;
+    color: #4a4a4a;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .reward-catalog.collectible-grid {
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 1rem;
+  }
+  .collectible-grid .reward-item {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    text-align: center;
+  }
+  .collectible-grid .reward-item-thumb {
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+    border: none;
+    border-radius: 14px;
+    background: transparent;
+    margin-bottom: 0.45rem;
+  }
+  .collectible-grid .reward-item-name {
+    font-size: 0.82rem;
+    margin: 0.15rem 0 0.2rem;
+  }
+  .collectible-grid .reward-item-text {
+    font-size: 0.72rem;
+  }
+  .reward-layout .generic-right-section {
+    min-height: 240px;
+    height: auto;
+  }
 
   @media (max-width: 768px) {
     .generic-popup-content {
       grid-template-columns: 1fr;
       padding: 2rem 1.5rem;
+    }
+    .reward-top {
+      grid-template-columns: 1fr;
     }
     .generic-popup-title {
       font-size: 2rem;
@@ -497,7 +603,7 @@ const CHARACTERS_DATA = {
     { id: 4,  name: 'Jelyn',         image: '/images/Jennib.png',    bio: 'Isa siyang tahimik na Chinoy na dalaga na lumaki sa gitna ng kaguluhan at digmaan. Nagtayo siya ng sariling karihan upang mapakain ang mga mamamayan ng Bagumbayan sa panahon ng hirap at takot. Ngunit sa likod ng kaniyang kilos ay isang lihim na kasapi ng Katipunan matapang, matalino, at sanay mamuhay sa gitna ng panganib at kaguluhan.'},
     { id: 5,  name: 'Maria',         image: '/images/maria.png',     bio: 'Isa siyang kilalang babaylan na nawalan ng katayuan matapos dumating at manakop ang mga Kastila. Dahil sa kaniyang talino at matatag na paninindigan, malamig siya makitungo sa karamihan at bihirang magpakita ng emosyon. Ngunit sa piling ng taong kaniyang minamahal, lumalabas ang kaniyang tunay na lambing at mahinahong puso.' },
     { id: 6,  name: 'Luciano',       image: '/images/lancelot.png',  bio: 'Isa siyang kartero na tuso at bihasa sa pagbaluktot ng batas para sa sariling kapakinabangan. Palagi siyang isang hakbang sa unahan at marunong dumiskarte upang dayain at manipulahin ang sistema nang hindi agad nahuhuli.'},
-    { id: 7,  name: 'Isa',           image: '/images/isawho.png',    bio: 'Isang dalagang nagsisilbing gabay ng Player sa panahon ng Amerikano at Hapon. Sa likod ng kanyang mabait na anyo ay isang lihim na pag-ibig sa sundalong Hapones na si George.'},
+    { id: 7,  name: 'Isabelle',      image: '/images/isawho.png',    bio: 'Isang dalagang nagsisilbing gabay ng Player sa panahon ng Amerikano at Hapon. Sa likod ng kanyang mabait na anyo ay isang lihim na pag-ibig sa sundalong Hapones na si George.'},
     { id: 8,  name: 'Josepa',        image: '/images/josepa.png',    bio: 'Siya ay isang lihim na rebolusyonista na tumutulong sa pagpapalaganap ng damdaming makabayan at laban sa mga Amerikano para sa adhikain ni Aguinaldo. Sa likod ng kaniyang tahimik na kilos ay isang pusong handang makipaglaban para sa kalayaan ng bayan.'},
     { id: 9,  name: 'Jerome',        image: '/images/jerom.png',     bio: 'Isa siyang mayamang binata na nag-aaral sa Unibersidad ng Santo Tomas, kilala sa kaniyang gitara at matatamis na salita. Madali siyang makapagpaibig ng iba dahil sa kaniyang alindog at karisma, ngunit sa kabila nito ay takot siyang masaktan kaya madalas siyang nauunang umiwas bago pa man siya tunay na mahulog.'},
     { id: 10, name: 'Rosa',          image: '/images/rosas.png',     bio: 'Isa siyang babaeng madaling magalit at may mabigat na dinadala sa puso. Pinatigas siya ng mga sugat na iniwan ng digmaan kaya madalas siyang malamig at mataray sa iba. Madalas siyang matagpuang nakatanaw sa dagat, tahimik na pinagmamasdan ang paglayag ng mga barkong Hapones habang umaasang balang araw ay magiging malaya rin siya.' },
@@ -505,25 +611,86 @@ const CHARACTERS_DATA = {
     { id: 12, name: 'Nicolo',        image: '/images/Nicholo.png',   bio: 'Isa siyang lihim na operatiba ng pamahalaan na tanging hangarin ay gawin ang makabubuti para sa bayan. Handa niyang sundin ang anumang utos, gaano man ito kabigat, basta para sa kapakanan ng bansa.'},
     { id: 16, name: 'Eumir',         image: '/images/euriblue.png',  bio: 'Isang maliit ngunit masayahing taga-salubong sa paliparan na mahilig magpatawa. Ngunit kapag kailangan na siya, madalas siyang nawawala dahil nakakatulog.'},
     { id: 17, name: 'Manong Jhong',  image: '/images/ced.png',       bio: 'Isang mabait at masipag na bagger sa paliparan na laging handang tumulong sa iba. Mahilig siya sa basketball at may lihim na paghanga sa kambal ng kanyang kaibigan.' }    
+  ],
+  soldiers: [
+    { id: 18, name: 'George', initials: 'G', bio: 'Isang sundalong Hapones na naitalaga sa Maynila noong panahon ng pananakop. Sa likod ng kanyang uniporme ay isang binata na unti-unting nakakita ng sangkatauhan sa mga taong dapat sana’y kaaway niya — lalo na kay Isabelle.' },
+    { id: 19, name: 'Tenyente Mori', initials: 'M', bio: 'Opisyal ng garison na mahigpit magpatupad ng kautusan sa lungsod. Bihira siyang magpakita ng awa sa publiko, ngunit alam niyang ang takot ng mga sibilyan ang siyang nagpapanatili sa kanilang kapangyarihan.' },
+    { id: 20, name: 'Hiroshi', initials: 'H', bio: 'Isang karaniwang enlisted soldier na ipinadala palayo sa kanyang pamilya. Hindi siya mahilig sa palabas na tapang; mas madalas siyang nakatingin sa dagat, iniisip kung kailan ba talaga matatapos ang giyera.' }
   ]
 };
 
 const SCENERY_DATA = [
-  { id: 1, name: 'National University Dasmarinas', image: '/images/NUD.png',                  url: 'https://www.facebook.com/NUDasmaPH/' },
-  { id: 2, name: 'Intramuros',                     image: '/images/intramuros.png',           url: 'https://intramuros.gov.ph/' },
-  { id: 3, name: 'Baywalk',                        image: '/images/baywalk.png',              url: 'https://www.yelp.com/biz/baywalk-manila' },
-  { id: 4, name: 'NAIA Terminal',                  image: '/images/naia.png',                 url: 'https://museums.gov.ph/tour-request-form/' },
-  { id: 5, name: 'National Museum',                image: '/images/nationalmuseum.png',       url: 'https://www.nationalmuseum.gov.ph/our-museums/national-museum-of-fine-arts/' }
+  { id: 1, name: 'National University Dasmarinas', image: '/images/NUD.png',        url: 'https://www.facebook.com/NUDasmaPH/' },
+  { id: 2, name: 'Intramuros',                     image: '/images/intramuros.png', url: 'https://intramuros.gov.ph/' },
+  { id: 3, name: 'Baywalk',                        image: '/images/baywalk.png',    url: 'https://www.yelp.com/biz/baywalk-manila' },
+  { id: 4, name: 'NAIA Terminal',                  image: '/images/naia.png',       url: 'https://miaa.gov.ph/' }
+];
+
+const AR_ITEMS = [
+  { name: 'Emmanuel', era: 'AR Character', image: '/images/boy.png', text: 'I-scan ang marker para makita si Emmanuel sa totoong mundo — diskarte, plano, at lahat.' },
+  { name: 'Xandy', era: 'AR Character', image: '/images/girl.png', text: 'Iharap ang camera at harapin si Xandy nang buo, kasama ang kanyang matalas na pakiramdam.' },
+  { name: 'Isabelle', era: 'AR Character', image: '/images/isawho.png', text: 'AR encounter mula sa panahon ng Amerikano at Hapon. Gabay, lihim, at pag-ibig na hindi dapat malaman ng lahat.' },
+  { name: 'Fort Santiago Relic', era: 'AR Object', text: 'Isang relic na lumilitaw sa mesa o sahig mo. Iikot-ikot ito para makita ang mga detalye ng kuta.' }
+];
+
+const COLLECTIBLE_ITEMS = [
+  { name: 'Katipunero', era: 'Rebolusyon', image: '/images/collectibles/katipunan-male.png', text: 'Card ng lalaking kasapi ng Katipunan. Unang sagisag ng paglaban sa kolonyal na panahon.' },
+  { name: 'Katipunera', era: 'Rebolusyon', image: '/images/collectibles/katipunan-female.png', text: 'Card ng babaeng rebolusyonarya sa baro’t saya, tapis, at pulang panuelo.' },
+  { name: 'Lalaking Babaylan', era: 'Katutubo', image: '/images/collectibles/babaylan-male.png', text: 'Lalaking babaylan sa tradisyonal na damit. Tagapamagitan ng tao at ng lumang paniniwala.' },
+  { name: 'Babaeng Babaylan', era: 'Katutubo', image: '/images/collectibles/babaylan-female.png', text: 'Babaeng babaylan sa puting damit at maroon na sash. Bantay ng ritwal at alaala.' },
+  { name: 'Estudyante', era: 'Kasalukuyan', image: '/images/collectibles/girl.png', text: 'Modernong estudyante na may backpack. Tulay mula sa kasalukuyan papunta sa nakaraan.' },
+  { name: 'Kalapati', era: 'Kapayapaan', image: '/images/collectibles/dove.png', text: 'Puting kalapati na may sanga. Sagisag ng tigil-putukan at bagong simula.' },
+  { name: 'Watawat', era: 'Kalayaan', image: '/images/collectibles/flag.png', text: 'Watawat ng Pilipinas. Kolektahin para tandaan ang bawat panahong ipinaglaban ito.' },
+  { name: 'Sampaguita', era: 'Pambansang Bulaklak', image: '/images/collectibles/sampaguita.png', text: 'Pambansang bulaklak. Isang tahimik na card na palaging nasa tabi ng mga bayani.' },
+  { name: 'Yellow Ribbon', era: 'EDSA', image: '/images/collectibles/ribbon.png', text: 'Dilaw na laso ng People Power. Ipinapakita nito ang lakas ng ordinaryong tao sa lansangan.' },
+  { name: 'Medalya', era: 'Parangal', image: '/images/collectibles/medal.png', text: 'Gintong medalya. Gantimpala para sa mga natapos na kabanata at hidden quest.' },
+  { name: 'Anting-anting', era: 'Folk', image: '/images/collectibles/anting-anting.png', text: 'Ukít na anting-anting ng mandirigma. Pananggalang ng mga tauhan sa gitna ng gulo.' },
+  { name: 'Lapis', era: 'Edukasyon', image: '/images/collectibles/lapis.png', text: 'Isang lapis. Sa SIKLAB, ito ang sagisag ng pag-aaral — at ng mga lihim na sinulat sa kwaderno.' },
+  { name: 'Diyaryo', era: 'Rebolusyon', image: '/images/collectibles/diyaryo.png', text: 'Pahayagang “El Nieraldo de la Revolución.” Balita, propaganda, at senyales para sa susunod na quest.' },
+  { name: 'Marcial Bonifacio', era: 'Alaala', image: '/images/collectibles/nameplate.png', text: 'Nameplate ni Marcial Bonifacio. Isang pangalang kailangang tandaan habang ginagalugad ang nakaraan.' },
+  { name: 'Lamesa', era: 'Kultura', image: '/images/collectibles/lamesa.png', text: 'Mesa ng kakanin at ulam. Paalala na may buhay at hapag pa rin sa gitna ng kasaysayan.' },
+  { name: 'Barko', era: 'Amerikano', image: '/images/collectibles/ship.png', text: 'Barkong may watawat ng Amerika. Tanda ng panahon ng okupasyon at ng mga daungang binabantayan.' },
+  { name: 'Tangke', era: 'Digmaan', image: '/images/collectibles/tank.png', text: 'Tangke mula sa panahon ng giyera. Bigat ng bakbakan na dumaan sa bayan.' },
+  { name: 'Telebisyon', era: 'Modernong Panahon', image: '/images/collectibles/tv.png', text: 'Lumang telebisyon. Dito dumadaan ang mga anunsyo, balita, at alaala ng bagong panahon.' }
 ];
 
 const MAP_IMAGE = '/images/map.png';
+
+function RewardCatalog({ items, variant }) {
+  return (
+    <div className={`reward-catalog${variant === 'cards' ? ' collectible-grid' : ''}`}>
+      {items.map((item) => (
+        <article key={`${item.name}-${item.image || item.era}`} className="reward-item">
+          {item.image ? (
+            <img src={item.image} alt={item.name} className="reward-item-thumb" />
+          ) : (
+            <div className="reward-item-fallback">{item.name.charAt(0)}</div>
+          )}
+          <div className="reward-item-era">{item.era}</div>
+          <h3 className="reward-item-name">{item.name}</h3>
+          <p className="reward-item-text">{item.text}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function CharacterArt({ character, className }) {
+  if (character?.image) {
+    return <img src={character.image} alt={character.name} className={className} />;
+  }
+  return (
+    <div className={className ? 'character-display-fallback' : 'character-portrait-fallback'}>
+      {character?.initials || character?.name?.charAt(0) || '?'}
+    </div>
+  );
+}
 
 const MainContent = forwardRef(function MainContent(props, ref) {
   const { showMapPopup, setShowMapPopup, showCharacterPopup, setShowCharacterPopup, 
     selectedCharacter, setSelectedCharacter, characterCategory, setCharacterCategory,
     sceneryCarouselRef, scrollCarousel,
     showARPopup, setShowARPopup,
-    showPapersPopup, setShowPapersPopup,
     showCollectiblesPopup, setShowCollectiblesPopup } = props;
   
   const [animRef, isVisible] = useScrollAnimation({ threshold: 0.15 });
@@ -606,13 +773,8 @@ const MainContent = forwardRef(function MainContent(props, ref) {
                   <button className="bottom-button" onClick={() => setShowARPopup(true)}>AUGMENTED REALITY</button>
                 </div>
                 <div className="bottom-card">
-                  <div className="bottom-icon">✉️</div>
-                  <p className="bottom-text">check the words of the most iconic</p>
-                  <button className="bottom-button" onClick={() => setShowPapersPopup(true)}>PAPERS</button>
-                </div>
-                <div className="bottom-card">
-                  <div className="bottom-icon">🌺</div>
-                  <p className="bottom-text">look through the iconic plants you found in game</p>
+                  <div className="bottom-icon">🎖️</div>
+                  <p className="bottom-text">gold cards unlocked across every era of the game</p>
                   <button className="bottom-button" onClick={() => setShowCollectiblesPopup(true)}>COLLECTIBLES</button>
                 </div>
               </div>
@@ -679,7 +841,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
             <div className="character-popup-body">
               <div className="character-grid-panel">
                 <div className="character-tabs">
-                  {['main','others'].map(cat => (
+                  {['main','others','soldiers'].map(cat => (
                     <button key={cat} className={`character-tab ${characterCategory === cat ? 'active' : ''}`} onClick={() => { setCharacterCategory(cat); setSelectedCharacter(CHARACTERS_DATA[cat][0]); }}>
                       {cat.toUpperCase()}
                     </button>
@@ -688,7 +850,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
                 <div className={`character-grid ${characterCategory}`}>
                   {CHARACTERS_DATA[characterCategory].map(c => (
                     <div key={c.id} className={`character-portrait ${selectedCharacter?.id === c.id ? 'selected' : ''}`} onClick={() => setSelectedCharacter(c)}>
-                      <img src={c.image} alt={c.name} />
+                      <CharacterArt character={c} />
                       <div className="character-portrait-name">{c.name}</div>
                     </div>
                   ))}
@@ -697,7 +859,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
               <div className="character-display-panel">
                 {selectedCharacter ? (
                   <>
-                    <div className="character-display-bg"><img src={selectedCharacter.image} alt={selectedCharacter.name} className="character-display-image" /></div>
+                    <div className="character-display-bg"><CharacterArt character={selectedCharacter} className="character-display-image" /></div>
                     <div className="character-display-info">
                       {selectedCharacter.role && <div className="character-role-badge">{selectedCharacter.role}</div>}
                       <div className="character-name-bar">
@@ -728,73 +890,28 @@ const MainContent = forwardRef(function MainContent(props, ref) {
         }}>
           <div className="generic-popup-container">
             <button className="floating-close" onClick={() => setShowARPopup(false)}>×</button>
-            <div className="generic-popup-content">
-              <div className="generic-left-section">
-                <h2 className="generic-popup-title">AUGMENTED REALITY</h2>
-                <p className="generic-popup-description">
-                  Experience your favorite characters in the real world! Use AR technology to bring historical 
-                  figures to life right in your room. Take photos, interact, and learn about Philippine history 
-                  in an immersive way like never before.
-                </p>
-                <div className="generic-action-buttons">
-                  <button className="generic-icon-btn" disabled style={{opacity:0.3,cursor:'not-allowed'}}>▶</button>
-                  <button className="generic-download-btn" disabled style={{opacity:0.3,cursor:'not-allowed',background:'#1a1a1a',color:'#666',borderColor:'#444'}}>
-                    View AR Gallery
-                    <span>🔒</span>
-                  </button>
+            <div className="generic-popup-content reward-layout">
+              <div className="reward-top">
+                <div className="generic-left-section">
+                  <h2 className="generic-popup-title">AUGMENTED REALITY</h2>
+                  <p className="generic-popup-description">
+                    I-scan ang AR markers sa laro para lumitaw ang mga karakter at relic sa totoong mundo.
+                    Gamitin ang camera ng phone, iikot ang object, at kunan ng litrato. Hindi na locked —
+                    ito ang AR gallery na makikita sa Chapter 1.
+                  </p>
                 </div>
-              </div>
-              <div className="generic-right-section">
-                <div className="generic-image-card">
-                  <div className="generic-star-badge"></div>
-                  <img src="/images/augmented.png" alt="AR Experience" className="generic-feature-image" />
-                  <div className="generic-badge-circle">
-                    <div className="badge-main">OFFICIAL RELEASE</div>
-                    <div className="badge-sub">★COMING SOON★</div>
-                    <div className="badge-sub">CRYPKO V1.0</div>
+                <div className="generic-right-section">
+                  <div className="generic-image-card">
+                    <img src="/images/augmented.png" alt="AR Experience" className="generic-feature-image" />
+                    <div className="generic-badge-circle">
+                      <div className="badge-main">AR GALLERY</div>
+                      <div className="badge-sub">★ CHAPTER 1 ★</div>
+                      <div className="badge-sub">SIKLAB</div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
-
-      {/* PAPERS POPUP */}
-      {showPapersPopup && createPortal(
-        <div className="generic-popup-overlay" onClick={(e) => {
-          if (e.target === e.currentTarget) setShowPapersPopup(false);
-        }}>
-          <div className="generic-popup-container">
-            <button className="floating-close" onClick={() => setShowPapersPopup(false)}>×</button>
-            <div className="generic-popup-content">
-              <div className="generic-left-section">
-                <h2 className="generic-popup-title">HISTORICAL PAPERS</h2>
-                <p className="generic-popup-description">
-                  Discover authentic historical documents and letters from the Philippine Revolution. Read the 
-                  actual words of heroes like Rizal, Bonifacio, and Aguinaldo. Unlock these precious pieces 
-                  of history as you progress through the game and deepen your understanding of the past.
-                </p>
-                <div className="generic-action-buttons">
-                  <button className="generic-icon-btn" disabled style={{opacity:0.3,cursor:'not-allowed'}}>▶</button>
-                  <button className="generic-download-btn" disabled style={{opacity:0.3,cursor:'not-allowed',background:'#1a1a1a',color:'#666',borderColor:'#444'}}>
-                    Browse Collection
-                    <span>🔒</span>
-                  </button>
-                </div>
-              </div>
-              <div className="generic-right-section">
-                <div className="generic-image-card">
-                  <div className="generic-star-badge"></div>
-                  <img src="/images/news.png" alt="Historical Documents" className="generic-feature-image" />
-                  <div className="generic-badge-circle">
-                    <div className="badge-main">OFFICIAL RELEASE</div>
-                    <div className="badge-sub">★COMING SOON★</div>
-                    <div className="badge-sub">SIKLAB V1.0</div>
-                  </div>
-                </div>
-              </div>
+              <RewardCatalog items={AR_ITEMS} />
             </div>
           </div>
         </div>,
@@ -808,33 +925,27 @@ const MainContent = forwardRef(function MainContent(props, ref) {
         }}>
           <div className="generic-popup-container">
             <button className="floating-close" onClick={() => setShowCollectiblesPopup(false)}>×</button>
-            <div className="generic-popup-content">
-              <div className="generic-left-section">
-                <h2 className="generic-popup-title">COLLECTIBLES</h2>
-                <p className="generic-popup-description">
-                  Gather rare Philippine flora and cultural artifacts throughout your journey. Each collectible 
-                  tells a story of the land's rich biodiversity and heritage. From sampaguita flowers to ancient 
-                  tribal symbols, build your collection and become a master curator of Philippine treasures.
-                </p>
-                <div className="generic-action-buttons">
-                  <button className="generic-icon-btn" disabled style={{opacity:0.3,cursor:'not-allowed'}}>▶</button>
-                  <button className="generic-download-btn" disabled style={{opacity:0.3,cursor:'not-allowed',background:'#1a1a1a',color:'#666',borderColor:'#444'}}>
-                    View Collection
-                    <span>🔒</span>
-                  </button>
+            <div className="generic-popup-content reward-layout">
+              <div className="reward-top">
+                <div className="generic-left-section">
+                  <h2 className="generic-popup-title">COLLECTIBLES</h2>
+                  <p className="generic-popup-description">
+                    Ito ang mga card na na-unlock sa SIKLAB — karakter, sagisag, at bagay mula sa bawat
+                    panahon. Kolektahin sila in-game, tapos balik dito para tingnan ang buong gallery.
+                  </p>
                 </div>
-              </div>
-              <div className="generic-right-section">
-                <div className="generic-image-card">
-                  <div className="generic-star-badge"></div>
-                  <img src="/images/gums.png" alt="Collectible Items" className="generic-feature-image" />
-                  <div className="generic-badge-circle">
-                    <div className="badge-main">OFFICIAL RELEASE</div>
-                    <div className="badge-sub">★ COMING SOON★</div>
-                    <div className="badge-sub">SIKLAB V1.0</div>
+                <div className="generic-right-section">
+                  <div className="generic-image-card">
+                    <img src="/images/collectibles/flag.png" alt="Collectible Cards" className="generic-feature-image" />
+                    <div className="generic-badge-circle">
+                      <div className="badge-main">18 CARDS</div>
+                      <div className="badge-sub">★ UNLOCKED ★</div>
+                      <div className="badge-sub">SIKLAB</div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <RewardCatalog items={COLLECTIBLE_ITEMS} variant="cards" />
             </div>
           </div>
         </div>,

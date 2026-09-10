@@ -137,7 +137,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
               className="arcade-img"
             />
             <video className="arcade-screen-video" autoPlay loop muted playsInline>
-              <source src="/images/TrialTrailer.mp4" type="video/mp4" />
+              <source src="/images/home-trailer.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

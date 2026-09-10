@@ -561,6 +561,17 @@ const FOOTER_STYLES = `
     border: 1px solid rgba(0,255,0,0.2);
   }
 
+  .contributor-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--accent-cyan);
+    background: rgba(34,211,238,0.12);
+  }
+
   .contributor-name {
     font-size: 1rem;
     color: var(--accent-cyan);
@@ -843,11 +854,18 @@ const CONTRIBUTORS_DATA = {
     }
   ],
   community: [
-    { name: 'Beta Tester 1', title: 'Quality Assurance', affiliation: 'Gaming Community' },
-    { name: 'Beta Tester 2', title: 'Quality Assurance', affiliation: 'Gaming Community' },
-    { name: 'Beta Tester 3', title: 'Gameplay Feedback', affiliation: 'Gaming Community' },
-    { name: 'Beta Tester 4', title: 'User Experience', affiliation: 'Gaming Community' },
-    { name: 'Beta Tester 5', title: 'Performance Testing', affiliation: 'Gaming Community' }
+    {
+      name: 'Jericha',
+      title: 'Unit Tester',
+      affiliation: 'Quality Assurance · Playtesting'
+    }
+  ],
+  shs: [
+    {
+      name: 'NU Dasmariñas SHS Testers',
+      title: 'Senior High School Playtesters',
+      affiliation: 'National University Dasmariñas — Senior High School'
+    }
   ]
 };
 
@@ -1049,14 +1067,50 @@ export default function Footer() {
                     </div>
 
                     <div className="contributors-category">
-                      <h3 className="category-title">Community Contributors</h3>
+                      <h3 className="category-title">Unit Tester</h3>
 
                       <div className="contributors-grid">
                         {CONTRIBUTORS_DATA.community.map((contributor, idx) => (
                           <div key={idx} className="contributor-card">
-                            <h4 className="contributor-name">{contributor.name}</h4>
-                            <div className="contributor-title">{contributor.title}</div>
-                            <div className="contributor-affiliation">{contributor.affiliation}</div>
+                            <div className="contributor-card-header">
+                              {contributor.image ? (
+                                <img className="contributor-avatar" src={contributor.image} alt={contributor.name} />
+                              ) : (
+                                <div className="contributor-avatar contributor-initials" aria-hidden="true">
+                                  {contributor.name.charAt(0)}
+                                </div>
+                              )}
+                              <div>
+                                <h4 className="contributor-name">{contributor.name}</h4>
+                                <div className="contributor-title">{contributor.title}</div>
+                                <div className="contributor-affiliation">{contributor.affiliation}</div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="contributors-category">
+                      <h3 className="category-title">SHS Testers</h3>
+
+                      <div className="contributors-grid">
+                        {CONTRIBUTORS_DATA.shs.map((contributor, idx) => (
+                          <div key={idx} className="contributor-card">
+                            <div className="contributor-card-header">
+                              {contributor.image ? (
+                                <img className="contributor-avatar" src={contributor.image} alt={contributor.name} />
+                              ) : (
+                                <div className="contributor-avatar contributor-initials" aria-hidden="true">
+                                  {contributor.name.charAt(0)}
+                                </div>
+                              )}
+                              <div>
+                                <h4 className="contributor-name">{contributor.name}</h4>
+                                <div className="contributor-title">{contributor.title}</div>
+                                <div className="contributor-affiliation">{contributor.affiliation}</div>
+                              </div>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -1086,38 +1140,63 @@ export default function Footer() {
                     <div className="vm-card">
                       <h3>What is SIKLAB?</h3>
                       <p>
-                        SIKLAB is an educational mobile game that brings Philippine history and culture to life through
-                        engaging gameplay and interactive storytelling.
+                        SIKLAB is an educational adventure game that lets players walk through Philippine history —
+                        from the Spanish colonial period to the American and Japanese occupations — through
+                        story, mini-games, AR collectibles, and character encounters.
                       </p>
                     </div>
 
                     <div className="vm-card">
                       <h3>What platforms is SIKLAB available on?</h3>
                       <p>
-                        SIKLAB is designed for mobile devices and will be available on both iOS and Android platforms.
+                        SIKLAB is available for Android (APK) and Windows (EXE). Both builds are hosted on itch.io.
+                      </p>
+                    </div>
+
+                    <div className="vm-card">
+                      <h3>Where do I download the game?</h3>
+                      <p>
+                        Go to the Download section on this site, or open the official page at siklab.itch.io/siklab.
+                        From there you can get SiklabWindows.zip or the Android APK.
                       </p>
                     </div>
 
                     <div className="vm-card">
                       <h3>Is SIKLAB free to play?</h3>
                       <p>
-                        Yes! SIKLAB is free to download and play, with optional in-game features to enhance your experience.
+                        Yes. The current prototype is free to download and play on Windows and Android.
+                      </p>
+                    </div>
+
+                    <div className="vm-card">
+                      <h3>Does the game use augmented reality?</h3>
+                      <p>
+                        Yes. AR lets you view characters like Emmanuel, Xandy, and Isabelle in the real world
+                        through the phone camera. Open the Augmented Reality tab on this site to see the gallery.
+                      </p>
+                    </div>
+
+                    <div className="vm-card">
+                      <h3>What are collectibles?</h3>
+                      <p>
+                        Collectibles are gold cards you unlock in-game — characters, relics, and symbols from each era,
+                        such as the Katipunero, Sampaguita, Watawat, and Yellow Ribbon.
                       </p>
                     </div>
 
                     <div className="vm-card">
                       <h3>How can I provide feedback?</h3>
                       <p>
-                        We welcome feedback! You can reach out to our team through the game's support section or
-                        contact us directly through our official channels.
+                        Use the Feedback section on this site to send reviews, bug reports, and drawings.
+                        You can also email the team at bycoffeepowered@gmail.com.
                       </p>
                     </div>
 
                     <div className="vm-card">
                       <h3>Is the historical content accurate?</h3>
                       <p>
-                        Absolutely! Our content is validated by academic advisors and historians to ensure historical
-                        accuracy and cultural authenticity.
+                        The story is reviewed with academic advisors and historians from NU Dasmariñas and UP Los Baños.
+                        Some characters and side quests are fictional, but they are built around real eras, places, and events.
                       </p>
                     </div>
                   </div>
@@ -1282,14 +1361,41 @@ export default function Footer() {
                     <div className="terminal-prompt-line">cat credits.txt</div>
 
                     <div className="credits-intro">
-                      <h2>Music Credits</h2>
+                      <h2>Credits</h2>
                       <p>
-                        This section displays music used in the SIKLAB website and game. The website music is credited below,
-                        while the actual game music credits are still pending and will be updated once finalized.
+                        Music, fonts, tools, and people behind SIKLAB. In-game chapter tracks were written in GarageBand
+                        by Reign and Aliyah.
                       </p>
                     </div>
 
                     <div className="music-credits-grid">
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Chapter 1 · Spanish Era</div>
+                          <div className="music-credit-title">Background Music</div>
+                          <div className="music-credit-status">Reign &amp; Aliyah (GarageBand)</div>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Chapter 2 · American Era</div>
+                          <div className="music-credit-title">Background Music</div>
+                          <div className="music-credit-status">Reign &amp; Aliyah (GarageBand)</div>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Chapter 2 · Japanese Era</div>
+                          <div className="music-credit-title">Background Music</div>
+                          <div className="music-credit-status">Reign &amp; Aliyah (GarageBand)</div>
+                        </div>
+                      </div>
+
                       <div className="music-credit-card">
                         <div className="vinyl-icon" aria-hidden="true"></div>
                         <div className="music-credit-info">
@@ -1309,7 +1415,7 @@ export default function Footer() {
                       <div className="music-credit-card">
                         <div className="vinyl-icon" aria-hidden="true"></div>
                         <div className="music-credit-info">
-                          <div className="music-credit-label">Game Music</div>
+                          <div className="music-credit-label">Additional Game Music</div>
                           <div className="music-credit-title">Path of Adventure – Free Music Pack for JRPG</div>
                           <div className="music-credit-status">by Kounine</div>
                           <a
@@ -1326,9 +1432,27 @@ export default function Footer() {
                       <div className="music-credit-card">
                         <div className="vinyl-icon" aria-hidden="true"></div>
                         <div className="music-credit-info">
-                          <div className="music-credit-label">Game Music 2</div>
-                          <div className="music-credit-title">Pending</div>
-                          <div className="music-credit-status">Music credit will be added once finalized.</div>
+                          <div className="music-credit-label">Website Fonts</div>
+                          <div className="music-credit-title">Cinzel and Cormorant Garamond</div>
+                          <div className="music-credit-status">Used on the story preview. Courtesy of Google Fonts.</div>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Engine &amp; Hosting</div>
+                          <div className="music-credit-title">Unity · itch.io · Vite · React</div>
+                          <div className="music-credit-status">Game client, demo hosting, and this website.</div>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Team</div>
+                          <div className="music-credit-title">Powered By Coffee</div>
+                          <div className="music-credit-status">Story, design, programming, AR, and this site. See Meet the Team and Contributors.</div>
                         </div>
                       </div>
                     </div>

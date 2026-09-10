@@ -37,7 +37,6 @@ export default function RetroSite({ lightMode, toggleTheme }) {
   const [showMapPopup, setShowMapPopup] = useState(false);
   const [showCharacterPopup, setShowCharacterPopup] = useState(false);
   const [showARPopup, setShowARPopup] = useState(false);
-  const [showPapersPopup, setShowPapersPopup] = useState(false);
   const [showCollectiblesPopup, setShowCollectiblesPopup] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [characterCategory, setCharacterCategory] = useState('main');
@@ -171,8 +170,6 @@ export default function RetroSite({ lightMode, toggleTheme }) {
             scrollCarousel={scrollCarousel}
             showARPopup={showARPopup}
             setShowARPopup={setShowARPopup}
-            showPapersPopup={showPapersPopup}
-            setShowPapersPopup={setShowPapersPopup}
             showCollectiblesPopup={showCollectiblesPopup}
             setShowCollectiblesPopup={setShowCollectiblesPopup}
           />
