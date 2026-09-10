@@ -21,7 +21,7 @@ const HERO_STYLES = `
     justify-content: center;
     background: var(--hero-gradient);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     opacity: 0;
     transform: translateY(50px) scale(0.95);
     transition: background 0.3s ease;
@@ -34,7 +34,7 @@ const HERO_STYLES = `
   .hero-content {
     position: relative;
     z-index: 2;
-    width: min(57%, 900px);
+    width: min(78vw, 720px);
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -42,74 +42,66 @@ const HERO_STYLES = `
   }
 
   .arcade-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%;
     position: relative;
+    width: 100%;
+    display: block;
+    line-height: 0;
   }
 
   .arcade-img {
-    width: 75%;
-    max-width: 900px;
-    min-width: 500px;
+    width: 100%;
     height: auto;
     object-fit: contain;
     display: block;
     margin-bottom: -4px;
     filter: drop-shadow(0 -20px 80px rgba(139,92,246,0.5)) drop-shadow(0 0 120px rgba(88,28,135,0.6));
     position: relative;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
   }
 
-  .arcade-screen-video {
+  .arcade-screen {
     position: absolute;
-    top: 31%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 51%;
-    height: auto;
-    max-height: 53%;
-    object-fit: cover;
-    z-index: 3;
-    border-radius: 12px;
+    left: 14.5%;
+    top: 29.5%;
+    width: 70.1%;
+    height: 56.4%;
+    z-index: 2;
+    overflow: hidden;
     background: #000;
+    border-radius: 0;
+  }
+
+  .arcade-screen-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: #000;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content {
+      width: min(86vw, 640px);
+    }
   }
 
   @media (max-width: 768px) {
     .hero {
       min-height: auto;
-      padding-top: 28px;
-      overflow: visible;
+      padding-top: 24px;
     }
 
     .hero-content {
-      width: 100%;
-      max-width: 520px;
-      padding: 0 12px;
-    }
-
-    .arcade-img {
-      width: 100%;
-      min-width: 0;
-      max-width: 520px;
-    }
-
-    .arcade-screen-video {
-      width: 51%;
-      top: 31%;
-      border-radius: 8px;
+      width: min(92vw, 480px);
+      padding: 0;
     }
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 480px) {
     .hero-content {
-      padding: 0 8px;
-    }
-
-    .arcade-screen-video {
-      border-radius: 5px;
+      width: 94vw;
     }
   }
 `;
@@ -131,15 +123,24 @@ const Hero = forwardRef(function Hero(_props, ref) {
       >
         <div className="hero-content">
           <div className="arcade-container">
+            <div className="arcade-screen">
+              <video
+                className="arcade-screen-video"
+                autoPlay
+                loop
+                muted
+                playsInline
+                webkit-playsinline="true"
+                preload="auto"
+              >
+                <source src="/images/home-trailer.mp4" type="video/mp4" />
+              </video>
+            </div>
             <img
               src="/images/arcade-cabinet.png"
               alt="Siklab Arcade Cabinet"
               className="arcade-img"
             />
-            <video className="arcade-screen-video" autoPlay loop muted playsInline>
-              <source src="/images/home-trailer.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </section>

@@ -859,13 +859,6 @@ const CONTRIBUTORS_DATA = {
       title: 'Unit Tester',
       affiliation: 'Quality Assurance · Playtesting'
     }
-  ],
-  shs: [
-    {
-      name: 'NU Dasmariñas SHS Testers',
-      title: 'Senior High School Playtesters',
-      affiliation: 'National University Dasmariñas — Senior High School'
-    }
   ]
 };
 
@@ -1071,31 +1064,6 @@ export default function Footer() {
 
                       <div className="contributors-grid">
                         {CONTRIBUTORS_DATA.community.map((contributor, idx) => (
-                          <div key={idx} className="contributor-card">
-                            <div className="contributor-card-header">
-                              {contributor.image ? (
-                                <img className="contributor-avatar" src={contributor.image} alt={contributor.name} />
-                              ) : (
-                                <div className="contributor-avatar contributor-initials" aria-hidden="true">
-                                  {contributor.name.charAt(0)}
-                                </div>
-                              )}
-                              <div>
-                                <h4 className="contributor-name">{contributor.name}</h4>
-                                <div className="contributor-title">{contributor.title}</div>
-                                <div className="contributor-affiliation">{contributor.affiliation}</div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="contributors-category">
-                      <h3 className="category-title">SHS Testers</h3>
-
-                      <div className="contributors-grid">
-                        {CONTRIBUTORS_DATA.shs.map((contributor, idx) => (
                           <div key={idx} className="contributor-card">
                             <div className="contributor-card-header">
                               {contributor.image ? (
