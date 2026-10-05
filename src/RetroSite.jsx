@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import communitySfx from './assets/sounds/Community.mp3';
 
 import Header from './Header';
@@ -6,28 +6,80 @@ import Hero from './Hero';
 import MainContent from './MainContent';
 import MechanicsSection from './MechanicsSection';
 import DownloadSection from './DownloadSection';
-import ScenerySection from './ScenerySection';
 import FeedbackSection from './FeedbackSection';
 import Footer from './Footer';
 
 const GLOBAL_STYLES = `
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: none; }
-  body { 
-    font-family: 'Courier New', monospace; 
-    image-rendering: pixelated; 
-    margin: 0; 
-    overflow-x: hidden; 
+  html {
+    scroll-padding-top: var(--site-header-height, 96px);
+    scroll-snap-type: y proximity;
   }
-  .retro-site { 
-    min-height: 100vh; 
+  body {
+    font-family: 'Courier New', monospace;
+    image-rendering: pixelated;
+    margin: 0;
+    overflow-x: hidden;
+  }
+  .retro-site {
+    min-height: 100vh;
     background: var(--bg-gradient);
-    color: var(--text-primary); 
+    color: var(--text-primary);
     position: relative;
     transition: background 0.3s ease, color 0.3s ease;
   }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
   .main-scrollable { display: flex; flex-direction: column; }
   .section-full { width: 100%; }
+  .tab-screen {
+    height: calc(100dvh - var(--site-header-height, 96px));
+    min-height: calc(100dvh - var(--site-header-height, 96px));
+    max-height: calc(100dvh - var(--site-header-height, 96px));
+    scroll-snap-align: start;
+    overflow: hidden;
+  }
+  .footer-snap {
+    scroll-snap-align: start;
+  }
+  .scalloped-border {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: #fef3c7;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .scalloped-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20px 0px, var(--bg-primary) 20px, transparent 21px);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+  }
+  .scalloped-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20px 40px, #fef3c7 20px, transparent 21px);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+  }
+  .scalloped-border.inverted {
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
+  }
+  .scalloped-border.inverted::before {
+    background: radial-gradient(circle at 20px 0px, #fef3c7 20px, transparent 21px);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+  }
+  .scalloped-border.inverted::after {
+    background: radial-gradient(circle at 20px 40px, var(--bg-primary) 20px, transparent 21px);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+  }
 `;
 
 const USERS_DB = {};
@@ -46,15 +98,33 @@ export default function RetroSite({ lightMode, toggleTheme }) {
   const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' });
   const [authError, setAuthError] = useState('');
   const [userCount, setUserCount] = useState(0);
-  const [muted, setMuted] = useState(false); // 👈 new
+  const [muted, setMuted] = useState(false);
 
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const mechanicsRef = useRef(null);
   const downloadRef = useRef(null);
   const feedbackRef = useRef(null);
+  const footerRef = useRef(null);
   const sceneryCarouselRef = useRef(null);
   const communityAudioRef = useRef(null);
+
+  const refs = {
+    home: homeRef,
+    about: aboutRef,
+    mechanics: mechanicsRef,
+    download: downloadRef,
+    feedback: feedbackRef,
+    footer: footerRef,
+  };
+
+  const scrollToSection = useCallback((key) => {
+    const el = refs[key]?.current;
+    setActiveSection(key);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
 
   useEffect(() => {
     const a = new Audio(communitySfx);
@@ -65,43 +135,39 @@ export default function RetroSite({ lightMode, toggleTheme }) {
     return () => { a.pause(); a.currentTime = 0; communityAudioRef.current = null; };
   }, []);
 
-  // 👈 new: sync muted state with audio element
   useEffect(() => {
     if (communityAudioRef.current) {
       communityAudioRef.current.muted = muted;
     }
   }, [muted]);
 
-  const scrollToSection = (key) => {
-    const refs = { home: homeRef, about: aboutRef, mechanics: mechanicsRef, download: downloadRef, feedback: feedbackRef };
-    const ref = refs[key];
-    if (ref?.current) {
-      window.scrollTo({ top: ref.current.offsetTop - 80, behavior: 'smooth' });
-      setActiveSection(key);
-    }
-  };
+  useEffect(() => {
+    const sections = [
+      { key: 'home', ref: homeRef },
+      { key: 'about', ref: aboutRef },
+      { key: 'mechanics', ref: mechanicsRef },
+      { key: 'download', ref: downloadRef },
+      { key: 'feedback', ref: feedbackRef },
+      { key: 'footer', ref: footerRef },
+    ];
+    const onScroll = () => {
+      const headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--site-header-height')) || 96;
+      const pos = window.scrollY + headerH + 8;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = sections[i].ref.current;
+        if (el && el.offsetTop <= pos) {
+          setActiveSection(sections[i].key);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const scrollCarousel = (dir) => {
     sceneryCarouselRef.current?.scrollBy({ left: dir === 'left' ? -350 : 350, behavior: 'smooth' });
   };
-
-  useEffect(() => {
-    const onScroll = () => {
-      const sections = [
-        { key: 'home', ref: homeRef }, { key: 'about', ref: aboutRef },
-        { key: 'mechanics', ref: mechanicsRef }, { key: 'download', ref: downloadRef },
-        { key: 'feedback', ref: feedbackRef }
-      ];
-      const pos = window.scrollY + 150;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].ref.current && sections[i].ref.current.offsetTop <= pos) {
-          setActiveSection(sections[i].key); break;
-        }
-      }
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const openModal = (mode) => { setAuthModal(mode); setAuthError(''); setAuthForm({ name: '', email: '', password: '' }); };
   const closeModal = () => { setAuthModal(null); setAuthError(''); };
@@ -134,7 +200,7 @@ export default function RetroSite({ lightMode, toggleTheme }) {
       <style>{GLOBAL_STYLES}</style>
       <div className="retro-site">
         <Header
-          activeSection={activeSection}
+          activeSection={activeSection === 'footer' ? 'feedback' : activeSection}
           scrollToSection={scrollToSection}
           currentUser={currentUser}
           userCount={userCount}
@@ -183,9 +249,11 @@ export default function RetroSite({ lightMode, toggleTheme }) {
           <DownloadSection ref={downloadRef} />
 
           <FeedbackSection ref={feedbackRef} />
-        </main>
 
-        <Footer />
+          <div className="footer-snap" ref={footerRef} id="credits">
+            <Footer />
+          </div>
+        </main>
       </div>
     </>
   );

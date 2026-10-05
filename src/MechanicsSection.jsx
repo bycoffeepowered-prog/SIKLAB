@@ -17,8 +17,7 @@ const MECHANICS_STYLES = `
   @keyframes mechBounceLeft { 0%,100% { transform:translateX(0); } 50% { transform:translateX(-10px); } }
 
   .mechanics-section {
-    min-height: 100vh;
-    padding: 80px 40px;
+    padding: 32px 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +48,9 @@ const MECHANICS_STYLES = `
     box-shadow: 0 8px 32px var(--shadow); 
     backdrop-filter: blur(10px); 
     border: 1px solid var(--border-color); 
-    height: 640px; 
+    height: auto;
+    min-height: 420px;
+    max-height: calc(100dvh - var(--site-header-height, 128px) - 80px); 
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -157,7 +158,7 @@ const MECHANICS_STYLES = `
   }
   @media (max-width: 1200px) { .mechanics-container { grid-template-columns: 1fr; } .mechanics-right-panel { position: static; order: -1; } .mechanics-grid { grid-template-columns: repeat(4,1fr); } .intro-arrow { display: none; } }
   @media (max-width: 1024px) { .mechanics-grid { grid-template-columns: repeat(3,1fr); } }
-  @media (max-width: 640px) { .mechanics-section { padding: 60px 20px; } .mechanics-grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .polaroid-title { font-size: 12px; } .detail-title { font-size: 24px; } .intro-icon { font-size: 60px; } .intro-title { font-size: 28px; } }
+  @media (max-width: 640px) { .mechanics-section { padding: 36px 16px; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .polaroid-title { font-size: 12px; } .detail-title { font-size: 24px; } .intro-icon { font-size: 60px; } .intro-title { font-size: 28px; } }
 `;
 
 const MECHANICS_DATA = [
@@ -177,7 +178,7 @@ const MechanicsSection = forwardRef(function MechanicsSection({ selectedMechanic
   return (
     <>
       <style>{MECHANICS_STYLES}</style>
-      <section className={`mechanics-section section-full ${isVisible ? 'animate-in' : ''}`} ref={(node) => {
+      <section className={`mechanics-section section-full tab-screen ${isVisible ? 'animate-in' : ''}`} ref={(node) => {
         animRef.current = node;
         if (typeof ref === 'function') ref(node);
         else if (ref) ref.current = node;

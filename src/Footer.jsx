@@ -855,7 +855,12 @@ const CONTRIBUTORS_DATA = {
   ],
   community: [
     {
-      name: 'Jericha',
+      name: 'Cassandra Leiralyn Magistrado',
+      title: 'Unit Tester',
+      affiliation: 'Quality Assurance · Playtesting'
+    },
+    {
+      name: 'Jhenzel Antolin',
       title: 'Unit Tester',
       affiliation: 'Quality Assurance · Playtesting'
     }

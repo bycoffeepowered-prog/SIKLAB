@@ -27,8 +27,7 @@ const DOWNLOAD_STYLES = `
   }
 
   .download-section {
-    min-height: 100vh;
-    padding: 80px 80px;
+    padding: 40px 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,7 +286,7 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
       <style>{DOWNLOAD_STYLES}</style>
 
       <section
-        className={`download-section section-full ${
+        className={`download-section section-full tab-screen ${
           isVisible ? "animate-in" : ""
         }`}
         ref={(node) => {

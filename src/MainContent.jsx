@@ -14,22 +14,44 @@ const MAIN_STYLES = `
   @keyframes charFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-20px); } }
 
   .main-content-wrapper {
-    opacity: 0;
-    transform: translateY(60px) scale(0.95);
+    opacity: 1;
+    transform: none;
+    background: #fef3c7;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .main-content-wrapper.animate-in {
-    animation: mainPopUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: none;
   }
 
   .main-content {
     background: #fef3c7;
-    padding: 3rem 0;
+    padding: 0.75rem 0 0.85rem;
+    flex: 1;
+    min-height: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-content > .container {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    max-width: 1180px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: flex-start;
+    gap: 0.35rem;
   }
   
   .scalloped-border {
     position: relative;
     width: 100%;
     height: 40px;
+    flex-shrink: 0;
     background-color: #fef3c7;
     overflow: hidden;
     z-index: 10;
@@ -65,26 +87,26 @@ const MAIN_STYLES = `
     background-repeat: repeat-x;
   }
   
-  .main-title { font-family: 'Cinzel', serif; font-size: 3rem; font-weight: 900; color: #1e293b; margin-bottom: 1rem; line-height: 1.1; letter-spacing: 0.08em; }
-  .main-description { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.28rem; font-weight: 600; color: #3f2f1e; margin-bottom: 2rem; line-height: 1.85; }
-  .room-sections-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; margin-bottom: 2rem; }
-  .room-section { width: 100%; }
-  .room-title { font-size: 2rem; font-weight: 900; color: #1e293b; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 4px solid #dc2626; line-height: 1.2; }
-  .room-items { display: flex; flex-direction: column; gap: 1rem; }
-  .room-card { background: white; border: 4px solid #1e293b; padding: 1rem; box-shadow: 8px 8px 0 rgba(0,0,0,0.2); }
-  .room-card-content { display: flex; gap: 1rem; }
-  .room-icon { font-size: 4rem; flex-shrink: 0; }
+  .main-title { font-family: 'Cinzel', serif; font-size: clamp(1.7rem, 3.6vh, 2.5rem); font-weight: 900; color: #1e293b; margin-bottom: 0.2rem; line-height: 1.1; letter-spacing: 0.08em; flex-shrink: 0; }
+  .main-description { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.05rem, 2.05vh, 1.28rem); font-weight: 600; color: #3f2f1e; margin-bottom: 0.45rem; line-height: 1.55; text-align: justify; text-justify: inter-word; flex: 0 1 auto; min-height: 0; }
+  .room-sections-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-bottom: 0.7rem; flex: 0 0 auto; }
+  .room-section { width: 100%; display: flex; flex-direction: column; }
+  .room-title { font-size: clamp(1rem, 2.1vh, 1.35rem); font-weight: 900; color: #1e293b; margin-bottom: 0.4rem; padding-bottom: 0.25rem; border-bottom: 4px solid #dc2626; line-height: 1.2; }
+  .room-items { display: flex; flex-direction: column; }
+  .room-card { background: white; border: 4px solid #1e293b; padding: 0.7rem 0.95rem; box-shadow: 5px 5px 0 rgba(0,0,0,0.2); }
+  .room-card-content { display: flex; gap: 0.85rem; align-items: center; width: 100%; }
+  .room-icon { font-size: 2.4rem; flex-shrink: 0; }
   .room-info { flex: 1; }
-  .room-text { font-size: 0.875rem; color: #475569; margin-bottom: 0.5rem; line-height: 1.4; }
-  .room-button { background: #1e293b; color: white; padding: 0.5rem 1rem; border: none; font-size: 0.75rem; font-weight: bold; font-family: 'Courier New', monospace; cursor: pointer; transition: background 0.2s; }
+  .room-text { font-size: 0.85rem; color: #475569; margin-bottom: 0.35rem; line-height: 1.35; }
+  .room-button { background: #1e293b; color: white; padding: 0.45rem 1rem; border: none; font-size: 0.75rem; font-weight: bold; font-family: 'Courier New', monospace; cursor: pointer; transition: background 0.2s; }
   .room-button:hover { background: #dc2626; }
-  .additional-section { border-top: 4px solid #1e293b; padding-top: 2rem; }
-  .mc-section-title { font-size: 2rem; font-weight: 900; color: #1e293b; margin-bottom: 1.5rem; line-height: 1.2; }
-  .bottom-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.5rem; }
-  .bottom-card { background: white; border: 4px solid #1e293b; padding: 1rem; box-shadow: 8px 8px 0 rgba(0,0,0,0.2); display: flex; flex-direction: column; }
-  .bottom-icon { font-size: 4rem; text-align: center; margin-bottom: 1rem; }
-  .bottom-text { font-size: 0.75rem; color: #475569; line-height: 1.4; margin-bottom: 1rem; flex: 1; }
-  .bottom-button { width: 100%; background: #1e293b; color: white; padding: 0.75rem 1rem; border: none; font-size: 0.75rem; font-weight: bold; font-family: 'Courier New', monospace; cursor: pointer; transition: background 0.2s; }
+  .additional-section { border-top: 4px solid #1e293b; padding-top: 0.65rem; padding-bottom: 8px; flex: 0 0 auto; display: flex; flex-direction: column; }
+  .mc-section-title { font-size: clamp(1rem, 2.1vh, 1.35rem); font-weight: 900; color: #1e293b; margin-bottom: 0.4rem; line-height: 1.2; }
+  .bottom-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+  .bottom-card { background: white; border: 4px solid #1e293b; padding: 0.65rem 0.9rem 0.75rem; box-shadow: 5px 5px 0 rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+  .bottom-icon { font-size: 2rem; text-align: center; margin-bottom: 0.2rem; }
+  .bottom-text { font-size: 0.8rem; color: #475569; line-height: 1.35; margin-bottom: 0.4rem; text-align: center; }
+  .bottom-button { width: 100%; background: #1e293b; color: white; padding: 0.5rem 1rem; border: none; font-size: 0.75rem; font-weight: bold; font-family: 'Courier New', monospace; cursor: pointer; transition: background 0.2s; }
   .bottom-button:hover { background: #dc2626; }
 
   /* Map popup - fixed to show full map without scrolling */
@@ -231,7 +253,7 @@ const MAIN_STYLES = `
   .scenery-arrow { background: rgba(139,115,85,0.8); border-radius: 999px; border: 2px solid #3d2817; width: 40px; height: 40px; font-size: 22px; color: #f4e4c1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.18s; flex-shrink: 0; }
   .scenery-arrow:hover { background: #8b7355; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
   .scenery-card { flex: 0 0 320px; scroll-snap-align: center; }
-  .scenery-card-glass { position: relative; width: 100%; height: 440px; border-radius: 40px; padding: 22px 22px 26px; box-sizing: border-box; background: rgba(10,40,20,0.75); border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(22px); display: flex; flex-direction: column; align-items: center; justify-content: space-between; transition: transform 0.2s ease,box-shadow 0.2s ease; cursor: pointer; }
+  .scenery-card-glass { position: relative; width: 100%; height: 440px; border-radius: 40px; padding: 22px 22px 26px; box-sizing: border-box; background: rgba(74, 48, 28, 0.9); border: 1px solid rgba(244,228,193,0.35); backdrop-filter: blur(22px); display: flex; flex-direction: column; align-items: center; justify-content: space-between; transition: transform 0.2s ease,box-shadow 0.2s ease; cursor: pointer; }
   .scenery-card-glass:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.8); }
   .scenery-image-wrap { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; padding-bottom: 12px; overflow: hidden; }
   .scenery-image { max-width: 100%; width: 100%; height: 280px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
@@ -247,14 +269,10 @@ const MAIN_STYLES = `
   .character-tab:hover { background: rgba(233,69,96,0.2); color: #fff; }
   .character-tab.active { background: rgba(233,69,96,0.3); color: #e94560; border-bottom-color: #e94560; }
   .character-grid { flex: 1; padding: 1rem; overflow-y: auto; display: grid; grid-template-columns: repeat(2,1fr); gap: 0.8rem; align-content: start; }
-  .character-grid.others,
-  .character-grid.soldiers { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .character-grid.others .character-portrait,
-  .character-grid.soldiers .character-portrait { aspect-ratio: 1; }
-  .character-grid.others .character-portrait img,
-  .character-grid.soldiers .character-portrait img { min-width: 0; min-height: 0; object-fit: cover; object-position: center top; }
-  .character-grid.others .character-portrait-name,
-  .character-grid.soldiers .character-portrait-name { font-size: 0.65rem; padding: 6px 3px 3px; line-height: 1.1; }
+  .character-grid.others { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .character-grid.others .character-portrait { aspect-ratio: 1; }
+  .character-grid.others .character-portrait img { min-width: 0; min-height: 0; object-fit: cover; object-position: center top; }
+  .character-grid.others .character-portrait-name { font-size: 0.65rem; padding: 6px 3px 3px; line-height: 1.1; }
   .character-portrait { position: relative; aspect-ratio: 1; border: 3px solid #444; border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.2s; background: linear-gradient(135deg,#1a1a2e,#0f3460); }
   .character-portrait img,
   .character-portrait-fallback { width: 100%; height: 100%; object-fit: cover; object-position: center top; min-width: 120px; min-height: 120px; transition: transform 0.2s; }
@@ -567,7 +585,7 @@ const MAIN_STYLES = `
 
   @media (max-width: 1000px) {
     .main-title { font-size: 2rem; }
-    .room-sections-grid { grid-template-columns: 1fr; }
+    .room-sections-grid { grid-template-columns: repeat(2,1fr); }
     .map-popup-container, .character-popup-container { max-width: 100%; height: 95vh; }
     .character-popup-body { grid-template-columns: 1fr; max-height: none; }
     .character-display-panel { order: 1; min-height: 300px; }
@@ -581,15 +599,14 @@ const MAIN_STYLES = `
   }
 
   @media (max-width: 768px) {
-    .scalloped-border { 
-      height: 30px; 
+    .main-content {
+      padding: 0.7rem 0 0.8rem;
     }
-  }
-  
-  @media (max-width: 480px) {
-    .scalloped-border { 
-      height: 25px; 
-    }
+    .scalloped-border { height: 28px; }
+    .main-title { font-size: 1.6rem; }
+    .main-description { font-size: 1rem; line-height: 1.5; }
+    .room-title, .mc-section-title { font-size: 1.05rem; }
+    .room-icon { font-size: 2.2rem; }
   }
 `;
 
@@ -611,11 +628,6 @@ const CHARACTERS_DATA = {
     { id: 12, name: 'Nicolo',        image: '/images/Nicholo.png',   bio: 'Isa siyang lihim na operatiba ng pamahalaan na tanging hangarin ay gawin ang makabubuti para sa bayan. Handa niyang sundin ang anumang utos, gaano man ito kabigat, basta para sa kapakanan ng bansa.'},
     { id: 16, name: 'Eumir',         image: '/images/euriblue.png',  bio: 'Isang maliit ngunit masayahing taga-salubong sa paliparan na mahilig magpatawa. Ngunit kapag kailangan na siya, madalas siyang nawawala dahil nakakatulog.'},
     { id: 17, name: 'Manong Jhong',  image: '/images/ced.png',       bio: 'Isang mabait at masipag na bagger sa paliparan na laging handang tumulong sa iba. Mahilig siya sa basketball at may lihim na paghanga sa kambal ng kanyang kaibigan.' }    
-  ],
-  soldiers: [
-    { id: 18, name: 'George', initials: 'G', bio: 'Isang sundalong Hapones na naitalaga sa Maynila noong panahon ng pananakop. Sa likod ng kanyang uniporme ay isang binata na unti-unting nakakita ng sangkatauhan sa mga taong dapat sana’y kaaway niya — lalo na kay Isabelle.' },
-    { id: 19, name: 'Tenyente Mori', initials: 'M', bio: 'Opisyal ng garison na mahigpit magpatupad ng kautusan sa lungsod. Bihira siyang magpakita ng awa sa publiko, ngunit alam niyang ang takot ng mga sibilyan ang siyang nagpapanatili sa kanilang kapangyarihan.' },
-    { id: 20, name: 'Hiroshi', initials: 'H', bio: 'Isang karaniwang enlisted soldier na ipinadala palayo sa kanyang pamilya. Hindi siya mahilig sa palabas na tapang; mas madalas siyang nakatingin sa dagat, iniisip kung kailan ba talaga matatapos ang giyera.' }
   ]
 };
 
@@ -717,7 +729,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
   return (
     <>
       <style>{MAIN_STYLES}</style>
-      <div className={`main-content-wrapper ${isVisible ? 'animate-in' : ''}`} ref={(node) => {
+      <div className={`main-content-wrapper tab-screen ${isVisible ? 'animate-in' : ''}`} ref={(node) => {
         animRef.current = node;
         if (typeof ref === 'function') ref(node);
         else if (ref) ref.current = node;
@@ -726,11 +738,11 @@ const MainContent = forwardRef(function MainContent(props, ref) {
         <section className="main-content section-full" id="about">
           <div className="container">
             <h1 className="main-title">STORY</h1>
-            <p className="main-description"> 
-              SIKLAB follows a student from Dasmariñas whose ordinary life is suddenly interrupted after a mysterious glitch transports them into different periods of Philippine history. What begins as a desperate attempt to return home soon becomes a journey through the struggles, sacrifices, and identities that shaped the nation.
-              Across multiple historical eras from the Spanish Colonial Period, to the American and Japanese Occupation, and eventually the Martial Law and EDSA era the player explores living versions of the past through interactive storytelling, mini-games, and historically inspired environments. Along the way, they meet individuals from different walks of life: revolutionaries, babaylan, students, workers, resistance members, and ordinary Filipinos trying to survive during times of conflict and change.
-              Rather than presenting history as a simple timeline of events, SIKLAB allows players to experience it through personal stories, cultural traditions, exploration, and meaningful choices. Through AR collectibles, larong kalye-inspired mini-games, side quests, and character driven encounters, the game aims to make Philippine history more immersive, emotional, and engaging for modern learners.
-              As the player travels deeper into the past, they slowly realize that history is not merely something written in textbooks, it is a living memory carried by people, sacrifices, and stories that continue to shape Filipino identity and the future of the nation.
+            <p className="main-description">
+              Sinusundan ng SIKLAB ang isang estudyante mula sa Dasmariñas na biglang naabala ang pangkaraniwang buhay matapos siyang dalhin ng misteryosong glitch sa iba’t ibang panahon ng kasaysayan ng Pilipinas. Ang nagsimula bilang desperadong pagtatangkang makauwi ay naging paglalakbay sa mga pagpupunyagi, sakripisyo, at pagkakakilanlang humubog sa bansa.
+              Sa iba’t ibang yugto ng kasaysayan — mula sa Panahon ng Kolonyalismong Espanyol, hanggang sa Pananakop ng Amerika at Hapon, at sa kalaunan ang Batas Militar at panahon ng EDSA — tinutuklas ng manlalaro ang buhay na anyo ng nakaraan sa pamamagitan ng interactive na pagkukuwento, mga mini-game, at mga kapaligirang hango sa kasaysayan. Sa daan, makikilala nila ang mga tao mula sa iba’t ibang buhay: mga rebolusyonaryo, babaylan, estudyante, manggagawa, miyembro ng resistance, at mga karaniwang Pilipinong nagsisikap mabuhay sa gitna ng gulo at pagbabago.
+              Sa halip na iharap ang kasaysayan bilang simpleng talaan ng mga pangyayari, hinahayaan ng SIKLAB ang mga manlalaro na maranasan ito sa pamamagitan ng mga personal na kuwento, tradisyon, paggalugad, at makabuluhang mga desisyon. Sa tulong ng mga AR collectible, mga mini-game na hango sa larong kalye, side quest, at mga paghaharap ng karakter, layunin ng laro na gawing mas buhay, emosyonal, at kapana-panabik ang kasaysayan ng Pilipinas para sa mga modernong mag-aaral.
+              Habang lalong lumalalim ang manlalaro sa nakaraan, unti-unti niyang natutuklasan na ang kasaysayan ay hindi lamang nakasulat sa mga aklat — ito ay isang buhay na alaala na dala ng mga tao, sakripisyo, at mga kuwentong patuloy na humuhubog sa pagkakakilanlang Pilipino at sa kinabukasan ng bansa.
             </p>
 
             <div className="room-sections-grid">
@@ -841,7 +853,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
             <div className="character-popup-body">
               <div className="character-grid-panel">
                 <div className="character-tabs">
-                  {['main','others','soldiers'].map(cat => (
+                  {['main','others'].map(cat => (
                     <button key={cat} className={`character-tab ${characterCategory === cat ? 'active' : ''}`} onClick={() => { setCharacterCategory(cat); setSelectedCharacter(CHARACTERS_DATA[cat][0]); }}>
                       {cat.toUpperCase()}
                     </button>

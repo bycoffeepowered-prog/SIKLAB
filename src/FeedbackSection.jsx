@@ -32,8 +32,14 @@ const FEEDBACK_STYLES = `
   }
 
   .feedback-section {
-    min-height:100vh; padding:80px 40px; color:#fff;
-    opacity:0; transform:translateY(60px) scale(0.9);
+    padding: 24px 40px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .feedback-section.animate-in {
     animation:fbPopUp 1s cubic-bezier(0.34,1.56,0.64,1) forwards;
@@ -102,7 +108,7 @@ const FEEDBACK_STYLES = `
   /* Layout */
   .paint-content {
     display:flex; background:var(--theme-bg,#C0C0C0);
-    padding:3px; gap:3px; min-height:520px;
+    padding:3px; gap:3px; min-height:360px; max-height:min(520px, calc(100dvh - var(--site-header-height, 128px) - 180px));
   }
   .paint-toolbox {
     background:#C0C0C0;
@@ -268,12 +274,14 @@ const FEEDBACK_STYLES = `
   }
 
   /* Section wrapper */
-  .feedback-header       { text-align:center; margin-bottom:3rem; }
+  .feedback-header       { text-align:center; margin-bottom:1.25rem; }
   .feedback-title        { font-size:2.5rem; color:#22d3ee; margin-bottom:1rem; letter-spacing:.05em; }
   .feedback-description  { font-size:1.1rem; color:#94a3b8; max-width:600px; margin:0 auto; }
   .paint-interface-wrapper { max-width:1000px; margin:0 auto; }
 
   @media (max-width:768px) {
+    .feedback-section { padding: 28px 12px; justify-content: flex-start; }
+    .feedback-header { margin-bottom: 1.25rem; }
     .paint-content   { flex-direction:column; }
     .paint-toolbox   { flex-direction:row; overflow-x:auto; }
     .dev-profile-btn { width:56px; height:56px; }
@@ -832,7 +840,7 @@ const FeedbackSection = forwardRef(function FeedbackSection(_props, ref) {
     <>
       <style>{FEEDBACK_STYLES}</style>
       <section
-        className={`feedback-section section-full ${isVisible ? "animate-in" : ""}`}
+        className={`feedback-section section-full tab-screen ${isVisible ? "animate-in" : ""}`}
         ref={(node) => {
           animRef.current = node;
           if (typeof ref === "function") ref(node);

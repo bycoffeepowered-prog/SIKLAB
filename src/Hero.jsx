@@ -15,16 +15,19 @@ const HERO_STYLES = `
 
   .hero {
     padding: 0;
-    min-height: 50vh;
+    height: calc(100dvh - var(--site-header-height, 96px));
+    min-height: calc(100dvh - var(--site-header-height, 96px));
+    max-height: calc(100dvh - var(--site-header-height, 96px));
     display: flex;
     align-items: flex-end;
     justify-content: center;
     background: var(--hero-gradient);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     opacity: 0;
     transform: translateY(50px) scale(0.95);
     transition: background 0.3s ease;
+    box-sizing: border-box;
   }
 
   .hero.animate-in {
@@ -34,7 +37,9 @@ const HERO_STYLES = `
   .hero-content {
     position: relative;
     z-index: 2;
-    width: min(78vw, 720px);
+    height: 100%;
+    width: auto;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -43,17 +48,21 @@ const HERO_STYLES = `
 
   .arcade-container {
     position: relative;
-    width: 100%;
+    height: 100%;
+    width: max-content;
+    max-width: 100%;
     display: block;
     line-height: 0;
   }
 
   .arcade-img {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
+    max-width: 100vw;
     object-fit: contain;
+    object-position: bottom center;
     display: block;
-    margin-bottom: -4px;
+    margin-bottom: 0;
     filter: drop-shadow(0 -20px 80px rgba(139,92,246,0.5)) drop-shadow(0 0 120px rgba(88,28,135,0.6));
     position: relative;
     z-index: 1;
@@ -83,25 +92,18 @@ const HERO_STYLES = `
 
   @media (max-width: 1024px) {
     .hero-content {
-      width: min(86vw, 640px);
+      max-width: 100%;
     }
   }
 
   @media (max-width: 768px) {
     .hero {
-      min-height: auto;
-      padding-top: 24px;
+      padding-top: 0;
     }
 
-    .hero-content {
-      width: min(92vw, 480px);
-      padding: 0;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-content {
-      width: 94vw;
+    .hero-content,
+    .arcade-container {
+      max-width: 100%;
     }
   }
 `;
@@ -113,7 +115,7 @@ const Hero = forwardRef(function Hero(_props, ref) {
     <>
       <style>{HERO_STYLES}</style>
       <section
-        className={`hero section-full ${isVisible ? 'animate-in' : ''}`}
+        className={`hero section-full tab-screen ${isVisible ? 'animate-in' : ''}`}
         ref={(node) => {
           animRef.current = node;
           if (typeof ref === 'function') ref(node);

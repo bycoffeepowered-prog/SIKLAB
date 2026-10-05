@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const siklabGif = '/images/siklab.gif';
 
 const HEADER_STYLES = `
   :root {
-    --site-header-height: 124px;
+    --site-header-height: 96px;
   }
 
   .retro-site {
@@ -127,7 +127,7 @@ const HEADER_STYLES = `
 
   @media (max-width: 768px) {
     :root {
-      --site-header-height: 54px;
+      --site-header-height: 56px;
     }
 
     .header {
@@ -191,7 +191,7 @@ const HEADER_STYLES = `
 
   @media (max-width: 400px) {
     :root {
-      --site-header-height: 50px;
+      --site-header-height: 52px;
     }
 
     .header-row {
@@ -221,6 +221,25 @@ export default function Header({
   toggleMute,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const syncHeight = () => {
+      document.documentElement.style.setProperty('--site-header-height', `${el.offsetHeight}px`);
+    };
+
+    syncHeight();
+    const ro = new ResizeObserver(syncHeight);
+    ro.observe(el);
+    window.addEventListener('resize', syncHeight);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', syncHeight);
+    };
+  }, []);
 
   const handleNavClick = (key) => {
     scrollToSection(key);
@@ -231,7 +250,7 @@ export default function Header({
     <>
       <style>{HEADER_STYLES}</style>
 
-      <header className="header">
+      <header className="header" ref={headerRef}>
         <div className="container">
           <div className="header-row">
             <div className="logo">
