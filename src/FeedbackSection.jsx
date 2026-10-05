@@ -362,7 +362,13 @@ function DrawCanvas({ onPost, posted, artistName }) {
   };
 
   const handlePost = () => {
-    onPost(canvasRef.current.toDataURL());
+    canvasRef.current.toBlob((blob) => {
+      if (!blob) {
+        alert("Couldn't capture the drawing. Try again!");
+        return;
+      }
+      onPost(blob);
+    }, "image/png");
   };
 
   return (
@@ -536,16 +542,11 @@ function PaintInterface() {
   };
 
   // ── Post drawing ──
-  const handlePostDrawing = useCallback(async (dataUrl) => {
+  const handlePostDrawing = useCallback(async (blob) => {
     const name  = prompt("Sign your artwork! (or leave blank for Anonymous)") ?? "";
     const label = name.trim() || "Anonymous Artist";
-
-    // Convert base64 dataUrl to a Blob for Storage upload
-    const res        = await fetch(dataUrl);
-    const blob       = await res.blob();
     const fileName = `drawing_${Date.now()}.png`;
 
-    // Upload image to Supabase Storage
     const { error: uploadError } = await supabase.storage
       .from("drawings")
       .upload(fileName, blob, { contentType: "image/png" });
