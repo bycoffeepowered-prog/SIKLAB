@@ -244,21 +244,24 @@ body,
     font-size: 26px !important;
   }
 
-  .hero,
+  .hero {
+    height: calc(100dvh - var(--site-header-height, 56px)) !important;
+    min-height: calc(100dvh - var(--site-header-height, 56px)) !important;
+    max-height: calc(100dvh - var(--site-header-height, 56px)) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
   .tab-screen,
   .main-content-wrapper,
   .download-section,
   .feedback-section,
   .mechanics-section {
-    height: calc(100dvh - var(--site-header-height, 56px)) !important;
+    height: auto !important;
+    max-height: none !important;
     min-height: calc(100dvh - var(--site-header-height, 56px)) !important;
-    max-height: calc(100dvh - var(--site-header-height, 56px)) !important;
+    overflow: visible !important;
     scroll-margin-top: var(--site-header-height, 56px) !important;
-  }
-
-  .hero {
-    overflow: hidden !important;
-    padding: 0 !important;
   }
 
   .download-section {
@@ -268,7 +271,6 @@ body,
   /* Mechanics mobile */
   .mechanics-section {
     padding: 16px 12px !important;
-    overflow: hidden !important;
   }
 
   .mechanics-container {

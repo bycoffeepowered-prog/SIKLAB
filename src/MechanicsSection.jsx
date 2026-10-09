@@ -156,8 +156,8 @@ const MECHANICS_STYLES = `
     margin: 0; 
     transition: color 0.3s ease;
   }
-  @media (max-width: 1200px) { .mechanics-container { grid-template-columns: 1fr; } .mechanics-right-panel { position: static; order: -1; } .mechanics-grid { grid-template-columns: repeat(4,1fr); } .intro-arrow { display: none; } }
-  @media (max-width: 1024px) { .mechanics-grid { grid-template-columns: repeat(3,1fr); } }
+  @media (max-width: 1200px) { .mechanics-container { grid-template-columns: 1fr; } .mechanics-right-panel { position: static; order: -1; height: auto; max-height: none; } .mechanics-grid { grid-template-columns: repeat(4,1fr); } .intro-arrow { display: none; } }
+  @media (max-width: 1024px) { .mechanics-section { height: auto; overflow: visible; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(3,1fr); } }
   @media (max-width: 640px) { .mechanics-section { padding: 36px 16px; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .polaroid-title { font-size: 12px; } .detail-title { font-size: 24px; } .intro-icon { font-size: 60px; } .intro-title { font-size: 28px; } }
 `;
 

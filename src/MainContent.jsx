@@ -20,6 +20,7 @@ const MAIN_STYLES = `
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    isolation: isolate;
   }
   .main-content-wrapper.animate-in {
     animation: none;
@@ -54,7 +55,7 @@ const MAIN_STYLES = `
     flex-shrink: 0;
     background-color: #fef3c7;
     overflow: hidden;
-    z-index: 10;
+    z-index: 1;
   }
   .scalloped-border::before {
     content: "";
@@ -88,12 +89,12 @@ const MAIN_STYLES = `
   }
   
   .main-title { font-family: 'Cinzel', serif; font-size: clamp(1.7rem, 3.6vh, 2.5rem); font-weight: 900; color: #1e293b; margin-bottom: 0.2rem; line-height: 1.1; letter-spacing: 0.08em; flex-shrink: 0; }
-  .main-description { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.05rem, 2.05vh, 1.28rem); font-weight: 600; color: #3f2f1e; margin-bottom: 0.45rem; line-height: 1.55; text-align: justify; text-justify: inter-word; flex: 0 1 auto; min-height: 0; }
-  .room-sections-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-bottom: 0.7rem; flex: 0 0 auto; }
+  .main-description { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.05rem, 2.05vh, 1.28rem); font-weight: 600; color: #3f2f1e; margin-bottom: 0.45rem; line-height: 1.55; text-align: justify; text-justify: inter-word; flex: 0 1 auto; min-height: 0; overflow: hidden; }
+  .room-sections-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: 0.7rem; flex: 0 0 auto; }
   .room-section { width: 100%; display: flex; flex-direction: column; }
   .room-title { font-size: clamp(1rem, 2.1vh, 1.35rem); font-weight: 900; color: #1e293b; margin-bottom: 0.4rem; padding-bottom: 0.25rem; border-bottom: 4px solid #dc2626; line-height: 1.2; }
   .room-items { display: flex; flex-direction: column; }
-  .room-card { background: white; border: 4px solid #1e293b; padding: 0.7rem 0.95rem; box-shadow: 5px 5px 0 rgba(0,0,0,0.2); }
+  .room-card { background: white; border: 4px solid #1e293b; padding: 0.7rem 0.95rem; box-shadow: 5px 5px 0 rgba(0,0,0,0.2); position: relative; z-index: 1; }
   .room-card-content { display: flex; gap: 0.85rem; align-items: center; width: 100%; }
   .room-icon { font-size: 2.4rem; flex-shrink: 0; }
   .room-info { flex: 1; }
@@ -102,8 +103,8 @@ const MAIN_STYLES = `
   .room-button:hover { background: #dc2626; }
   .additional-section { border-top: 4px solid #1e293b; padding-top: 0.65rem; padding-bottom: 8px; flex: 0 0 auto; display: flex; flex-direction: column; }
   .mc-section-title { font-size: clamp(1rem, 2.1vh, 1.35rem); font-weight: 900; color: #1e293b; margin-bottom: 0.4rem; line-height: 1.2; }
-  .bottom-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
-  .bottom-card { background: white; border: 4px solid #1e293b; padding: 0.65rem 0.9rem 0.75rem; box-shadow: 5px 5px 0 rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+  .bottom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .bottom-card { background: white; border: 4px solid #1e293b; padding: 0.65rem 0.9rem 0.75rem; box-shadow: 5px 5px 0 rgba(0,0,0,0.2); display: flex; flex-direction: column; position: relative; z-index: 1; }
   .bottom-icon { font-size: 2rem; text-align: center; margin-bottom: 0.2rem; }
   .bottom-text { font-size: 0.8rem; color: #475569; line-height: 1.35; margin-bottom: 0.4rem; text-align: center; }
   .bottom-button { width: 100%; background: #1e293b; color: white; padding: 0.5rem 1rem; border: none; font-size: 0.75rem; font-weight: bold; font-family: 'Courier New', monospace; cursor: pointer; transition: background 0.2s; }
@@ -583,9 +584,29 @@ const MAIN_STYLES = `
     }
   }
 
+  @media (max-width: 1099px) {
+    .main-content-wrapper,
+    .main-content,
+    .main-content > .container {
+      overflow: visible;
+      height: auto;
+      max-height: none;
+      min-height: 0;
+    }
+    .main-description {
+      flex: none;
+      min-height: auto;
+      overflow: visible;
+      font-size: 1.05rem;
+    }
+    .room-sections-grid,
+    .bottom-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 1000px) {
     .main-title { font-size: 2rem; }
-    .room-sections-grid { grid-template-columns: repeat(2,1fr); }
     .map-popup-container, .character-popup-container { max-width: 100%; height: 95vh; }
     .character-popup-body { grid-template-columns: 1fr; max-height: none; }
     .character-display-panel { order: 1; min-height: 300px; }
@@ -600,7 +621,7 @@ const MAIN_STYLES = `
 
   @media (max-width: 768px) {
     .main-content {
-      padding: 0.7rem 0 0.8rem;
+      padding: 1rem 0 1.25rem;
     }
     .scalloped-border { height: 28px; }
     .main-title { font-size: 1.6rem; }

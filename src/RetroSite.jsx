@@ -32,14 +32,31 @@ const GLOBAL_STYLES = `
   .main-scrollable { display: flex; flex-direction: column; }
   .section-full { width: 100%; }
   .tab-screen {
-    height: calc(100dvh - var(--site-header-height, 96px));
     min-height: calc(100dvh - var(--site-header-height, 96px));
-    max-height: calc(100dvh - var(--site-header-height, 96px));
     scroll-snap-align: start;
-    overflow: hidden;
   }
   .footer-snap {
     scroll-snap-align: start;
+  }
+  @media (min-width: 1100px) and (min-height: 820px) {
+    .tab-screen {
+      height: calc(100dvh - var(--site-header-height, 96px));
+      max-height: calc(100dvh - var(--site-header-height, 96px));
+      overflow: hidden;
+    }
+  }
+  @media (max-width: 1099px), (max-height: 819px) {
+    html { scroll-snap-type: none; }
+    .tab-screen {
+      height: auto;
+      max-height: none;
+      overflow: visible;
+    }
+    .hero.tab-screen {
+      height: calc(100dvh - var(--site-header-height, 96px));
+      max-height: calc(100dvh - var(--site-header-height, 96px));
+      overflow: hidden;
+    }
   }
   .scalloped-border {
     position: relative;
@@ -48,7 +65,7 @@ const GLOBAL_STYLES = `
     flex-shrink: 0;
     background-color: #fef3c7;
     overflow: hidden;
-    z-index: 10;
+    z-index: 1;
   }
   .scalloped-border::before {
     content: "";
