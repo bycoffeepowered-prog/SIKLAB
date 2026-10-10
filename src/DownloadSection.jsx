@@ -3,14 +3,15 @@ import { useScrollAnimation } from "./Usescrollanimation";
 import { supabase } from "./supabaseClient";
 
 const ITCH_URL = "https://siklab.itch.io/siklab";
+const APK_URL = "https://drive.google.com/file/d/1FG6FvKoxQwQRN3XauASJwcKoKiXJEPUG/view?usp=sharing";
 
 const DEFAULT_CONTROLS = {
   download_enabled: true,
   download_title: "Download APK",
   download_subtitle: "Android",
-  download_link: ITCH_URL,
+  download_link: APK_URL,
 
-  preview_enabled: true,
+  preview_enabled: false,
   preview_title: "Download EXE",
   preview_link: ITCH_URL,
 };
@@ -264,9 +265,9 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
         download_title: "Download APK",
         download_subtitle:
           data.download_subtitle || DEFAULT_CONTROLS.download_subtitle,
-        download_link: ITCH_URL,
+        download_link: APK_URL,
 
-        preview_enabled: true,
+        preview_enabled: false,
         preview_title: "Download EXE",
         preview_link: ITCH_URL,
       });
