@@ -38,12 +38,10 @@ const GLOBAL_STYLES = `
   .footer-snap {
     scroll-snap-align: start;
   }
-  @media (min-width: 1100px) and (min-height: 820px) {
-    .tab-screen {
-      height: calc(100dvh - var(--site-header-height, 96px));
-      max-height: calc(100dvh - var(--site-header-height, 96px));
-      overflow: hidden;
-    }
+  .tab-screen {
+    height: auto;
+    max-height: none;
+    overflow: visible;
   }
   @media (max-width: 1099px), (max-height: 819px) {
     html { scroll-snap-type: none; }

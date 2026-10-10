@@ -1,3 +1,10 @@
+/* Shared containment rules also apply to popup portals. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body,
 #root {
@@ -226,7 +233,7 @@ body,
     box-sizing: border-box !important;
   }
 
-  .paint-toolbox > div {
+  .paint-toolbox > div:not(.paint-tools-label) {
     display: flex !important;
     flex-direction: row !important;
     gap: 8px !important;
@@ -261,7 +268,7 @@ body,
     max-height: none !important;
     min-height: calc(100dvh - var(--site-header-height, 56px)) !important;
     overflow: visible !important;
-    scroll-margin-top: var(--site-header-height, 56px) !important;
+    scroll-margin-top: 0 !important;
   }
 
   .download-section {
@@ -390,4 +397,258 @@ body,
     width: 130px !important;
     min-width: 130px !important;
   }
+}
+
+/* Content must grow with wrapped text, including on short desktop screens. */
+.main-content-wrapper,
+.main-content,
+.main-content > .container,
+.main-description {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.main-description {
+  flex: 0 0 auto !important;
+}
+
+.main-description + .main-description {
+  margin-top: 0.75rem;
+}
+
+.room-info,
+.bottom-card,
+.mechanics-container > *,
+.download-inner > *,
+.download-btn > div,
+.paint-canvas-container,
+.terminal-tabs-wrapper,
+.character-popup-body > * {
+  min-width: 0;
+}
+
+.retro-site :is(h1, h2, h3, p, button),
+.generic-popup-content,
+.character-details-panel,
+.character-name-text,
+.terminal-body {
+  overflow-wrap: anywhere;
+}
+
+.mechanics-right-panel {
+  max-height: none !important;
+}
+
+.paint-window {
+  width: 100%;
+}
+
+.paint-content {
+  max-height: none !important;
+}
+
+.paint-inner,
+.paint-inner-draw {
+  height: auto !important;
+  min-height: 360px;
+}
+
+.paint-inner-draw .draw-canvas {
+  flex: 0 0 auto;
+  height: 280px;
+}
+
+.paint-statusbar {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Reserve space for popup headers and scroll only the remaining body. */
+.map-popup-overlay,
+.character-popup-overlay,
+.generic-popup-overlay,
+.terminal-overlay {
+  height: 100dvh !important;
+}
+
+.map-popup-container,
+.character-popup-container,
+.generic-popup-container,
+.terminal-popup {
+  height: min(88dvh, 760px) !important;
+  max-height: calc(100dvh - 24px) !important;
+}
+
+.map-popup-content,
+.character-popup-body,
+.generic-popup-content {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  flex: 1 1 auto;
+  overscroll-behavior: contain;
+}
+
+.terminal-window {
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+.terminal-body {
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+
+.terminal-tabs {
+  flex-shrink: 0;
+}
+
+.terminal-tabs-wrapper {
+  overflow-x: auto;
+}
+
+.terminal-tab {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.scenery-carousel,
+.reward-top > *,
+.reward-item,
+.footer-top > *,
+.footer-bottom > * {
+  min-width: 0;
+}
+
+.character-portrait-name,
+.scenery-pill,
+.map-coordinates,
+.footer-legal,
+.reward-item,
+.download-btn {
+  overflow-wrap: anywhere;
+}
+
+.footer-legal {
+  flex-wrap: wrap;
+}
+
+.download-img {
+  flex-shrink: 0;
+}
+
+.download-btn-wrap.disabled .download-btn {
+  padding-bottom: 38px;
+}
+
+.download-btn-wrap .download-soon {
+  top: auto;
+  bottom: 8px;
+  transform: none;
+}
+
+@media (max-width: 1000px) {
+  .character-popup-body {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .character-popup-body > * {
+    flex-shrink: 0;
+  }
+
+  .character-details-panel {
+    overflow: visible !important;
+    padding: 16px !important;
+  }
+
+  .character-section {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-sections-grid,
+  .bottom-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .feedback-title {
+    font-size: clamp(1.4rem, 5vw, 2.5rem) !important;
+  }
+
+  .download-buttons {
+    width: 100%;
+  }
+
+  .generic-popup-content {
+    padding: 20px 14px !important;
+    align-content: start;
+  }
+
+  .generic-popup-title {
+    font-size: clamp(1.5rem, 7vw, 2.5rem) !important;
+  }
+
+  .mechanics-intro {
+    padding: 24px 12px !important;
+  }
+
+  .reviews-wall {
+    grid-template-columns: repeat(auto-fill, minmax(min(190px, 100%), 1fr));
+  }
+
+  .post-it-inline {
+    min-width: 0;
+    width: 85%;
+    padding: 20px 14px;
+  }
+
+  .footer-nav {
+    display: flex !important;
+    gap: 12px;
+  }
+
+  .paint-input,
+  .paint-select,
+  .paint-textarea {
+    font-size: 16px !important;
+  }
+
+  .scenery-carousel-wrapper {
+    gap: 6px !important;
+  }
+
+  .scenery-arrow {
+    width: 28px !important;
+    height: 28px !important;
+    padding: 0;
+  }
+
+  .scenery-card {
+    flex-basis: 100% !important;
+    min-width: 0;
+  }
+
+  .scenery-card-glass {
+    padding: 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .scenery-pill {
+    max-width: 100%;
+    padding: 10px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Keep content visible even when an animation observer never fires. */
+.hero,
+.mechanics-section,
+.download-section,
+.feedback-section {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
 }

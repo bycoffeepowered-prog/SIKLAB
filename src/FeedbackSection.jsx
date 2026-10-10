@@ -275,8 +275,8 @@ const FEEDBACK_STYLES = `
 
   /* Section wrapper */
   .feedback-header       { text-align:center; margin-bottom:1.25rem; }
-  .feedback-title        { font-size:2.5rem; color:#22d3ee; margin-bottom:1rem; letter-spacing:.05em; }
-  .feedback-description  { font-size:1.1rem; color:#94a3b8; max-width:600px; margin:0 auto; }
+  .feedback-title        { font-size:2.5rem; color:var(--accent-cyan); margin-bottom:1rem; letter-spacing:.05em; }
+  .feedback-description  { font-size:1.1rem; color:var(--text-secondary); max-width:600px; margin:0 auto; }
   .paint-interface-wrapper { max-width:1000px; margin:0 auto; }
 
   @media (max-width:768px) {

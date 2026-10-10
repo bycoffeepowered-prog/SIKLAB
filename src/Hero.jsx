@@ -58,7 +58,7 @@ const HERO_STYLES = `
   .arcade-img {
     height: 100%;
     width: auto;
-    max-width: 100vw;
+    max-width: 100%;
     object-fit: contain;
     object-position: bottom center;
     display: block;
