@@ -652,3 +652,157 @@ body,
   transform: none !important;
   animation: none !important;
 }
+
+/* Explore popup: use the site theme and show one full location at a time. */
+.map-popup-overlay .map-popup-container {
+  background: var(--bg-primary);
+  border-color: var(--accent-color);
+}
+
+.map-popup-container .map-popup-content {
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+}
+
+.map-popup-content .map-grid-overlay {
+  display: none;
+}
+
+.map-popup-content .map-footer {
+  background: transparent;
+  border: 0;
+  color: var(--text-primary);
+}
+
+.map-popup-content .map-footer-image-container {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  border: 1px solid var(--border-accent);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.map-popup-content .map-footer-image-container:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.map-popup-content .map-footer-image {
+  width: 100%;
+  height: auto !important;
+  max-height: 60dvh;
+  object-fit: contain;
+  object-position: center;
+}
+
+.map-popup-content .map-stamp {
+  background: var(--card-bg);
+  border-color: var(--border-accent);
+  color: var(--accent-cyan);
+  transform: none;
+}
+
+.map-popup-content .scenery-carousel {
+  gap: 20px;
+  padding: 8px 0 16px;
+}
+
+.map-popup-content .scenery-card {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.map-popup-content .scenery-card-glass {
+  height: auto;
+  padding: 0 !important;
+  border: 0;
+  border-radius: 0 !important;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.map-popup-content .scenery-card-glass:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.map-popup-content .map-pin-marker {
+  display: none;
+}
+
+.map-popup-content .scenery-image-wrap {
+  flex: none;
+  padding: 0;
+}
+
+.map-popup-content .scenery-image {
+  width: 100%;
+  height: clamp(180px, 45dvh, 440px);
+  object-fit: contain;
+  object-position: center;
+  border: 1px solid var(--border-accent);
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: none;
+}
+
+.map-popup-content .scenery-pill {
+  max-width: 100%;
+  padding: 12px 0 !important;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.map-popup-content .scenery-arrow {
+  background: var(--card-bg-solid);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.map-popup-content .scenery-arrow:hover {
+  background: var(--bg-secondary);
+  box-shadow: 0 0 12px var(--shadow);
+}
+
+.map-popup-container > .floating-close {
+  background: var(--card-bg-solid);
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+}
+
+.map-popup-content .scenery-image-wrap {
+  padding: 8px 10px 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .map-popup-content .scenery-image {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .map-popup-content .scenery-card-glass:hover .scenery-image {
+    transform: translateY(-4px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 8px 18px var(--shadow);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .map-popup-content .scenery-card-glass:active .scenery-image {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 8px 18px var(--shadow);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-popup-content .scenery-card-glass:hover .scenery-image {
+    transform: none;
+  }
+
+  .map-popup-content .scenery-image {
+    transition: none;
+  }
+}

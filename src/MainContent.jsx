@@ -488,6 +488,14 @@ const MAIN_STYLES = `
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 0.9rem;
   }
+  @media (min-width: 769px) {
+    .reward-catalog:not(.collectible-grid) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      width: 100%;
+      max-width: 800px;
+      align-self: center;
+    }
+  }
   .reward-item {
     background: #fff;
     border: 3px solid #1a1a1a;
@@ -500,8 +508,8 @@ const MAIN_STYLES = `
   .reward-item-fallback {
     width: 100%;
     height: 110px;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    object-position: center;
     border-radius: 10px;
     margin-bottom: 0.6rem;
     border: 2px solid #1a1a1a;
@@ -732,19 +740,23 @@ const MainContent = forwardRef(function MainContent(props, ref) {
     if (!sceneryCarouselRef.current) return;
     
     const carousel = sceneryCarouselRef.current;
-    const cardWidth = 348;
-    const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
-    
-    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    
-    setTimeout(() => {
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      if (carousel.scrollLeft >= maxScroll) {
-        carousel.scrollLeft = 0;
-      } else if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = maxScroll;
-      }
-    }, 300);
+    const cards = Array.from(carousel.querySelectorAll('.scenery-card'));
+    if (!cards.length) return;
+
+    const viewport = carousel.getBoundingClientRect();
+    const center = viewport.left + carousel.clientLeft + carousel.clientWidth / 2;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    const positions = cards.map((card) => {
+      const bounds = card.getBoundingClientRect();
+      return Math.max(0, Math.min(maxScroll,
+        carousel.scrollLeft + bounds.left + bounds.width / 2 - center
+      ));
+    });
+    const target = direction === 'left'
+      ? positions.findLast((position) => position < carousel.scrollLeft - 1) ?? positions.at(-1)
+      : positions.find((position) => position > carousel.scrollLeft + 1) ?? positions[0];
+
+    carousel.scrollTo({ left: target, behavior: 'smooth' });
   };
 
   return (

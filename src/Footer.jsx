@@ -1372,6 +1372,23 @@ export default function Footer() {
                       <div className="music-credit-card">
                         <div className="vinyl-icon" aria-hidden="true"></div>
                         <div className="music-credit-info">
+                          <div className="music-credit-label">Chapter 3 · Background Music</div>
+                          <div className="music-credit-title">SF_CA_Airport</div>
+                          <div className="music-credit-status">by rui_aires (Freesound)</div>
+                          <a
+                            className="music-credit-link"
+                            href="https://pixabay.com/sound-effects/city-sf-ca-airport-19184/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Pixabay Sound Source
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
                           <div className="music-credit-label">Website Music</div>
                           <div className="music-credit-title">NoCopyrightSound633</div>
                           <a
@@ -1398,6 +1415,40 @@ export default function Footer() {
                             rel="noopener noreferrer"
                           >
                             Unity Asset Store
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">SFX Audio</div>
+                          <div className="music-credit-title">Medium Text Blip</div>
+                          <div className="music-credit-status">by malakme (Freesound)</div>
+                          <a
+                            className="music-credit-link"
+                            href="https://pixabay.com/sound-effects/film-special-effects-medium-text-blip-14855/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Pixabay Sound Source
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="music-credit-card">
+                        <div className="vinyl-icon" aria-hidden="true"></div>
+                        <div className="music-credit-info">
+                          <div className="music-credit-label">Airport Alarm</div>
+                          <div className="music-credit-title">Alarm</div>
+                          <div className="music-credit-status">by 8footdino_on_scratch</div>
+                          <a
+                            className="music-credit-link"
+                            href="https://pixabay.com/sound-effects/film-special-effects-alarm-301729/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Pixabay Sound Source
                           </a>
                         </div>
                       </div>
