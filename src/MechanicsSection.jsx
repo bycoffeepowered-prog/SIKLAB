@@ -134,12 +134,41 @@ const MECHANICS_STYLES = `
     color: var(--text-primary); 
     transition: background 0.3s ease, color 0.3s ease;
   }
+  .detail-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 8px;
+  }
   .detail-title { 
     font-size: 32px; 
     font-weight: 700; 
-    margin: 0 0 8px; 
+    margin: 0; 
     color: var(--text-primary); 
     transition: color 0.3s ease;
+  }
+  .detail-watch-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 2px solid var(--accent-cyan, #22d3ee);
+    background: var(--card-bg-solid);
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .detail-watch-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.45);
   }
   .detail-subtitle { 
     font-size: 16px; 
@@ -158,7 +187,7 @@ const MECHANICS_STYLES = `
   }
   @media (max-width: 1200px) { .mechanics-container { grid-template-columns: 1fr; } .mechanics-right-panel { position: static; order: -1; height: auto; max-height: none; } .mechanics-grid { grid-template-columns: repeat(4,1fr); } .intro-arrow { display: none; } }
   @media (max-width: 1024px) { .mechanics-section { height: auto; overflow: visible; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(3,1fr); } }
-  @media (max-width: 640px) { .mechanics-section { padding: 36px 16px; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .polaroid-title { font-size: 12px; } .detail-title { font-size: 24px; } .intro-icon { font-size: 60px; } .intro-title { font-size: 28px; } }
+  @media (max-width: 640px) { .mechanics-section { padding: 36px 16px; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .polaroid-title { font-size: 12px; } .detail-title-row { flex-wrap: wrap; } .detail-title { font-size: 24px; } .intro-icon { font-size: 60px; } .intro-title { font-size: 28px; } }
 `;
 
 const MECHANICS_DATA = [
@@ -167,7 +196,7 @@ const MECHANICS_DATA = [
   { id: 3, name: 'Story-based Game', desc: 'Experience the tales of the past.', detail: 'A blend of immersive narratives with historical settings, offering experiences ranging from accurate portrayals to fictionalized tales in the past.', color: 'yellow', image: storyImg},
   { id: 4, name: 'Low-Poly', desc: 'Level up and unlock skills', detail: 'A unique 3D computer graphics style utilizing a small number of polygons to create lightweight, minimalist, and blocky models.', color: 'lime', image: polyImg },
   { id: 5, name: 'Augmented Reality', desc: 'Complete epic missions', detail: 'An immersive technology that integrates digital information into the real world. Through a camera-enabled device, users can interact with their physical space and computer-generated content at the same time.', color: 'cyan', image: arImg},
-  { id: 6, name: 'Touchscreen Controls', desc: 'Discover Philippine landmarks', detail: 'Mobile touch screen gaming controls are optimized through customizable, on-screen virtual joysticks and buttons, often supplemented by attachable hardware like small suction-cup joysticks for better tactile feedback. ', color: 'purple', image: mobImg }
+  { id: 6, name: 'Touchscreen Controls', desc: 'Discover Philippine landmarks', detail: 'Mobile touch screen gaming controls are optimized through customizable, on-screen virtual joysticks and buttons, often supplemented by attachable hardware like small suction-cup joysticks for better tactile feedback. ', color: 'purple', image: mobImg, watchUrl: 'https://youtu.be/JzEPzMRKs0A?si=vbTonssv_jxJbMfR' }
 ];
 
 const ICONS = { 1: '🏞️', 2: '🗺️', 3: '📜', 4: '🙋🏻‍♂️', 5: '🥽', 6: '📱' };
@@ -211,7 +240,19 @@ const MechanicsSection = forwardRef(function MechanicsSection({ selectedMechanic
                   <img src={selectedMechanic.image} alt={selectedMechanic.name} />
                 </div>
                 <div className="detail-body">
-                  <h2 className="detail-title">{selectedMechanic.name}</h2>
+                  <div className="detail-title-row">
+                    <h2 className="detail-title">{selectedMechanic.name}</h2>
+                    {selectedMechanic.watchUrl && (
+                      <a
+                        className="detail-watch-btn"
+                        href={selectedMechanic.watchUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        You Watch
+                      </a>
+                    )}
+                  </div>
                   <p className="detail-subtitle">{selectedMechanic.desc}</p>
                   <div className="detail-divider"></div>
                   <p className="detail-description">{selectedMechanic.detail}</p>
