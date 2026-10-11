@@ -100,6 +100,37 @@ const DOWNLOAD_STYLES = `
     background: #000;
   }
 
+  .walkthrough-caption {
+    margin-top: 12px;
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .walkthrough-caption span {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .walkthrough-audio-toggle {
+    display: block;
+    margin: 10px auto 0;
+    padding: 8px 16px;
+    border: 2px solid var(--accent-cyan);
+    background: var(--card-bg-solid);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .walkthrough-audio-toggle:hover {
+    background: var(--bg-secondary);
+  }
+
   .download-buttons {
     flex: 0 0 40%;
     display: flex;
@@ -250,6 +281,7 @@ function ButtonContent({ img, alt, title, subtitle }) {
 const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
   const [animRef, isVisible] = useScrollAnimation({ threshold: 0.15 });
   const [controls, setControls] = useState(DEFAULT_CONTROLS);
+  const [videoMuted, setVideoMuted] = useState(true);
 
   useEffect(() => {
     async function loadControls() {
@@ -306,11 +338,33 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
             <div className="download-tablet-bezel">
               <span className="download-tablet-camera" aria-hidden="true" />
               <div className="download-tablet-screen">
-                <video className="download-video" autoPlay loop muted playsInline>
-                  <source src="/images/download-preview.mp4" type="video/mp4" />
+                <video
+                  key="walkthrough-with-audio-v2"
+                  className="download-video"
+                  autoPlay
+                  loop
+                  muted={videoMuted}
+                  playsInline
+                  controls
+                  aria-label="SIKLAB gameplay walkthrough"
+                  onVolumeChange={(event) => setVideoMuted(event.currentTarget.muted)}
+                >
+                  <source src="/images/download-preview.mp4?v=audio-v2" type="video/mp4" />
                 </video>
               </div>
             </div>
+            <p className="walkthrough-caption">
+              Gameplay Walkthrough
+              <span>Starts muted. Turn on walkthrough audio whenever you like.</span>
+            </p>
+            <button
+              type="button"
+              className="walkthrough-audio-toggle"
+              aria-label={videoMuted ? 'Unmute walkthrough audio' : 'Mute walkthrough audio'}
+              onClick={() => setVideoMuted((muted) => !muted)}
+            >
+              {videoMuted ? '🔊 Unmute Video' : '🔇 Mute Video'}
+            </button>
           </div>
 
           <div className="download-buttons">

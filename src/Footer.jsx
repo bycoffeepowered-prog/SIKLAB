@@ -1009,6 +1009,15 @@ export default function Footer() {
                         >
                           💻 github.com/bycoffeepowered-prog
                         </a>
+
+                        <a
+                          className="team-contact-link"
+                          href="https://youtube.com/@poweredbycoffee-cmnw"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          📺 youtube.com/@poweredbycoffee-cmnw
+                        </a>
                       </div>
                     </div>
                   </div>
