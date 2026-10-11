@@ -3,9 +3,11 @@ import { useScrollAnimation } from "./Usescrollanimation";
 import { supabase } from "./supabaseClient";
 
 const ANDROID_APK_URL =
-  "https://drive.google.com/file/d/1v7wuNnHZyJM_qMdHOdGrFNaJXZ8Vr0mX/view";
+  "https://drive.google.com/file/d/1udpYJ-o228JppEPpnHPC2GJWacYHl20w/view?usp=sharing";
 const PC_URL =
   "https://drive.google.com/file/d/1GSZtmqfatEiNoi5ofP-Xv4YbYsa1MbDg/view";
+const DEMO_URL =
+  "https://drive.google.com/file/d/1v7wuNnHZyJM_qMdHOdGrFNaJXZ8Vr0mX/view";
 
 const DEFAULT_CONTROLS = {
   download_enabled: true,
@@ -371,6 +373,20 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                   <span className="download-soon">Soon</span>
                 </div>
               )}
+
+              <a
+                href={DEMO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="download-btn active"
+              >
+                <ButtonContent
+                  img="/images/girl.png"
+                  alt="Demo"
+                  title="Download"
+                  subtitle="Demo"
+                />
+              </a>
             </div>
           </div>
         </div>
