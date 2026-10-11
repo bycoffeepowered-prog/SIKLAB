@@ -5,9 +5,9 @@ import { supabase } from "./supabaseClient";
 const ANDROID_APK_URL =
   "https://drive.google.com/file/d/1ybDnlAPBM7Jxuks4iJ3hpzOlRkjpF8au/view?usp=sharing";
 const PC_URL =
-  "https://drive.google.com/file/d/1GSZtmqfatEiNoi5ofP-Xv4YbYsa1MbDg/view";
+  "https://drive.google.com/file/d/1dpAacB3-hOrnm1gs_zH9QwVRH1CIp-ot/view?usp=sharing";
 const DEMO_URL =
-  "https://drive.google.com/file/d/1v7wuNnHZyJM_qMdHOdGrFNaJXZ8Vr0mX/view";
+  "https://drive.google.com/file/d/1PGMXv35inJBVAXcqBAZFLlixAl6IhGtI/view?usp=sharing";
 
 const DEFAULT_CONTROLS = {
   download_enabled: true,
