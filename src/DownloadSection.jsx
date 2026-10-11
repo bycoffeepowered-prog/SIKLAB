@@ -2,18 +2,20 @@ import { forwardRef, useEffect, useState } from "react";
 import { useScrollAnimation } from "./Usescrollanimation";
 import { supabase } from "./supabaseClient";
 
-const ITCH_URL = "https://siklab.itch.io/siklab";
-const APK_URL = "https://drive.google.com/file/d/1FG6FvKoxQwQRN3XauASJwcKoKiXJEPUG/view?usp=sharing";
+const ANDROID_APK_URL =
+  "https://drive.google.com/file/d/1v7wuNnHZyJM_qMdHOdGrFNaJXZ8Vr0mX/view";
+const PC_URL =
+  "https://drive.google.com/file/d/1GSZtmqfatEiNoi5ofP-Xv4YbYsa1MbDg/view";
 
 const DEFAULT_CONTROLS = {
   download_enabled: true,
   download_title: "Download APK",
   download_subtitle: "Android",
-  download_link: APK_URL,
+  download_link: ANDROID_APK_URL,
 
-  preview_enabled: false,
-  preview_title: "Download EXE",
-  preview_link: ITCH_URL,
+  preview_enabled: true,
+  preview_title: "Download PC",
+  preview_link: PC_URL,
 };
 
 const DOWNLOAD_STYLES = `
@@ -265,11 +267,11 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
         download_title: "Download APK",
         download_subtitle:
           data.download_subtitle || DEFAULT_CONTROLS.download_subtitle,
-        download_link: APK_URL,
+        download_link: ANDROID_APK_URL,
 
-        preview_enabled: false,
-        preview_title: "Download EXE",
-        preview_link: ITCH_URL,
+        preview_enabled: true,
+        preview_title: "Download PC",
+        preview_link: PC_URL,
       });
     }
 
@@ -311,7 +313,7 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
 
           <div className="download-buttons">
             <h2 className="download-heading">Download Now</h2>
-            <p className="download-caption">Android APK and Windows EXE</p>
+            <p className="download-caption">Android APK and PC</p>
 
             <div className="download-btn-group">
               {downloadActive ? (
@@ -352,8 +354,8 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                   <ButtonContent
                     img="/images/boy.png"
                     alt="Preview"
-                    title="Download EXE"
-                    subtitle="Hosted on itch.io"
+                    title="Download PC"
+                    subtitle="PC"
                   />
                 </a>
               ) : (
@@ -362,8 +364,8 @@ const DownloadSection = forwardRef(function DownloadSection(_props, ref) {
                     <ButtonContent
                       img="/images/boy.png"
                       alt="Official"
-                      title="Download EXE"
-                      subtitle="Hosted on itch.io"
+                      title="Download PC"
+                      subtitle="PC"
                     />
                   </button>
                   <span className="download-soon">Soon</span>
