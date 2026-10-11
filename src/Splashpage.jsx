@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const pspImage = '/images/psp.png';
 import glitchSfx from "./assets/sounds/Glitch.mp3";
+import { playSiteMusic } from "./siteMusic";
 
 function Splashpage() {
   const navigate = useNavigate();
@@ -141,6 +142,7 @@ function Splashpage() {
   }, [showLoading, navigate]);
 
   const handleStart = () => {
+    playSiteMusic();
     setGlitchAll(true);
     playGlitch();
     setTimeout(() => setGlitchAll(false), 450);

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import communitySfx from './assets/sounds/Community.mp3';
+import { getSiteMusic, playSiteMusic } from './siteMusic';
 
 import Header from './Header';
 import Hero from './Hero';
@@ -142,18 +142,19 @@ export default function RetroSite({ lightMode, toggleTheme }) {
   }, []);
 
   useEffect(() => {
-    const a = new Audio(communitySfx);
-    a.loop = true;
-    a.volume = 0.35;
+    const a = getSiteMusic();
     communityAudioRef.current = a;
-    a.play().catch(() => {});
-    return () => { a.pause(); a.currentTime = 0; communityAudioRef.current = null; };
+    playSiteMusic();
+    return () => {
+      a.pause();
+      communityAudioRef.current = null;
+    };
   }, []);
 
   useEffect(() => {
-    if (communityAudioRef.current) {
-      communityAudioRef.current.muted = muted;
-    }
+    const a = getSiteMusic();
+    a.muted = muted;
+    if (!muted) playSiteMusic();
   }, [muted]);
 
   useEffect(() => {
