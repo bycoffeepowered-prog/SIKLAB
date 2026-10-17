@@ -3,7 +3,7 @@ import { useScrollAnimation } from "./Usescrollanimation";
 import { supabase } from "./supabaseClient";
 
 const ANDROID_APK_URL =
-  "https://drive.google.com/file/d/1ybDnlAPBM7Jxuks4iJ3hpzOlRkjpF8au/view?usp=sharing";
+  "https://drive.google.com/drive/folders/1vkfBYMDrbayp763_TS12YtfzRG_7KvzJ?usp=sharing";
 const PC_URL =
   "https://drive.google.com/file/d/1dpAacB3-hOrnm1gs_zH9QwVRH1CIp-ot/view?usp=sharing";
 const DEMO_URL =
