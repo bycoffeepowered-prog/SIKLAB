@@ -5,7 +5,7 @@ import { supabase } from "./supabaseClient";
 const ANDROID_APK_URL =
   "https://drive.google.com/drive/folders/1vkfBYMDrbayp763_TS12YtfzRG_7KvzJ?usp=sharing";
 const PC_URL =
-  "https://drive.google.com/file/d/1dpAacB3-hOrnm1gs_zH9QwVRH1CIp-ot/view?usp=sharing";
+  "https://drive.google.com/drive/folders/1zo8IVDzqHBFVWjR8qUk98LymSzfs6ri8?usp=sharing";
 const DEMO_URL =
   "https://drive.google.com/file/d/1PGMXv35inJBVAXcqBAZFLlixAl6IhGtI/view?usp=sharing";
 
