@@ -1,16 +1,57 @@
-# React + Vite
+# SIKLAB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Philippine history adventure game made to make learning more engaging for young learners. A mysterious glitch pulls a student from Dasmariñas into the nation's past, and players explore each era through story, street games and AR.
 
-Currently, two official plugins are available:
+**Live site:** https://larongsiklab.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![SIKLAB home page](docs/home.png)
+![Review Art Wall](docs/review-art-wall.png)
 
-## React Compiler
+## About the project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+SIKLAB is our capstone project, built for Grade 6 learners. This repository is the project's main website, the home of the game. A separate admin dashboard, [SIKLAB-Admin](https://github.com/bycoffeepowered-prog/SIKLAB-Admin), connects to the same backend.
 
-## Expanding the ESLint configuration
+<!-- If the Unity game or the research paper lives in another repo, link it here. -->
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## What's on the site
+
+- The story and the eras of Philippine history the game covers
+- Street games, including Tumbang Preso- and Jackstone-inspired mini-games
+- AR features
+- **The Review Art Wall.** Instead of only writing feedback, young players can draw their thoughts about the game, inspired by drawing in MS Paint as a kid
+- An old-school arcade look and feel
+
+## Tech
+
+- React + Vite
+- Supabase (database and backend, shared with the admin dashboard)
+- Deployed on Vercel
+
+## My role
+
+I was the **Project Manager**. I coordinated the team and the development process, designed the website UI, built the main website and admin dashboard in React with Supabase, and contributed selected gameplay features in Unity.
+
+## Team
+
+Powered by Coffee
+
+<!-- Add teammates' names and roles here. -->
+
+## Run it locally
+
+```bash
+git clone https://github.com/bycoffeepowered-prog/SIKLAB.git
+cd SIKLAB
+npm install
+npm run dev
+```
+
+Create a `.env` file with your own Supabase project's URL and public (anon) key. <!-- Check the exact variable names in the code (search for import.meta.env) and write them here. -->
+
+Never commit your `.env` file, and never put a Supabase service-role key in this project.
+
+## Links
+
+- Live site: https://larongsiklab.com
+- Admin dashboard: https://siklab-admin.vercel.app
+- Team YouTube channel: https://www.youtube.com/@PoweredByCoffee-CMNW
