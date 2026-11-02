@@ -668,18 +668,181 @@ const SCENERY_DATA = [
 ];
 
 const AR_ITEMS = [
-  { name: 'Emmanuel', era: 'AR Character', image: '/images/boy.png', text: 'I-scan ang marker para makita si Emmanuel sa totoong mundo — diskarte, plano, at lahat.' },
-  { name: 'Xandy', era: 'AR Character', image: '/images/girl.png', text: 'Iharap ang camera at harapin si Xandy nang buo, kasama ang kanyang matalas na pakiramdam.' },
-  { name: 'Isabelle', era: 'AR Character', image: '/images/isawho.png', text: 'AR encounter mula sa panahon ng Amerikano at Hapon. Gabay, lihim, at pag-ibig na hindi dapat malaman ng lahat.' },
-  { name: 'Fort Santiago Relic', era: 'AR Object', text: 'Isang relic na lumilitaw sa mesa o sahig mo. Iikot-ikot ito para makita ang mga detalye ng kuta.' }
-];
+  {
+    "name": "Estudyante (Lalaki)",
+    "era": "AR Location",
+    "image": "/images/collectibles/boy.png",
+    "latitude": "14.401510883979201",
+    "longitude": "120.95710841858767",
+    "radiusMeters": 100
+  },
+  {
+    "name": "Estudyante (Babae)",
+    "era": "AR Location",
+    "image": "/images/collectibles/girl.png",
+    "latitude": "14.301510883979201",
+    "longitude": "120.95710841858767",
+    "radiusMeters": 100
+  },
+  {
+    "name": "Anting-anting",
+    "era": "AR Location",
+    "image": "/images/collectibles/anting-anting.png",
+    "latitude": "14.349107261162207",
+    "longitude": "120.97040952142083",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Diyaryo",
+    "era": "AR Location",
+    "image": "/images/collectibles/diyaryo.png",
+    "latitude": "14.581553313697388",
+    "longitude": "120.97920093984416",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Kalapati",
+    "era": "AR Location",
+    "image": "/images/collectibles/dove.png",
+    "latitude": "14.592523263071792",
+    "longitude": "121.0587157271509",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Watawat",
+    "era": "AR Location",
+    "image": "/images/collectibles/flag.png",
+    "latitude": "14.581226435217532",
+    "longitude": "120.97836969243973",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Lapis",
+    "era": "AR Location",
+    "image": "/images/collectibles/lapis.png",
+    "latitude": "14.349107261162207",
+    "longitude": "120.95680305700039",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Medalya",
+    "era": "AR Location",
+    "image": "/images/collectibles/medal.png",
+    "latitude": "14.583528441063882",
+    "longitude": "120.98193550176818",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Marcial Bonifacio (Nameplate)",
+    "era": "AR Location",
+    "image": "/images/collectibles/nameplate.png",
+    "latitude": "14.593836199684674",
+    "longitude": "120.99450584396563",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Painting",
+    "era": "AR Location",
+    "latitude": "14.587082740168315",
+    "longitude": "120.98104545889439",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Yellow Ribbon",
+    "era": "AR Location",
+    "image": "/images/collectibles/ribbon.png",
+    "latitude": "14.573232322668371",
+    "longitude": "120.98068322501096",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Sampaguita",
+    "era": "AR Location",
+    "image": "/images/collectibles/sampaguita.png",
+    "latitude": "14.591739577146953",
+    "longitude": "120.97338347781341",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Barko",
+    "era": "AR Location",
+    "image": "/images/collectibles/ship.png",
+    "latitude": "14.567359521715124",
+    "longitude": "120.98341673748128",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Tangke",
+    "era": "AR Location",
+    "image": "/images/collectibles/tank.png",
+    "latitude": "14.533267703488129",
+    "longitude": "121.04511354837786",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Telebisyon",
+    "era": "AR Location",
+    "image": "/images/collectibles/tv.png",
+    "latitude": "14.654906746777691",
+    "longitude": "121.03007835043658",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Katipunero",
+    "era": "AR Location",
+    "image": "/images/collectibles/katipunan-male.png",
+    "latitude": "14.590947656665065",
+    "longitude": "120.98108066983858",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Lamesa",
+    "era": "AR Location",
+    "image": "/images/collectibles/lamesa.png",
+    "latitude": "14.589479215017388",
+    "longitude": "120.97528843087302",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Babaeng Babaylan",
+    "era": "AR Location",
+    "image": "/images/collectibles/babaylan-female.png",
+    "latitude": "14.585215028662033",
+    "longitude": "120.98110463850362",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Lalaking Babaylan",
+    "era": "AR Location",
+    "image": "/images/collectibles/babaylan-male.png",
+    "latitude": "14.585215028662033",
+    "longitude": "120.98110463850362",
+    "radiusMeters": 50
+  },
+  {
+    "name": "Katipunera",
+    "era": "AR Location",
+    "image": "/images/collectibles/katipunan-female.png",
+    "latitude": "14.590947656665065",
+    "longitude": "120.98108066983858",
+    "radiusMeters": 50
+  }
+].filter((location, index, locations) => locations.findIndex((candidate) =>
+  candidate.latitude === location.latitude && candidate.longitude === location.longitude
+) === index).map((location, index) => ({
+  name: `AR Location ${String(index + 1).padStart(2, '0')}`,
+  era: 'AR Location',
+  text: `Latitude: ${location.latitude}° N · Longitude: ${location.longitude}° E. Radius: ${location.radiusMeters} metro.`,
+  mapUrl: `https://www.google.com/maps/search/?api=1&query=${location.latitude}%2C${location.longitude}`
+}));
 
 const COLLECTIBLE_ITEMS = [
-  { name: 'Katipunero', era: 'Rebolusyon', image: '/images/collectibles/katipunan-male.png', text: 'Card ng lalaking kasapi ng Katipunan. Unang sagisag ng paglaban sa kolonyal na panahon.' },
+  { name: 'Katipunero', era: 'Rebolusyon', image: '/images/collectibles/katipunan-male.png', text: 'Card ng lalaking kasapi ng Katipunan. Isa sa mga sigisag ng paglaban sa kolonyal na panahon.' },
   { name: 'Katipunera', era: 'Rebolusyon', image: '/images/collectibles/katipunan-female.png', text: 'Card ng babaeng rebolusyonarya sa baro’t saya, tapis, at pulang panuelo.' },
-  { name: 'Lalaking Babaylan', era: 'Katutubo', image: '/images/collectibles/babaylan-male.png', text: 'Lalaking babaylan sa tradisyonal na damit. Tagapamagitan ng tao at ng lumang paniniwala.' },
-  { name: 'Babaeng Babaylan', era: 'Katutubo', image: '/images/collectibles/babaylan-female.png', text: 'Babaeng babaylan sa puting damit at maroon na sash. Bantay ng ritwal at alaala.' },
-  { name: 'Estudyante', era: 'Kasalukuyan', image: '/images/collectibles/girl.png', text: 'Modernong estudyante na may backpack. Tulay mula sa kasalukuyan papunta sa nakaraan.' },
+  { name: 'Lalaking Babaylan', era: 'Pre kolonyal', image: '/images/collectibles/babaylan-male.png', text: 'Lalaking babaylan sa tradisyonal na damit. Tagapamagitan ng tao at ng lumang paniniwala.' },
+  { name: 'Babaeng Babaylan', era: 'Pre kolonyal', image: '/images/collectibles/babaylan-female.png', text: 'Babaeng babaylan sa puting damit at maroon na sash. Bantay ng ritwal at alaala.' },
+  { name: 'Estudyante (Lalaki)', era: 'Kasalukuyan', image: '/images/collectibles/boy.png', text: 'Modernong lalaking estudyante na may backpack. Tulay mula sa kasalukuyan papunta sa nakaraan.' },
+  { name: 'Estudyante (Babae)', era: 'Kasalukuyan', image: '/images/collectibles/girl.png', text: 'Modernong estudyante na may backpack. Tulay mula sa kasalukuyan papunta sa nakaraan.' },
   { name: 'Kalapati', era: 'Kapayapaan', image: '/images/collectibles/dove.png', text: 'Puting kalapati na may sanga. Sagisag ng tigil-putukan at bagong simula.' },
   { name: 'Watawat', era: 'Kalayaan', image: '/images/collectibles/flag.png', text: 'Watawat ng Pilipinas. Kolektahin para tandaan ang bawat panahong ipinaglaban ito.' },
   { name: 'Sampaguita', era: 'Pambansang Bulaklak', image: '/images/collectibles/sampaguita.png', text: 'Pambansang bulaklak. Isang tahimik na card na palaging nasa tabi ng mga bayani.' },
@@ -687,11 +850,11 @@ const COLLECTIBLE_ITEMS = [
   { name: 'Medalya', era: 'Parangal', image: '/images/collectibles/medal.png', text: 'Gintong medalya. Gantimpala para sa mga natapos na kabanata at hidden quest.' },
   { name: 'Anting-anting', era: 'Folk', image: '/images/collectibles/anting-anting.png', text: 'Ukít na anting-anting ng mandirigma. Pananggalang ng mga tauhan sa gitna ng gulo.' },
   { name: 'Lapis', era: 'Edukasyon', image: '/images/collectibles/lapis.png', text: 'Isang lapis. Sa SIKLAB, ito ang sagisag ng pag-aaral — at ng mga lihim na sinulat sa kwaderno.' },
-  { name: 'Diyaryo', era: 'Rebolusyon', image: '/images/collectibles/diyaryo.png', text: 'Pahayagang “El Nieraldo de la Revolución.” Balita, propaganda, at senyales para sa susunod na quest.' },
+  { name: 'Diyaryo', era: 'Rebolusyon', image: '/images/collectibles/diyaryo.png', text: 'Pahayagang “El Nieraldo de la Revolución 1896” Balita, propaganda, at senyales para sa susunod na quest.' },
   { name: 'Marcial Bonifacio', era: 'Alaala', image: '/images/collectibles/nameplate.png', text: 'Nameplate ni Marcial Bonifacio. Isang pangalang kailangang tandaan habang ginagalugad ang nakaraan.' },
   { name: 'Lamesa', era: 'Kultura', image: '/images/collectibles/lamesa.png', text: 'Mesa ng kakanin at ulam. Paalala na may buhay at hapag pa rin sa gitna ng kasaysayan.' },
   { name: 'Barko', era: 'Amerikano', image: '/images/collectibles/ship.png', text: 'Barkong may watawat ng Amerika. Tanda ng panahon ng okupasyon at ng mga daungang binabantayan.' },
-  { name: 'Tangke', era: 'Digmaan', image: '/images/collectibles/tank.png', text: 'Tangke mula sa panahon ng giyera. Bigat ng bakbakan na dumaan sa bayan.' },
+  { name: 'Tangke', era: 'Digmaan', image: '/images/collectibles/tank.png', text: 'Tangke mula sa panahon ng giyera. Ikalawang Digmaang Pandaigdig 2 Pananakop ng mga Hapones' },
   { name: 'Telebisyon', era: 'Modernong Panahon', image: '/images/collectibles/tv.png', text: 'Lumang telebisyon. Dito dumadaan ang mga anunsyo, balita, at alaala ng bagong panahon.' }
 ];
 
@@ -705,11 +868,16 @@ function RewardCatalog({ items, variant }) {
           {item.image ? (
             <img src={item.image} alt={item.name} className="reward-item-thumb" />
           ) : (
-            <div className="reward-item-fallback">{item.name.charAt(0)}</div>
+            <div className="reward-item-fallback">{item.mapUrl ? '📍' : item.name.charAt(0)}</div>
           )}
           <div className="reward-item-era">{item.era}</div>
           <h3 className="reward-item-name">{item.name}</h3>
           <p className="reward-item-text">{item.text}</p>
+          {item.mapUrl && (
+            <a href={item.mapUrl} target="_blank" rel="noopener noreferrer">
+              Buksan sa Google Maps ↗
+            </a>
+          )}
         </article>
       ))}
     </div>
@@ -942,9 +1110,9 @@ const MainContent = forwardRef(function MainContent(props, ref) {
                 <div className="generic-left-section">
                   <h2 className="generic-popup-title">AUGMENTED REALITY</h2>
                   <p className="generic-popup-description">
-                    I-scan ang AR markers sa laro para lumitaw ang mga karakter at relic sa totoong mundo.
-                    Gamitin ang camera ng phone, iikot ang object, at kunan ng litrato. Hindi na locked —
-                    ito ang AR gallery na makikita sa Chapter 1.
+                    Hanapin ang AR gamit ang lokasyon at coordinates sa ibaba.
+                    Pumunta sa lugar, i-enable ang GPS at camera permissions, at buksan ang AR sa laro.
+                    Gamitin ang Google Maps link para makita kung saan pupunta.
                   </p>
                 </div>
                 <div className="generic-right-section">
@@ -985,7 +1153,7 @@ const MainContent = forwardRef(function MainContent(props, ref) {
                   <div className="generic-image-card">
                     <img src="/images/collectibles/flag.png" alt="Collectible Cards" className="generic-feature-image" />
                     <div className="generic-badge-circle">
-                      <div className="badge-main">18 CARDS</div>
+                      <div className="badge-main">{COLLECTIBLE_ITEMS.length} CARDS</div>
                       <div className="badge-sub">★ UNLOCKED ★</div>
                       <div className="badge-sub">SIKLAB</div>
                     </div>

@@ -188,6 +188,56 @@ const MECHANICS_STYLES = `
   @media (max-width: 1200px) { .mechanics-container { grid-template-columns: 1fr; } .mechanics-right-panel { position: static; order: -1; height: auto; max-height: none; } .mechanics-grid { grid-template-columns: repeat(4,1fr); } .intro-arrow { display: none; } }
   @media (max-width: 1024px) { .mechanics-section { height: auto; overflow: visible; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(3,1fr); } }
   @media (max-width: 640px) { .mechanics-section { padding: 36px 16px; align-items: flex-start; } .mechanics-grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .polaroid-title { font-size: 12px; } .detail-title-row { flex-wrap: wrap; } .detail-title { font-size: 24px; } .intro-icon { font-size: 60px; } .intro-title { font-size: 28px; } }
+  @media (min-width: 769px) {
+    .mechanics-section { padding: 32px 24px; align-items: center; }
+    .mechanics-container {
+      width: 82%;
+      max-width: 1600px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(14px, 1.5vw, 32px);
+      height: max(340px, min(38vw, calc((100dvh - var(--site-header-height, 96px)) * 0.78)));
+      align-items: stretch;
+    }
+    .mechanics-left-panel, .mechanics-right-panel {
+      padding: clamp(12px, 1.3vw, 28px);
+      min-height: 0;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    .mechanics-right-panel { order: initial; overflow-y: auto; display: block; }
+    .mechanics-grid {
+      height: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: clamp(8px, 0.9vw, 18px);
+    }
+    .polaroid-card { min-height: 0; min-width: 0; padding: 6px; }
+    .polaroid-image { flex: 1; min-height: 0; aspect-ratio: auto; }
+    .polaroid-icon { font-size: clamp(26px, 2.5vw, 52px); }
+    .polaroid-content { padding: 6px 2px 4px; margin-top: 4px; }
+    .polaroid-title { font-size: clamp(10px, 0.8vw, 16px); }
+    .polaroid-desc { padding: 0 2px 4px; }
+    .polaroid-desc p { font-size: clamp(9px, 0.65vw, 13px); }
+    .mechanics-intro {
+      min-height: 100%; padding: 16px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .intro-icon { font-size: clamp(36px, 3.2vw, 68px); margin-bottom: 12px; }
+    .intro-label { font-size: 11px; }
+    .intro-title { font-size: clamp(22px, 2vw, 42px); margin-bottom: 20px; }
+    .intro-text { font-size: clamp(12px, 0.95vw, 18px); line-height: 1.7; margin-bottom: 12px; }
+    .intro-arrow { display: block; font-size: 28px; margin-top: 16px; }
+    .detail-card { min-height: 0; }
+    .detail-image { aspect-ratio: 16/8; }
+    .detail-body { padding: 20px; }
+    .detail-title-row { flex-wrap: wrap; gap: 10px; }
+    .detail-title { font-size: 24px; }
+    .detail-subtitle, .detail-description { font-size: 14px; }
+  }
+  @media (min-width: 769px) and (max-width: 1000px) {
+    .mechanics-container { width: 100%; }
+    .mechanics-intro { padding: 8px; }
+  }
 `;
 
 const MECHANICS_DATA = [
